@@ -246,3 +246,32 @@ A feature is accepted only when its success path, permission boundary, failure s
 - P1: Journal CMS and pages if the first content batch is not ready; marketing campaign composer, scheduled campaigns, weekly digest and delivery analytics. The opt-in data model and privacy behavior remain P0 even if campaign UI launches later.
 - Later: browser push, SMS, automated WhatsApp messages, AI-personalized marketing and advanced segmentation.
 
+## 13. Notification launch-tier clarification
+
+This section clarifies the priority split in Section 12 and takes precedence if the earlier summary is read as deferring all campaigns.
+
+**P0 notification launch capability**
+- Transactional order/account/payment/invoice emails.
+- Customer notification inbox and preference center.
+- Marketing subscriber capture, email confirmation, topic-specific opt-in, topic-level unsubscribe and global marketing unsubscribe.
+- Basic admin campaign workflow for Products, Offers and Journal: create draft, choose topic audience, preview eligible count, internal test, approve and send now.
+- Current consent/suppression re-check immediately before each send.
+- Admin alerts for new orders, QR submissions, low/out-of-stock, invoice failures and critical email/outbox failures.
+- Delivery/bounce/complaint webhook processing and suppression.
+
+**P0 editorial/offer capability**
+- Basic Journal listing and article detail plus admin draft/preview/publish.
+- Basic Offer content record with title, description/terms, campaign image, valid dates, CTA and publication state.
+- Campaign email can link to published content only.
+- Coupon/discount-code engine is not implied by an Offer content record. If discounts must be automatically applied at checkout, that is a separately specified promotion-pricing feature.
+
+**P1 enhancements**
+- Scheduled campaigns and calendar.
+- Weekly digest automation.
+- Advanced segmentation and automated lifecycle journeys.
+- Campaign analytics beyond provider delivery/bounce/complaint basics.
+- Back-in-stock and personalized recommendations.
+- Advanced article taxonomy/search if content volume requires it.
+
+This priority is intended to deliver the owner's requested email announcements without requiring a complex marketing automation suite before launch.
+
