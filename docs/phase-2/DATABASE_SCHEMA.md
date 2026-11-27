@@ -163,3 +163,61 @@ RLS policies do not grant table privileges; grants do not replace RLS. Never gra
 - Search strategy and whether extensions are needed.
 - Whether carts need account persistence in MVP.
 - Final role matrix and private schema exposure model.
+
+
+## 10. Journal and notification data model additions
+
+The following logical entities are required for the approved notification/editorial direction. Exact SQL definitions, indexes and retention fields must be finalized in migrations.
+
+### Journal/content
+| Table | Important columns | Notes |
+|---|---|---|
+| articles | id, slug, title, summary, body, cover_media_path, author_label, status, published_at, seo_title, seo_description, created_by, updated_by | Draft/scheduled/published/archived lifecycle |
+| article_tags | id, name, slug | Controlled editorial taxonomy |
+| article_tag_links | article_id, tag_id | Many-to-many |
+| article_products | article_id, product_id, sort_order | Related product links |
+
+### Subscriber and preference data
+| Table | Important columns | Notes |
+|---|---|---|
+| subscribers | id, normalized_email, user_id nullable, email_verified_at, status, created_at, updated_at | Support signed-in and optionally guest subscribers; unique normalized address |
+| notification_preferences | subscriber_id, topic_code, channel, enabled, frequency, timezone, updated_at | One row per subscriber/topic/channel |
+| marketing_consent_events | id, subscriber_id, topic_code, channel, action, source, consent_text_version, confirmation_state, occurred_at | Append-only opt-in/withdrawal evidence |
+| notification_suppressions | id, normalized_email, reason, source, provider_event_id, created_at, cleared_at, cleared_by | Unsubscribe, hard bounce, complaint or admin suppression; do not automatically clear |
+
+### Delivery and in-app
+| Table | Important columns | Notes |
+|---|---|---|
+| notification_outbox | id, event_type, channel, recipient_ref, payload_ref, dedupe_key, status, attempts, available_at, last_error_code, provider_message_id, created_at, sent_at | Durable intent and retry state |
+| notification_deliveries | id, outbox_id, campaign_recipient_id nullable, provider_message_id, delivery_status, accepted_at, delivered_at, failed_at | Delivery projection |
+| notification_provider_events | id, provider_event_id, event_type, signature_valid, received_at, processed_at, processing_status | Unique provider event ID; idempotent webhook handling |
+| in_app_notifications | id, recipient_user_id, recipient_role nullable, notification_type, title, body, action_path, read_at, expires_at, created_at | Must not include confidential payload in preview |
+| notification_templates | id, template_key, version, subject, html_source, text_source, status, updated_by, created_at | Versioned and admin-controlled |
+
+### Campaign and admin alert entities
+| Table | Important columns | Notes |
+|---|---|---|
+| marketing_campaigns | id, campaign_type, title, subject, content_ref, audience_topic, status, scheduled_at, approved_by, approved_at, audience_snapshot_at, created_by | Draft/test/approved/scheduled/sending/paused/completed/cancelled |
+| campaign_recipients | id, campaign_id, subscriber_id, dedupe_key, status, provider_message_id, sent_at | Unique campaign/subscriber key |
+| admin_alerts | id, alert_type, severity, dedupe_key, target_role/user, payload_ref, acknowledged_at, resolved_at, resolution_note, created_at | Role-routed operational alerts |
+| notification_settings | key, value_json, updated_by, updated_at | Non-secret settings only; credentials stay in secret manager |
+
+### Invariants and indexes
+- Normalize email addresses consistently for lookup/deduplication; preserve display casing separately only if needed.
+- Consent events are append-only; current topic state may be materialized in preferences.
+- A marketing send requires verified email, active topic preference and no suppression at send time.
+- A customer email alone does not create a consent event.
+- One outbox dedupe key per event/recipient/channel/template purpose.
+- Provider event ID is unique; duplicate webhook is harmless.
+- One campaign-recipient row per campaign/subscriber.
+- Index outbox(status, available_at), suppression(normalized_email), preferences(subscriber_id, topic_code), campaign(status, scheduled_at), inbox(recipient_user_id, read_at, created_at), alert(target_role, acknowledged_at, created_at).
+- Do not store full rendered emails, raw API keys, access tokens or payment proof in notification payload JSON.
+
+## 11. Retention notes for notification data
+
+- Retain minimal suppression evidence after unsubscribe so an address is not re-added accidentally.
+- Keep consent audit events according to reviewed privacy retention policy.
+- Do not retain email body copies unless a clear compliance/operational need exists.
+- In-app notifications should expire or archive according to a documented policy.
+- Campaign audience snapshots should store subscriber identifiers and consent decision evidence references, not unnecessary profile data.
+
