@@ -140,3 +140,44 @@ Logs must not include raw secrets, session tokens, full payment proofs, unnecess
 - [ ] Rate limits and idempotency tested.
 - [ ] Sensitive admin actions are audited.
 - [ ] Restore and incident procedures are documented.
+
+
+## 12. Marketing email consent and communication privacy
+
+- Treat transactional/account messages separately from promotional/marketing messages.
+- A customer email address from login, checkout or purchase is not marketing permission.
+- Marketing subscription is optional, topic-specific and unchecked by default.
+- Record affirmative action, topic, channel, consent wording/version, source, timestamp and email confirmation state.
+- Provide a usable preference center and prompt unsubscribe processing.
+- Keep a minimal suppression record after unsubscribe, hard bounce or complaint to prevent accidental re-import/resubscription.
+- Resubscription requires a new affirmative action and confirmation; do not clear complaint/hard-bounce suppression without a reviewed reason/provider rule.
+- Do not sell, share or export subscriber lists to unapproved tools.
+- Keep subscriber and campaign recipient tables private and role-restricted.
+- Avoid exposing recipient addresses in admin lists unless needed for the operator's task; use masked display by default.
+- Review laws applicable to Naffeez and each recipient's jurisdiction before campaigns. This plan is not legal advice.
+
+## 13. Email deliverability and sender-domain security
+
+- Verify sender domain ownership.
+- Configure SPF/DKIM according to provider.
+- Configure DMARC and monitor reports/alignment.
+- Use a stable From identity and monitored reply-to.
+- Use TLS and provider-supported message authentication.
+- Separate transactional and promotional streams/subdomains when practical.
+- Do not spoof free mailbox From addresses; send from an authenticated Naffeez-owned domain.
+- Provide visible unsubscribe and one-click unsubscribe for marketing.
+- Monitor bounces and complaints; suppress hard bounces/complaints.
+- Avoid purchased lists, misleading subjects, deceptive urgency and hidden promotional content in transactional email.
+- Keep a record of approved sender identity and DNS change.
+
+## 14. Notification abuse and data protection
+
+- Campaign audience selection is server-side.
+- User cannot change another subscriber's topics.
+- Unsubscribe endpoints use opaque tokens and do not reveal user IDs/emails in URL paths.
+- Webhooks require signature validation and idempotency.
+- Campaign send/approval and template changes are audit logged.
+- Test-send recipients are limited to configured internal addresses.
+- Email content should expose only minimum order details; private invoices remain behind authorized links.
+- Security/alert email should avoid including password, tokens, proof images or full account/payment information.
+
