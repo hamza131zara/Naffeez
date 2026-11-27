@@ -147,3 +147,17 @@ Maintenance cadence:
 - [ ] Error monitoring and rollback plan ready.
 - [ ] Mobile and desktop smoke tests pass.
 - [ ] Owner explicitly authorizes launch.
+
+
+## 12. Official references checked for this draft
+
+Checked on 2026-11-28; quotas, plan terms and limits must be rechecked before production.
+
+- Supabase pricing: https://supabase.com/pricing
+- Supabase free project pausing: https://supabase.com/docs/guides/platform/free-project-pausing
+- Supabase production checklist: https://supabase.com/docs/guides/deployment/going-into-prod
+- Supabase database backups: https://supabase.com/docs/guides/platform/backups
+- Supabase storage: https://supabase.com/docs/guides/storage
+- Cloudflare Next.js deployment: https://developers.cloudflare.com/workers/framework-guides/web-apps/nextjs/
+
+Pricing snapshots are planning information, not a promise of zero operating cost or guaranteed uptime.
