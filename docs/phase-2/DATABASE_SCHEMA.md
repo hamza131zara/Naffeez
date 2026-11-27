@@ -221,3 +221,14 @@ The following logical entities are required for the approved notification/editor
 - In-app notifications should expire or archive according to a documented policy.
 - Campaign audience snapshots should store subscriber identifiers and consent decision evidence references, not unnecessary profile data.
 
+## 12. Offer content model
+
+A simple published offer is editorial/marketing content, not necessarily a checkout discount rule.
+
+| Table | Important columns | Notes |
+|---|---|---|
+| offers | id, slug, title, summary, body, image_path, cta_label, cta_url, terms_text, starts_at, ends_at, status, created_by, updated_by | Draft/scheduled/published/expired lifecycle |
+| offer_products | offer_id, product_id, sort_order | Optional linked products |
+
+Only published, currently valid offers are publicly visible or eligible for a new campaign. If an offer needs a coupon/discount to be enforced at checkout, add a separate promotion rule model with server-side validation, limits, and audit; do not treat a marketing email's text as authoritative discount logic.
+
