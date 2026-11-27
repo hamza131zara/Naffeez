@@ -187,3 +187,57 @@ Do not block shared households solely by IP; combine signals and return useful r
 - Generate/maintain API schemas from source validation models where practical.
 - Document status-code and error-contract tests.
 - Internal server component calls may call domain services directly; do not self-fetch the public API unnecessarily.
+
+
+## 10. Notification, preference and Journal API contracts
+
+Proposed routes under /api/v1; exact handlers may be adapted while preserving these behaviors.
+
+### Customer preferences and inbox
+| Method/route | Purpose | Access |
+|---|---|---|
+| GET /account/notifications | List current user's in-app notifications | Authenticated owner |
+| PATCH /account/notifications/{id}/read | Mark own notification read | Authenticated owner |
+| POST /account/notifications/read-all | Mark own notifications read | Authenticated owner |
+| GET /account/notification-preferences | Read own topic preferences | Authenticated owner |
+| PUT /account/notification-preferences | Replace/update own topic/frequency preferences | Authenticated owner |
+| POST /marketing/subscribe | Request topic subscription | Guest/customer; rate-limited |
+| GET /marketing/confirm | Confirm subscription token | Token holder |
+| POST /marketing/unsubscribe | One-click or preference-center opt-out | Signed token/provider flow |
+| GET /marketing/preferences/{token} | View/manage subscription preferences | Signed token holder |
+
+### Journal
+| Method/route | Purpose | Access |
+|---|---|---|
+| GET /journal/articles | Published articles | Public |
+| GET /journal/articles/{slug} | Published article detail | Public |
+| POST /admin/journal/articles | Create draft | Journal editor |
+| PATCH /admin/journal/articles/{id} | Edit draft | Journal editor |
+| POST /admin/journal/articles/{id}/publish | Publish/schedule | Publisher role |
+
+### Campaigns and admin alerts
+| Method/route | Purpose | Access |
+|---|---|---|
+| GET /admin/marketing/subscribers | Filtered subscription state/counts; no raw export by default | Marketing admin |
+| POST /admin/marketing/campaigns | Create draft campaign | Marketing editor |
+| POST /admin/marketing/campaigns/{id}/preview | Preview eligible audience/templates | Marketing editor |
+| POST /admin/marketing/campaigns/{id}/test-send | Send to internal allowlist only | Marketing editor |
+| POST /admin/marketing/campaigns/{id}/approve | Approve send | Authorized approver |
+| POST /admin/marketing/campaigns/{id}/schedule | Schedule approved campaign | Marketing admin |
+| POST /admin/marketing/campaigns/{id}/pause | Pause unsent work | Marketing admin |
+| GET /admin/notifications/deliveries | Delivery status/failure search | Authorized admin |
+| GET /admin/alerts | List alerts for authorized role/user | Authorized admin |
+| POST /admin/alerts/{id}/acknowledge | Acknowledge alert | Target role/admin |
+| POST /admin/alerts/{id}/resolve | Resolve with note | Authorized operator |
+| POST /webhooks/email-provider | Receive provider events | Provider signature verified |
+
+### Marketing authorization rules
+- Never accept a client-provided recipient list as the authoritative campaign audience.
+- Server constructs the audience from current verified subscribers/preferences/suppressions.
+- Re-check eligibility immediately before dispatch.
+- Campaign approval and send scheduling are distinct permissions where configured.
+- One-click unsubscribe endpoint must be safe, idempotent, token-based and not require login.
+- Unsubscribe token must not expose account identity or other preferences.
+- Webhook endpoint validates provider signature and deduplicates provider event ID.
+- No API route may return provider secrets or raw suppression-list exports to general staff.
+
