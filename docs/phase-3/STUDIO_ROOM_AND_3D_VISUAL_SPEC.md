@@ -116,3 +116,34 @@ These are design targets, not measured results.
 - Only products with approved assets show the 3D toggle.
 - Every 3D failure has a static gallery fallback.
 - Desktop and mobile layouts tested before enabling 3D publicly.
+
+## 9. Interactive gallery zoom and texture inspection
+
+The photo gallery is the dependable inspection system even if the 3D view is disabled. The customer must be able to inspect every gallery image individually.
+
+### Desktop
+- Hovering any active gallery image displays a cursor-following magnifier lens.
+- Lens crop comes from the matching image's own high-resolution zoom asset.
+- Target zoom 2×–3×, constrained by real image resolution.
+- Click/Inspect Details pins the image in a larger zoom viewer.
+- Previous/next image navigation changes the zoom source to the new image and resets pan/lens position.
+
+### Mobile
+- Tap opens the zoom viewer.
+- Pinch and drag/pan where supported.
+- Plus, minus, reset and close controls are always available as gesture alternatives.
+- Swipe between gallery images when zoom is reset.
+
+### All gallery images
+The feature applies to every front/back/side/alternate/fabric/stitching/detail/variant image. Each media record has a unique ID and its own zoom-source association. Do not use one global zoom asset for the product. When no detailed source exists, retain a normal full-screen image viewer.
+
+Detailed timings, accessibility requirements, loading behavior and acceptance tests are in [Motion, Hover, Scroll and Product Image Inspection Specification](MOTION_HOVER_SCROLL_AND_PRODUCT_ZOOM_SPEC.md).
+
+## 10. Studio motion behavior
+- Studio stage entrance uses a small opacity/position transition, not a long 3D camera fly-through.
+- Gallery image change uses a short crossfade.
+- Floating controls fade in on hover/focus and remain reachable on touch.
+- Optional 3D viewer controls have direct, predictable input response.
+- Reduced motion disables stage parallax and camera choreography.
+- Product details and Add to Cart never wait for the studio animation or model load.
+
