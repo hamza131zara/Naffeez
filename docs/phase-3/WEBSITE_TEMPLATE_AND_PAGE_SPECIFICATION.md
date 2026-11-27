@@ -262,3 +262,25 @@ Admin must feel operational, not like a marketing homepage. Use solid surfaces a
 - [ ] Journal pages support draft/published states.
 - [ ] Admin shell and primary modules specified.
 - [ ] All empty/loading/error/success/permission states designed.
+
+## 15. Motion and image inspection details
+
+Use [Motion, Hover, Scroll and Product Image Inspection Specification](MOTION_HOVER_SCROLL_AND_PRODUCT_ZOOM_SPEC.md) as the detailed behavior contract.
+
+### Product gallery zoom — required on every gallery image
+Each gallery thumbnail—front, back, side, alternate angle, fabric close-up, stitching detail and variant image—must support image inspection. Selecting a thumbnail binds that image's own high-resolution zoom source. The magnifier must never remain connected to the previous image after thumbnail or variant changes.
+
+Desktop: hover/focus over the image reveals a cursor-tracking magnifier lens. Clicking “Inspect details” opens a pinned large viewer with zoom, pan, reset, previous/next and close controls.
+
+Mobile: tap opens the zoom viewer; pinch/drag are supported where available, with explicit zoom buttons as an alternative. Swipe gallery navigation remains available when the image is not zoomed.
+
+When the gallery image has no high-resolution source, use a normal lightbox without pretending to show true fabric detail.
+
+### Scroll and hover behavior
+- Hero text/image entrance is subtle, short and pauseable where carousel motion is involved.
+- Product cards lift slightly and crossfade to a genuine second image.
+- Buttons provide hover/focus/press/loading feedback without layout shift.
+- Sections reveal as customers scroll down and restore naturally when scrolling up.
+- Avoid large parallax, forced pinned scenes or full-grid animation cascades.
+- All effects have reduced-motion and no-JavaScript fallbacks.
+
