@@ -283,3 +283,25 @@ Every flow must define:
 - duplicate action.
 
 Core checkout/order records must not be lost because a secondary email/PDF provider is down.
+
+## 11. Product image inspection workflow
+
+### WF-C14 — Inspect product image, fabric and stitching
+1. Customer opens Product Studio.
+2. Gallery shows front image and available thumbnails.
+3. Customer hovers any image on desktop or taps it on mobile.
+4. System opens cursor magnifier or zoom viewer for the selected image.
+5. If that image has a matching high-resolution zoom source, render a clear 2×–3× crop.
+6. Customer moves cursor/drag to inspect fabric, seams, stitching, buttons, collar or other visible detail.
+7. Customer selects another thumbnail.
+8. System clears previous image's lens/pan state and loads the newly selected image's own zoom source.
+9. Customer can zoom/reset/close or move next/previous through gallery.
+10. Customer exits viewer and continues size/color selection and purchase.
+
+Rules:
+- Every gallery image is independently inspectable.
+- Zoom source is tied to image ID and selected variant.
+- Do not reuse the first image's zoom crop for other gallery items.
+- If no high-resolution source exists, show a normal lightbox/fit-to-screen image.
+- Zoom does not require 3D and never blocks Add to Cart.
+
