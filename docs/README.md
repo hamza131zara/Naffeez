@@ -47,6 +47,7 @@ This directory is the source of truth for product requirements, UX, visual desig
 7. [Product Studio Room and 3D Visual Specification](phase-3/STUDIO_ROOM_AND_3D_VISUAL_SPEC.md)
 8. [Visual Asset and Content Guide](phase-3/VISUAL_ASSET_AND_CONTENT_GUIDE.md)
 9. [Design Handoff and Acceptance Checklist](phase-3/DESIGN_HANDOFF_AND_ACCEPTANCE.md)
+10. [Motion, Hover, Scroll and Product Image Inspection](phase-3/MOTION_HOVER_SCROLL_AND_PRODUCT_ZOOM_SPEC.md)
 
 ## Phase 4–6 execution plans
 
