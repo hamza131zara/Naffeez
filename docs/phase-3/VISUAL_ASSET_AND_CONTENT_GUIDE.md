@@ -116,3 +116,26 @@ Do not publish fabricated fashion claims, material facts or false celebrity endo
 - Image licensing/source records.
 
 No placeholder content may be mistaken for approved production copy.
+
+## 9. High-resolution gallery and zoom asset requirements
+
+For every product gallery image, define a corresponding high-resolution zoom source where one exists. The source must match the exact image and selected variant.
+
+- Display image: responsive AVIF/WebP derivative for normal gallery viewing.
+- Zoom image: higher-resolution derivative with enough real pixel detail for the planned 2×–3× inspection.
+- Keep the gallery item ID stable and map `zoomSrc` to that exact item ID.
+- Include fabric/stitching/texture close-ups as separate gallery images when the product photography provides them.
+- Do not use AI upscaling to imply genuine stitching/fabric detail that the original photo does not contain.
+- Strip unnecessary EXIF/location data.
+- Load the active zoom source on inspection intent; lazy-load the other gallery zoom assets.
+- If there is no suitable zoom source, use a standard lightbox and avoid showing a magnifier that produces a blurry crop.
+
+An admin/media workflow should allow the owner to select the primary image, reorder images, assign the correct variant, set alt text and associate each zoom asset. Preview the magnifier crop before publication.
+
+## 10. Motion asset considerations
+
+- Avoid animated GIFs for product photography; use optimized still images or carefully compressed video only where justified.
+- Product hover alternate image must be a real product image, not an invented generated variant.
+- Keep image dimensions and aspect ratio reserved to prevent layout shifts.
+- Provide mobile crops for hero banners; motion must not move important product text outside the safe area.
+
