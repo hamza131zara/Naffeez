@@ -241,3 +241,16 @@ Proposed routes under /api/v1; exact handlers may be adapted while preserving th
 - Webhook endpoint validates provider signature and deduplicates provider event ID.
 - No API route may return provider secrets or raw suppression-list exports to general staff.
 
+## 11. Offer content API
+
+| Method/route | Purpose | Access |
+|---|---|---|
+| GET /offers | List currently published/valid offers | Public |
+| GET /offers/{slug} | Published offer detail and terms | Public |
+| POST /admin/offers | Create offer draft | Content editor |
+| PATCH /admin/offers/{id} | Edit offer draft | Content editor |
+| POST /admin/offers/{id}/publish | Publish/schedule offer | Publisher |
+| POST /admin/offers/{id}/campaign-draft | Create campaign draft linked to offer | Marketing editor |
+
+A public offer response must not expose unpublished draft fields or internal notes. A marketing email can describe an offer, but any price/coupon enforcement must be validated through the separate checkout pricing service.
+
