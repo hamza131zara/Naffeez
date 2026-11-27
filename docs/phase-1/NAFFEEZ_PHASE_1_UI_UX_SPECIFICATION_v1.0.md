@@ -2,7 +2,7 @@
 
 **Document ID:** NAF-P1-UIUX-001  
 **Version:** 1.0  
-**Status:** Baseline for design and Phase 2 technical documentation  
+**Status:** Accepted baseline; Phase 1 signed off by owner on 2026-11-28  
 **Product:** Premium men's fashion e-commerce platform  
 **Domain:** https://naffeez.com  
 **Launch market/currency:** Pakistan / PKR  
