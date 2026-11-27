@@ -135,3 +135,43 @@ Before enabling a provider:
 - No API keys in NEXT_PUBLIC variables.
 - No customer photo data sent to a text API.
 - No background monitoring or billing without clear user/admin action.
+
+
+## 9. Email and notification provider adapter
+
+Define a provider-neutral EmailProvider contract:
+- sendTransactional(message, idempotencyKey);
+- sendMarketing(message, idempotencyKey);
+- verifyWebhook(request);
+- parseWebhook(event);
+- getDeliveryStatus(providerMessageId) where provider supports lookup;
+- testConnection() using a non-billable health check where available.
+
+The adapter must normalize provider-specific results into internal states: accepted, delivered, delayed, hard_bounced, complained, failed and unknown. Provider acceptance must never be represented as inbox delivery.
+
+### Provider separation and credentials
+- Select provider only after pricing, commercial terms, regional delivery, data processing, rate limits and feature support are reviewed.
+- Prefer distinct transactional and marketing streams/subdomains where supported.
+- Keep API keys server-side in secret configuration.
+- Use different credentials/permissions if the provider supports them.
+- Provider health test must not send a billable campaign or real customer message.
+- Never log full secrets, full message payloads or private customer data.
+
+### Webhooks
+- Verify signatures according to current provider docs.
+- Deduplicate provider event IDs.
+- Handle duplicate and out-of-order events.
+- Acknowledge quickly; process async.
+- Use delivery webhooks for bounce/complaint suppression and admin alerting.
+- Do not rely only on open tracking; email image proxying and privacy settings make it an unreliable engagement signal.
+
+### Marketing provider requirements
+- Subscriber-level topic preferences and unsubscribe/suppression.
+- Template and campaign support or a stable API that Naffeez can wrap.
+- Webhooks for bounce/complaint/delivery where available.
+- Rate limits, idempotency and usage reporting documented.
+- Data processing, retention and export/deletion policies reviewed.
+- One-click unsubscribe headers supported for promotional messages.
+
+Provider choice remains open. Resend/Brevo or another provider can be evaluated during implementation; do not hard-code one vendor in domain logic.
+
