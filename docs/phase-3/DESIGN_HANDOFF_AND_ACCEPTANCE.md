@@ -2,11 +2,13 @@
 
 **Document ID:** NAF-P3-HANDOFF-001  
 **Version:** 1.0  
-**Status:** Active review checklist
+**Status:** Design specification package prepared; high-fidelity visual frames/prototype are still to be produced and reviewed
 
 ## 1. Phase 3 objective
 
 Produce an implementation-ready visual and frontend architecture handoff before development. Phase 3 does not mean that the website is coded or deployed.
+
+**Current artifact status:** The repository currently contains detailed written design specifications, page templates, interaction contracts, workflows and frontend architecture. High-fidelity Figma frames or an interactive visual prototype have not yet been created in this pull request. The screen inventory below is the exact production checklist for that visual-design deliverable.
 
 ## 2. Inputs
 - Accepted Phase 1 baseline v1.0.
