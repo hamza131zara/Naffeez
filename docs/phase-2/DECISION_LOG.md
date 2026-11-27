@@ -73,3 +73,37 @@ This log distinguishes owner-confirmed decisions from architecture proposals and
 3. Record owner approval when the decision is a business policy or material cost/security choice.
 4. Update this log and all dependent docs in the same PR.
 5. Increment the affected document version if baseline meaning changes.
+
+
+## Notification and editorial decisions
+
+| ID | Decision | Status | Notes |
+|---|---|---|---|
+| NAF-012 | Add a Naffeez Journal for style articles/editorial content | Owner-requested | Additive to accepted Phase 1 baseline through v1.1 addendum |
+| NAF-013 | Provide customer notification inbox and preferences page | Owner-requested | Covers order/account notifications and marketing topics |
+| NAF-014 | Send transactional order/payment/fulfillment/invoice emails | Required product behavior | Separate from marketing preference |
+| NAF-015 | Provide email updates for new products, articles and offers | Owner-requested | Campaigns only to confirmed subscribers with relevant topic opt-in |
+| NAF-016 | Email account sign-in alone does not enable marketing | Privacy safeguard | Explicit opt-in and unsubscribe required |
+| NAF-017 | Provide admin alerts for new orders, QR review, stock thresholds and critical notification failures | Required operational behavior | Configurable role routing and escalation |
+
+## New architecture proposals
+
+| ID | Proposal | Reason | Status |
+|---|---|---|---|
+| ADR-010 | Durable notification outbox plus scheduled worker | Reliable sends without blocking order transactions | Proposed |
+| ADR-011 | Separate transactional and marketing email streams/subdomains where supported | Protect order/security email deliverability | Proposed |
+| ADR-012 | Email provider adapter with signed webhooks and normalized delivery states | Swap provider without changing domain rules | Proposed |
+| ADR-013 | Explicit topic-based consent, preference center and suppression records | Prevent unintended promotional email and honor preferences | Proposed |
+| ADR-014 | Product/article publication creates campaign draft, never automatic bulk send | Human review of offer facts, stock and audience | Proposed |
+
+## Additional owner decisions
+
+| ID | Question | Why it matters |
+|---|---|---|
+| OPEN-015 | Which email provider/plan should be used for transactional and marketing streams? | Pricing, quotas, deliverability and data processing |
+| OPEN-016 | Which sender display name/from/reply-to addresses will be used? | Brand and response handling |
+| OPEN-017 | Who is allowed to approve marketing campaigns? | Brand and offer accuracy |
+| OPEN-018 | Should first marketing frequency be immediate, weekly digest, or customer-selectable? | Campaign cadence |
+| OPEN-019 | Which staff roles receive operational alerts and escalation? | Response ownership |
+| OPEN-020 | What is the approved marketing consent wording and privacy notice? | Customer transparency and legal review |
+
