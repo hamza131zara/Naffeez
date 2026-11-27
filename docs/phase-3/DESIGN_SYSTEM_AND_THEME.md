@@ -197,3 +197,30 @@ Tokens should be implemented as CSS variables and documented centrally. Componen
 - [ ] Motion and reduced-motion behavior documented.
 - [ ] 3D/photo fallbacks defined.
 - [ ] Accessibility requirements are testable.
+
+## 13. Motion design tokens and scroll behavior
+
+Use [Motion, Hover, Scroll and Product Image Inspection Specification](MOTION_HOVER_SCROLL_AND_PRODUCT_ZOOM_SPEC.md) as the detailed interaction contract.
+
+Initial motion tokens:
+- Instant feedback: 100ms.
+- Fast controls: 150ms.
+- Standard image/menu transitions: 220ms.
+- Dialog/drawer and section enter: 360ms.
+- Large editorial reveal: 500ms maximum.
+- Standard easing: cubic-bezier(0.2, 0.7, 0.2, 1).
+- Enter easing: cubic-bezier(0.16, 1, 0.3, 1).
+- Scroll reveal distance: 12–20px.
+- Product image hover scale: 1.025–1.04.
+- Card lift: 2–3px.
+
+Use transform and opacity. Avoid layout-affecting animation and large continuously changing blur/shadow. Direction-aware scroll reveals must remain subtle when scrolling up/down. Header hide-on-down/show-on-up is optional and must never hide active navigation, modal controls or focused inputs. Reduced-motion mode removes parallax and nonessential movement.
+
+## 14. Design QA additions
+- [ ] Buttons show hover, focus, pressed, loading and disabled feedback.
+- [ ] Product cards use subtle hover lift/image crossfade with no layout shift.
+- [ ] Scroll reveals work while moving down and up without replay loops/flicker.
+- [ ] Product Gallery magnifier works on every image using its own zoom source.
+- [ ] Texture/stitching inspection falls back honestly when high-resolution source is absent.
+- [ ] Touch and keyboard zoom controls exist.
+
