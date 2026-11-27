@@ -352,3 +352,24 @@ Example: if pending QR review age exceeds owner-configured SLA, show dashboard a
 - Admin sees delivery failures and outbox backlog.
 - Notification provider outage never blocks checkout/order creation.
 - Notification rules, templates, changes and campaign approvals are auditable.
+
+## 18. P0 and P1 rollout boundary
+
+### P0 for the first production release
+- Transactional order/account/payment/invoice email.
+- In-app order/payment notification inbox.
+- Customer topic preferences, consent evidence, confirmation and unsubscribe.
+- Basic Product, Offer and Journal campaign creation, audience preview, internal test, approval and send-now.
+- Provider webhook processing for delivery, hard bounce and complaint.
+- Admin alert center and critical email/outbox failure alerts.
+- Basic Journal article publishing and valid Offer content records.
+
+### P1 after the core store is stable
+- Scheduled campaign calendar and recurring weekly digest.
+- Advanced segmentation and behavior-based automation.
+- Campaign A/B testing and deeper analytics.
+- Automated back-in-stock and personalized product journeys.
+- Browser push and optional SMS.
+
+The P0 campaign system is intentionally simple: no arbitrary recipient upload, no auto-send on publish, no complex drip automation, and no marketing send without current consent/suppression evaluation.
+
