@@ -2,11 +2,11 @@
 
 **Document ID:** NAF-P4-DEV-001  
 **Version:** 1.0  
-**Status:** Planned; start only after Phase 2 approval
+**Status:** Planned; start only after Phase 3 design/architecture approval
 
 ## 1. Development rules
 
-- Build only from approved Phase 1/2 contracts.
+- Build only from approved Phase 1/2/3 contracts.
 - Start from main and use focused feature branches and PRs.
 - Inspect repo state before changing files; preserve any existing work.
 - Keep strict TypeScript and small, isolated feature modules.
