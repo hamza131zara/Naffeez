@@ -127,3 +127,32 @@ Phase 4 begins only after:
 - Phase 2 technical docs remain consistent or are updated through a decision record;
 - the owner accepts any deferred or reduced-scope elements;
 - all P0 screens have final component/interaction specifications.
+
+## 8. Motion and product image inspection handoff
+
+Required motion specification: [Motion, Hover, Scroll and Product Image Inspection](MOTION_HOVER_SCROLL_AND_PRODUCT_ZOOM_SPEC.md).
+
+Visual artifacts must include:
+- Product-card hover and keyboard-focus state with alternate-image crossfade.
+- Primary/secondary/outline/icon button idle, hover, pressed, focus, loading and disabled states.
+- Scroll-down section reveal and scroll-up/re-entry behavior.
+- Header top/scroll state, with open-menu and focused-input exceptions.
+- Product Studio gallery with cursor lens over a fabric/stitching detail image.
+- Zoom viewer with zoom-in/out/reset/close and previous/next image states.
+- Mobile tap-to-zoom and pinch/drag layout.
+- Gallery thumbnail change proving that the magnifier uses each selected image's own zoom source.
+- Reduced-motion and standard-image fallback states.
+
+## 9. Additional motion acceptance criteria
+
+- [ ] Motion remains subtle and never delays primary purchase actions.
+- [ ] Product card image scale is clipped and does not shift neighboring content.
+- [ ] Image crossfade occurs only when a distinct secondary image exists.
+- [ ] Scroll-down and scroll-up states are defined.
+- [ ] Header remains available when keyboard focus or overlay is active.
+- [ ] Every gallery image can be magnified independently.
+- [ ] Fabric/stitching inspection is source-resolution accurate.
+- [ ] Mobile and keyboard alternatives work without hover.
+- [ ] Reduced-motion removes parallax and nonessential scale/reveal animation.
+- [ ] All zoom assets load on demand rather than all at initial page load.
+
