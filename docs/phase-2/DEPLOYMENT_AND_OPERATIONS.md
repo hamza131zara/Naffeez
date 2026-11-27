@@ -161,3 +161,44 @@ Checked on 2026-11-28; quotas, plan terms and limits must be rechecked before pr
 - Cloudflare Next.js deployment: https://developers.cloudflare.com/workers/framework-guides/web-apps/nextjs/
 
 Pricing snapshots are planning information, not a promise of zero operating cost or guaranteed uptime.
+
+
+## 13. Notification infrastructure deployment
+
+### Sending identity
+1. Select the transactional and marketing email provider(s) after reviewing plan, commercial terms and data policies.
+2. Verify ownership of the Naffeez sending domain.
+3. Create provider sending identities and sender addresses.
+4. Configure provider-required SPF and DKIM DNS records.
+5. Publish DMARC and monitor reports/alignment.
+6. Where supported, separate transactional and marketing subdomains/streams.
+7. Verify delivery to Gmail and other test mailboxes before public campaigns.
+8. Ensure From/Reply-To and support address are monitored.
+
+### Webhooks and secrets
+- Configure HTTPS webhook endpoint and provider signing secret in deployment secret storage.
+- Test signature failures, duplicate event IDs and replay.
+- Keep endpoint secret server-side; rotate if exposed.
+- Verify provider can reach endpoint and monitor last successful event time.
+
+### Scheduled jobs and outbox
+- Deploy scheduled worker for queued transactional email and scheduled campaigns.
+- Configure bounded concurrency and send rate.
+- Ensure only one worker claims each outbox item at a time using database-safe claim/lease logic.
+- Add dead-letter visibility and alert on backlog/oldest item age.
+- Confirm provider outage does not block order placement.
+
+### Operational alerts
+- Configure staff recipients by role.
+- Test new-order, QR-pending, low-stock, invoice-failure, provider-outage, webhook-failure and campaign complaint alerts.
+- Assign primary and backup recipients.
+- Confirm acknowledgement and escalation behavior.
+
+### Marketing launch gate
+- Confirm all imported contacts have a documented consent basis.
+- Do not import purchased/scraped email lists.
+- Verify preference center and unsubscribe flow.
+- Run one internal test campaign.
+- Get owner approval before first real marketing send.
+- Ramp up gradually and monitor bounce/complaint levels.
+
