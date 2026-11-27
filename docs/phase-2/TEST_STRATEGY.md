@@ -146,3 +146,52 @@ Measure key routes: home, shop/category, Product Studio, cart, checkout and admi
 - Low: cosmetic or low-impact issue.
 
 QA report must include environment, commit SHA, test command, result, reproducible evidence and unresolved risk. Never claim tests passed if they were not executed.
+
+
+## 11. Notification and email test cases
+
+### Consent and preferences
+- New account starts with marketing topics unchecked.
+- Email verification alone does not opt the customer into marketing.
+- Checkout email alone does not opt the customer into marketing.
+- Opt-in for Products only does not qualify for Offers or Journal.
+- Topic change is saved and effective before the next campaign dispatch.
+- Global unsubscribe suppresses all marketing.
+- Transactional order updates still work after marketing unsubscribe.
+- Unconfirmed address is excluded from marketing audience.
+- Suppression remains effective after import, merge or campaign audience refresh.
+
+### Transactional events
+- Each order/payment/fulfillment/invoice event sends expected template to correct address.
+- Duplicate event does not send duplicate email.
+- Provider outage leaves the message queued and checkout successful.
+- Temporary failure retries within the bounded policy.
+- Permanent failure is surfaced to admin.
+- Template missing/disabled is handled safely and creates alert.
+
+### Campaign operations
+- Audience preview count matches actual eligible subscriber rows.
+- Draft/test/approved/scheduled/sending/paused/completed transitions are valid.
+- Unapproved campaign cannot be scheduled or sent.
+- Test-send is limited to internal allowlist.
+- Repeated send click does not duplicate recipients.
+- Unsubscribe immediately before dispatch prevents the send.
+- Product/article publication alone does not send a campaign.
+- Invalid, unpublished or expired offer/article/product link blocks campaign approval.
+
+### Webhooks and deliverability
+- Invalid provider signature rejected.
+- Duplicate provider event is idempotent.
+- Out-of-order delivered/bounce/complaint events resolve to safe terminal state.
+- Hard bounce and complaint suppress address immediately.
+- Soft bounce follows limited retry policy.
+- One-click unsubscribe request is processed without login and is idempotent.
+- Provider webhook outage generates operational alert.
+
+### Admin alerts
+- New order and new QR submission alert correct role.
+- Low-stock alert only fires at threshold crossing or configured repeat window.
+- Alert dedupe prevents noisy repeats.
+- Critical provider/outbox issue alerts owner.
+- Acknowledgement/resolution actions are authorized and audited.
+
