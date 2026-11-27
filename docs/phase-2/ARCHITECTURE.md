@@ -263,3 +263,32 @@ Checked on 2026-11-28; re-check before scaffolding because package and platform 
 - Cloudflare OpenNext guide: https://developers.cloudflare.com/workers/framework-guides/web-apps/opennext/
 
 The current Supabase SSR guide describes @supabase/ssr as beta. The current Cloudflare guide recommends vinext for new Next.js Worker deployments. These facts are reasons to isolate adapters and run a representative compatibility test, not reasons to assume a production deployment target today.
+
+
+## 14. Notification architecture
+
+Add a notification subsystem inside the modular monolith; do not add a separate microservice solely for email.
+
+### Components
+- Domain event emitters: order, payment, fulfillment, invoice, inventory, article and campaign events.
+- Notification policy service: classifies transactional, marketing and admin operational messages.
+- Consent/eligibility service: checks current marketing topics, confirmed email and suppression status immediately before campaign enqueue/send.
+- Durable outbox: stores send intent and dedupe key before provider call.
+- Renderer: selects versioned template and safely renders escaped data to HTML and plain text.
+- Provider adapter: wraps chosen transactional/marketing email provider.
+- Delivery event receiver: verifies provider webhook signature and idempotently processes delivery/bounce/complaint events.
+- In-app inbox repository: customer/admin notification records and read state.
+- Scheduler/worker: processes outbox, digests and scheduled campaigns with bounded retries.
+
+### Execution boundary
+The order transaction writes the order and an outbox notification intent atomically. Email delivery happens after commit. A provider outage must not roll back an order. Campaigns are scheduled independently from product/article publication and require explicit admin approval.
+
+### Provider separation
+Use distinct transactional and marketing streams or subdomains where supported. Keep sender reputation for order/security messages isolated from bulk promotional sends. Use separate templates, API credentials and limits where practical.
+
+### Scheduling and worker footprint
+Start with a durable database outbox and one scheduled/cron worker if the hosting platform can reliably invoke it. Add a dedicated queue/worker only when the volume, latency or retry requirements justify it. Worker jobs must be idempotent and observable.
+
+### Caching
+Never cache consent state, preferences, unsubscribe status, order notifications or user inbox across customers. Re-check current suppression and consent immediately before every marketing send, even if the audience was previously snapshotted.
+
