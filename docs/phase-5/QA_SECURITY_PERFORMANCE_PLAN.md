@@ -6,7 +6,7 @@
 
 ## 1. Entry requirements
 
-- Phase 5 P0 features are implemented.
+- Phase 4 P0 features are implemented.
 - Staging environment and representative synthetic data exist.
 - Build SHA and dependency lockfile are frozen for test run.
 - Test accounts exist for guest, customer A/B, payment operator, manager and owner.
