@@ -247,3 +247,19 @@ Only create a Python service when an actual AI/image workload is selected. Prefe
 - Transaction mechanism details for the atomic order command.
 - Whether product reviews/promotions are launch scope.
 - Whether a dedicated background job runner is required for invoice PDF generation.
+
+
+## 13. Official references checked for this draft
+
+Checked on 2026-11-28; re-check before scaffolding because package and platform guidance can change.
+
+- Next.js official releases: https://github.com/vercel/next.js/releases
+- Next.js v16 upgrade guide: https://nextjs.org/docs/app/guides/upgrading/version-16
+- Supabase SSR guide: https://supabase.com/docs/guides/auth/server-side
+- Supabase package selection: https://supabase.com/docs/guides/auth/choosing-a-server-package
+- Supabase SSR client setup for Next.js: https://supabase.com/docs/guides/auth/server-side/creating-a-client?framework=nextjs
+- Supabase Node.js 20 support notice: https://supabase.com/changelog
+- Cloudflare Next.js / vinext guide: https://developers.cloudflare.com/workers/framework-guides/web-apps/nextjs/
+- Cloudflare OpenNext guide: https://developers.cloudflare.com/workers/framework-guides/web-apps/opennext/
+
+The current Supabase SSR guide describes @supabase/ssr as beta. The current Cloudflare guide recommends vinext for new Next.js Worker deployments. These facts are reasons to isolate adapters and run a representative compatibility test, not reasons to assume a production deployment target today.
