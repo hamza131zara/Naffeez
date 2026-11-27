@@ -161,3 +161,61 @@ Essential transactional email settings must not be presented as an optional mark
 - [ ] Consent and unsubscribe controls cannot be mistaken for transactional settings.
 - [ ] Admin components include role/permission states.
 - [ ] Error/loading/empty/success states defined before code.
+
+## 11. Motion and hover interaction requirements
+
+All reusable components must follow [Motion, Hover, Scroll and Product Image Inspection Specification](MOTION_HOVER_SCROLL_AND_PRODUCT_ZOOM_SPEC.md).
+
+### Button and icon controls
+- Primary/secondary/quiet/danger buttons define hover, focus, pressed, loading and disabled states.
+- Press feedback uses a very small scale/tonal change and never changes layout.
+- Icon buttons have visible hover/focus surfaces and accessible names.
+- Wishlist action uses one short fill/pop response; no endless pulse.
+- Touch users receive pressed feedback and visible actions rather than hover-only controls.
+
+### Product card behavior
+- Desktop hover lifts card by only 2–3px.
+- Product image uses a subtle 1.025–1.04 scale inside a clipped image frame.
+- If a real alternate image exists, crossfade in 180–240ms.
+- Quick View/Wishlist/Compare actions reveal smoothly and remain keyboard-focusable.
+- Mobile exposes actions without requiring hover.
+- No scale or transition may cause neighboring-card layout shift.
+
+### Scroll and navigation
+- Content sections use light direction-aware reveal.
+- Product grids must not replay all card animations repeatedly on every scroll.
+- Header may hide on downward scroll and reappear on upward intent only when no menu/modal/input focus is active.
+- Checkout/admin headers remain stable by default.
+- Reduced-motion mode removes nonessential movement.
+
+## 12. ProductGallery magnifier contract
+
+Every image object in ProductGallery—not only the active hero image—must carry or resolve its own matching high-resolution zoom source. The component API must not accept a single product-level zoomSrc reused for all gallery images.
+
+Per-image contract:
+`{ id, src, zoomSrc?, alt, width, height, sortOrder, variantId?, detailLabel? }`
+
+Required behavior:
+- Desktop pointer hover shows a lens/magnified crop that follows pointer coordinates.
+- Zoom target is the currently active gallery image and its matching zoomSrc.
+- Switching thumbnail resets lens coordinates and binds the new source.
+- Clicking/tapping opens a larger viewer with zoom/pan/reset/close.
+- Mobile supports tap-to-zoom, pinch/drag where supported, and explicit plus/minus/reset controls.
+- Keyboard users have a visible Zoom Image action and accessible zoom controls.
+- Missing zoomSrc falls back to ordinary lightbox; it never blocks purchase.
+- Magnifier is independent of 3D/WebGL.
+
+Optional product-detail hotspots may mark fabric/stitching/collar/cuff details only when the admin has attached a real, verified region to that exact image.
+
+## 13. Motion component acceptance
+
+- [ ] Hover, focus, pressed, disabled and loading variants exist.
+- [ ] Product cards crossfade only to valid alternate images.
+- [ ] Scroll reveal works in both directions without flicker.
+- [ ] Header behavior respects focus and open overlays.
+- [ ] Reduced-motion fallback exists.
+- [ ] Every gallery image has its own image/zoomSrc association.
+- [ ] Gallery switching never shows a previous image's zoom crop.
+- [ ] Touch and keyboard magnification controls exist.
+- [ ] High-resolution source failure falls back to standard image viewing.
+
