@@ -173,3 +173,76 @@ A feature is accepted only when its success path, permission boundary, failure s
 9. Product photo and copy standards.
 10. Staff identities and role assignments.
 11. Production hosting/budget decision.
+
+
+## 10. Journal, notifications and communication requirements
+
+### Editorial/Journal
+- JOUR-001: Admin can create, edit, preview, schedule, publish and archive articles.
+- JOUR-002: Public Journal listing shows only published articles.
+- JOUR-003: Article detail supports cover image, title, summary, body, publication date, tags, SEO fields and related products.
+- JOUR-004: Publishing an article never sends an email campaign by itself.
+- JOUR-005: An authorized admin can create a campaign draft from a published article.
+
+### Customer notification preferences
+- NOT-PREF-001: Email verification/account email and marketing consent are separate.
+- NOT-PREF-002: Marketing topic controls are unchecked by default.
+- NOT-PREF-003: Account creation, checkout email and purchase do not imply marketing consent.
+- NOT-PREF-004: Customer can opt into New Products, Offers & Discounts, Journal/Articles, Seasonal Campaigns and optional General Brand News independently.
+- NOT-PREF-005: Customer can change frequency, pause selected topics, or unsubscribe from all marketing.
+- NOT-PREF-006: Consent changes retain an audit record of topic, channel, source, consent text version, time and confirmation state.
+- NOT-PREF-007: Marketing is sent only to confirmed addresses with active topic consent and no suppression.
+- NOT-PREF-008: Transactional order/account/security messages remain separate from marketing preferences.
+- NOT-PREF-009: Marketing email includes a visible preference/unsubscribe path and one-click unsubscribe support.
+- NOT-PREF-010: Customers can view and manage in-app notifications.
+
+### Transactional notification requirements
+- NOT-TX-001: Send order received/confirmation for COD.
+- NOT-TX-002: Send QR payment instructions and pending state for manual transfer.
+- NOT-TX-003: Send payment submission received, verified, rejected or new-proof-requested message.
+- NOT-TX-004: Send approved fulfillment status changes.
+- NOT-TX-005: Make invoice-ready notification available after order/invoice creation.
+- NOT-TX-006: Send account verification and recovery messages.
+- NOT-TX-007: Every event uses an idempotent outbox/deduplication key; retry must not create duplicate customer messages.
+
+### Marketing campaigns
+- MKT-001: Admin can create Product, Article, Offer, Seasonal and Digest campaigns.
+- MKT-002: Audience is selected by consent topic and eligibility, not raw email export.
+- MKT-003: Audience preview shows eligible, unconfirmed, unsubscribed, suppressed and excluded counts.
+- MKT-004: Admin can preview desktop/mobile/plain text and send an internal test.
+- MKT-005: Campaign requires an authorized approval action before send/schedule.
+- MKT-006: Campaign stores its audience snapshot, sender/template version and approval details.
+- MKT-007: Campaign can be paused/cancelled for unsent recipients.
+- MKT-008: Frequency caps and quiet-hour settings are configurable and enforced server-side.
+
+### Admin/system alerts
+- ALERT-001: Alert for new order.
+- ALERT-002: Alert for new QR proof/payment submission.
+- ALERT-003: Alert for pending verification older than configured threshold.
+- ALERT-004: Alert for low/out-of-stock variants.
+- ALERT-005: Alert for invoice/PDF generation failure.
+- ALERT-006: Alert for email provider outage, webhook failure or notification outbox backlog.
+- ALERT-007: Alert for unusual bounce/complaint spike and pause campaign if configured guardrail is crossed.
+- ALERT-008: Alert for admin role, payment settings or integration credential changes.
+- ALERT-009: Alerts are routed by role/severity, acknowledgeable and auditable.
+
+## 11. Notification acceptance tests
+
+- Login with an email and no marketing selection: no marketing campaign is eligible.
+- Customer chooses only New Products: product campaigns eligible; offers/articles excluded.
+- Customer unsubscribes from Offers: future offer campaigns excluded immediately; order emails remain enabled.
+- Customer globally unsubscribes: all marketing topics suppressed; essential transactional events continue.
+- Unconfirmed address: no marketing campaign send.
+- Hard bounce or complaint: address enters suppression before another campaign is sent.
+- Provider webhook arrives twice: one state transition only.
+- Campaign send action clicked twice: no duplicate campaign delivery.
+- Product/article publish: no auto-send.
+- New campaign uses only currently published and valid destination content.
+- Provider outage: order creation succeeds; email remains queued and admin is alerted.
+
+## 12. Priority changes
+
+- P0: transactional email events, in-app order/payment notifications, customer notification settings shell, explicit consent capture/storage, suppression/unsubscribe, admin alerts for new orders/QR review/stock/critical failures.
+- P1: Journal CMS and pages if the first content batch is not ready; marketing campaign composer, scheduled campaigns, weekly digest and delivery analytics. The opt-in data model and privacy behavior remain P0 even if campaign UI launches later.
+- Later: browser push, SMS, automated WhatsApp messages, AI-personalized marketing and advanced segmentation.
+
