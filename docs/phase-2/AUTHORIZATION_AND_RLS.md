@@ -174,3 +174,30 @@ Storage object policies are required for upload, select, update, delete and sign
 - Supabase RLS: https://supabase.com/docs/guides/database/postgres/row-level-security
 - Securing the Data API: https://supabase.com/docs/guides/api/securing-your-api
 - Storage access control: https://supabase.com/docs/guides/storage/security/access-control
+
+
+## 11. Notification, subscriber and Journal authorization
+
+### Customer rules
+- A customer may read/update only their own in-app notifications and preference records.
+- A customer cannot create a consent record for another email/user.
+- Guest subscription requires a one-time confirmation token sent to the email being subscribed.
+- Public confirmation/unsubscribe tokens must be high entropy, purpose-limited, time-bounded where appropriate and stored hashed.
+- Public Journal read returns published articles only.
+- Draft/scheduled articles are accessible to authorized editors only.
+
+### Marketing admin roles
+- Marketing Editor: create/edit draft campaigns and articles, preview audience and send internal tests.
+- Campaign Approver: approve campaign content/audience/send; owner may be the only approver initially.
+- Marketing Operator: schedule/pause approved campaigns and review delivery reports.
+- Only Owner/Super Admin can manage staff roles, provider credentials and sender configuration.
+- No marketing role can change consent or suppression status on behalf of a customer except documented support correction with an audit reason.
+
+### RLS/data exposure
+- Subscribers, consent events, suppressions, outbox, delivery events and provider events are never publicly readable.
+- Customer preferences/inbox use authenticated owner-scoped predicates.
+- Campaign and recipient data are private to authorized marketing staff.
+- Article public views expose published content fields only; draft body and editorial notes remain private.
+- Webhook processing is server-only and validates provider signatures before any state change.
+- Never use user-editable metadata as marketing permission or staff authorization.
+
