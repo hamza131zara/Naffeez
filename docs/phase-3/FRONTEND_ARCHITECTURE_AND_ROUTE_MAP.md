@@ -269,3 +269,56 @@ Never show stack traces, raw Supabase error text or provider credentials.
 - [ ] Product Studio 3D is optional/lazy.
 - [ ] Notification/campaign routes are permission scoped.
 - [ ] Error boundaries and accessibility behavior documented.
+
+## 12. Motion and ProductGallery implementation boundary
+
+Detailed behavior: [Motion, Hover, Scroll and Product Image Inspection Specification](MOTION_HOVER_SCROLL_AND_PRODUCT_ZOOM_SPEC.md).
+
+### Product gallery media contract
+Each image entry is independent and has its own zoom source. Conceptual TypeScript contract:
+
+```ts
+export interface ProductGalleryMedia {
+  id: string;
+  src: string;
+  zoomSrc?: string;
+  alt: string;
+  width: number;
+  height: number;
+  sortOrder: number;
+  variantId?: string;
+  detailLabel?: string;
+  inspectionRegion?: {
+    x: number;
+    y: number;
+    width: number;
+    height: number;
+    label: string;
+  };
+}
+```
+
+`zoomSrc` is optional only when a high-resolution source is not available. It must correspond to the same `id`, image and variant. Do not put one zoomSrc on the product record and reuse it for all gallery images.
+
+ProductGallery owns:
+- active media ID/index;
+- current pointer/lens coordinates;
+- zoom level and pan offset;
+- viewer open/closed state;
+- loading/error state for the selected zoom source;
+- variant-to-gallery mapping.
+
+On thumbnail or variant change, reset stale lens/pan state and bind the matching media source. Load high-resolution source on pointer/keyboard/tap intent rather than downloading all zoom files on initial page load.
+
+### Motion implementation boundary
+- CSS transitions for button/card/thumbnail micro-interactions.
+- IntersectionObserver or equivalent lightweight viewport trigger for section reveal.
+- Optional direction-aware scroll state for header only; no page scroll hijacking.
+- ProductGallery zoom logic is separate from Three.js and React Three Fiber.
+- Use transform/opacity for reveals; keep content visible if JS fails.
+- Honor reduced-motion.
+- Avoid installing a large motion library solely for simple hover/fade interactions.
+
+### Testing boundary
+Test media ID → zoom source mapping; thumbnail navigation; variant switch; zoom reset; pointer boundaries; lens coordinate mapping; source failure fallback; keyboard controls; touch pan/pinch; reduced motion; and ensuring a gallery image's old zoom crop cannot remain after switching images.
+
