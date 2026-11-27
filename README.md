@@ -11,9 +11,8 @@ AI styling, virtual try-on, face previews and advanced 3D are planned future mod
 
 ## Project status
 
-- [x] Repository initialized.
-- [x] Phase 1 product and UI/UX baseline added.
-- [ ] Phase 2 technical documentation and architecture.
+- [x] Phase 1 product and UI/UX baseline accepted and merged into main.
+- [ ] Phase 2 technical documentation — draft set prepared; owner review pending.
 - [ ] Phase 3 MVP implementation.
 - [ ] Phase 4 QA, security and performance.
 - [ ] Phase 5 production deployment and maintenance.
@@ -24,8 +23,9 @@ Start with:
 - [Project roadmap](docs/ROADMAP.md)
 - [Documentation index](docs/README.md)
 - [Phase 1 UI/UX baseline v1.0](docs/phase-1/NAFFEEZ_PHASE_1_UI_UX_SPECIFICATION_v1.0.md)
+- [Phase 2 technical documentation](docs/phase-2/)
 
-The `docs/` directory is the project source of truth for approved requirements, architecture, workflows, testing and operations.
+The docs/ directory is the project source of truth for approved requirements, architecture, workflows, testing and operations.
 
 ## Working principles
 
