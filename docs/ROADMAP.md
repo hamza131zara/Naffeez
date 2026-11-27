@@ -2,7 +2,7 @@
 
 **Roadmap version:** 1.0  
 **Baseline:** Phase 1 UI/UX v1.0  
-**Repository:** https://github.com/hamza131zara/Naffeezz  
+**Repository:** https://github.com/hamza131zara/Naffeez  
 **Product:** https://naffeez.com
 
 ## Delivery principles
@@ -20,8 +20,8 @@
 
 | Phase | Name | Status | Exit gate |
 |---|---|---|---|
-| 1 | Product planning and UI/UX baseline | Baseline added; review/sign-off | UI/UX baseline accepted |
-| 2 | Technical documentation and architecture | Next | Required technical documents reviewed |
+| 1 | Product planning and UI/UX baseline | Accepted and merged into main | UI/UX baseline accepted |
+| 2 | Technical documentation and architecture | Draft documents prepared; owner review pending | Required technical documents reviewed |
 | 3 | MVP development | Not started | Feature acceptance and implementation tests pass |
 | 4 | QA, security and performance | Not started | Release blockers resolved and QA sign-off |
 | 5 | Deployment and maintenance | Not started | Production deployment and smoke tests verified |
@@ -60,6 +60,9 @@ Owner confirms the baseline or requests a tracked revision. No application imple
 ---
 
 ## Phase 2 — Technical documentation and architecture
+
+**Current branch:** phase-2/technical-documentation  
+**Status:** Draft documentation set prepared for owner review. This is not yet an approved architecture or implementation authorization.
 
 **Goal:** convert the approved UI/UX baseline into implementation-ready technical contracts.
 
