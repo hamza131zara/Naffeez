@@ -6,7 +6,7 @@
 
 ## 1. Entry gate
 
-- Phase 6 release candidate has no unresolved critical/high defects.
+- Phase 5 release candidate has no unresolved critical/high defects.
 - Owner has approved hosting plan, production budget and provider terms.
 - Production product content, size guide, policies, invoice details and QR instructions are approved.
 - Admin owner account and MFA are ready.
