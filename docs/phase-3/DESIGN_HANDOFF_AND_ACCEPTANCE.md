@@ -156,3 +156,15 @@ Visual artifacts must include:
 - [ ] Reduced-motion removes parallax and nonessential scale/reveal animation.
 - [ ] All zoom assets load on demand rather than all at initial page load.
 
+## 10. Linked motion and product zoom specification
+
+Read [Motion, Hover, Scroll and Product Image Inspection Specification](MOTION_HOVER_SCROLL_AND_PRODUCT_ZOOM_SPEC.md). The final design prototype must visibly demonstrate:
+- Button hover/focus/press/loading/disabled states.
+- Product card subtle lift and image crossfade.
+- Scroll-down and scroll-up reveals.
+- Header state over hero and after scrolling.
+- Desktop cursor magnifier on at least front, fabric and stitching-detail gallery images.
+- Thumbnail changes binding a distinct high-resolution zoom source for each image.
+- Mobile tap/pinch/drag plus visible zoom controls.
+- Reduced-motion behavior and no-high-resolution fallback.
+
