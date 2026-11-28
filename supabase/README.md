@@ -35,6 +35,8 @@ The local reset should replay the committed migrations against the local Docker-
 supabase gen types --lang typescript --linked > src/lib/supabase/database.types.ts
 ```
 
+The committed `supabase/seed.sql` contains only the five approved launch categories. It is idempotent and does not add sample products, prices or stock.
+
 ## Applied catalog foundation
 
 The logical source of truth remains the Phase 2 Database Schema at docs/phase-2/DATABASE_SCHEMA.md. The following catalog foundation is applied through the committed migrations:
