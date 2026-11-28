@@ -2,7 +2,7 @@
 
 **Document ID:** NAF-P3-MEDIA-001  
 **Version:** 1.0  
-**Status:** Proposed Phase 3 visual/operational design; owner review pending  
+**Status:** Proposed Phase 3 visual/operational design; owner review pending. Hero-video rollout is optional; 360° Spin Builder is a later P1 enhancement, not an MVP purchase dependency.  
 **Scope:** Homepage hero campaign media and optional product-specific photograph-sequence spin viewer
 
 ## 1. Purpose and design boundary
@@ -118,6 +118,8 @@ Fields:
 
 ## 5. Naffeez 360° Spin Builder — what it creates
 
+**Release priority:** P1 / post-MVP enhancement. Phase 4 must first deliver and verify the standard responsive product gallery, per-image zoom, variant selection, stock validation and purchase actions. The Spin Builder may be implemented only after those paths are stable and its asset/storage/performance budget is approved.
+
 The first version should create a **photograph-sequence 360° spin**, not claim to create a geometry-based 3D model.
 
 The customer sees an ordered set of real product frames and rotates through them by dragging with a mouse or swiping on touch. The browser does not interpolate or invent hidden sides of the garment.
@@ -223,3 +225,11 @@ Do not call the first feature “interactive 3D” in product copy. Label it “
 - [Frontend Architecture and Route Map](FRONTEND_ARCHITECTURE_AND_ROUTE_MAP.md)
 - [Commerce and Admin Visual Workflow Blueprint](COMMERCE_AND_ADMIN_VISUAL_WORKFLOW_BLUEPRINT.md)
 - [Studio Room and 3D Visual Specification](STUDIO_ROOM_AND_3D_VISUAL_SPEC.md)
+
+
+## 10. Release sequencing recommendation
+
+- **MVP/P0:** responsive image gallery, independent per-image zoom, product/variant stock states, fast poster-first hero and admin-managed campaign copy/posters.
+- **Optional hero video:** enable for slides only when approved assets and mobile performance budgets pass; every slide still works poster-only.
+- **P1 after core gallery:** build/administer photo-sequence 360° spin and add the optional viewer to Product Studio.
+- **Later:** geometry-based 3D model viewer and any AI-generated image/frame interpolation remain deferred and require separate asset, accuracy, privacy and cost review.
