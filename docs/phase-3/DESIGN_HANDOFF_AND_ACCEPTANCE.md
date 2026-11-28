@@ -1,8 +1,8 @@
 # Naffeez — Phase 3 Design Handoff and Acceptance Checklist
 
 **Document ID:** NAF-P3-HANDOFF-001  
-**Version:** 1.4  
-**Status:** Owner accepted Light/Dark visual directions and both motion styles; full native Figma import, all-screen responsive/accessibility QA, remaining P0 visual detail and owner business inputs remain pending.
+**Version:** 1.5  
+**Status:** Owner accepted the design/theme direction and both motion styles. Responsive layout refinements have been assigned to Phase 4/5; remaining owner business decisions and any optional native Figma import remain tracked.
 
 ## 1. Phase 3 objective
 
@@ -313,3 +313,29 @@ These are not silently assumed. Some provider/hosting choices can be finalized d
 ### Deferred features (not Phase 3 blockers)
 - The 360° photograph-sequence Spin Builder is P1/post-MVP after the standard gallery, per-image zoom, stock validation and purchase journey are stable.
 - Geometry-based 3D, AI-generated intermediate spin frames and virtual try-on are later enhancements, not MVP purchase dependencies.
+
+
+## 17. Homepage layout review — owner feedback accepted
+
+**Review source:** owner-provided `Homepage Desktop` screenshot, 2026-11-28.
+
+The owner confirmed that the remaining visual design and theme templates are acceptable. The feedback is specifically about layout responsiveness and spacing:
+- logo/wordmark area padding and non-wrapping alignment;
+- desktop navigation spacing;
+- hero container width and copy/media proportions;
+- consistent shared content-container edges across sections;
+- category/product grids and footer sizing at narrower widths.
+
+The approved visual styling, component look, Light/Dark theme direction and both accepted motion styles remain unchanged.
+
+**Scheduling decision:** The owner is comfortable handling the responsive layout refinements during development. They are now explicit Phase 4 implementation requirements and Phase 5 browser-QA gates, not a reason to redesign the approved visual system.
+
+See [Responsive Layout Refinement Checklist](RESPONSIVE_LAYOUT_REFINEMENT_CHECKLIST.md) for exact container/gutter values, header/hero rules, breakpoint behavior and acceptance tests.
+
+### Figma source boundary
+The additional review boards are committed as SVG design assets in this branch. Importing every SVG into native Figma is still outstanding because the connected Figma team seat currently reports View access. The repository SVGs and written specs remain the available design handoff source; native Figma import is a follow-up handoff convenience, not permission to claim the SVGs have already been imported.
+
+### Remaining Phase 3/business handoff items
+- Reconcile owner decisions in the Phase 2 decision log before implementing affected features.
+- Confirm real logo/brand assets and product photography when available.
+- Keep the 360° Spin Builder and geometry-based 3D out of MVP scope as already recorded.
