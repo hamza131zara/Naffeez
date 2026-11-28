@@ -1,8 +1,8 @@
 # Phase 4 — MVP Development Execution Plan
 
 **Document ID:** NAF-P4-DEV-001  
-**Version:** 1.0  
-**Status:** Planned; start only after Phase 3 design/architecture approval
+**Version:** 1.1  
+**Status:** In progress — Phase 3 merged; scaffold and first storefront slice committed to phase-4/mvp-implementation
 
 ## 1. Development rules
 
@@ -206,3 +206,36 @@ Contact, WhatsApp, shipping, COD and invoice fields.
 - PR diff reviewed.
 - CI checks pass.
 - No claim of completion without proof.
+
+
+## 13. Phase 4 implementation status — 2026-11-28
+
+### Completed in first development slice
+- DEV-0001 — repository audit completed: no previous app scaffold or package manifest existed.
+- DEV-0002 — stack selected and exact package versions pinned in `package.json`; Node >=22. A package lock still needs to be generated in the installed development environment.
+- DEV-0003 — lint, typecheck, unit-test and build scripts plus GitHub Actions workflow added. Passing CI evidence is pending.
+- DEV-0004 — safe `.env.example` created; no real secrets committed.
+- DEV-0101 — semantic Light/Dark tokens and first-load theme preference bootstrap added; System follows OS preference.
+- DEV-0102 — shared container and responsive breakpoints implemented in CSS.
+- DEV-0105 — desktop/mobile header, navigation and theme toggle added.
+- DEV-0106 — footer and policy page shells added.
+- Partial DEV-0401/0402/0403 — homepage, category/shop, published-catalog search route.
+- Partial DEV-0405/0406/0407 — product card hover/Quick View, Product Studio gallery and optional image-specific zoom contract, variant selector, guest wishlist/compare foundations.
+
+### In progress / not yet done
+- DEV-0103/0104 — shared primitives and complete accessibility checks.
+- DEV-0201–0207 — no dedicated Naffeez Supabase project selected; migrations, RLS, authentication, admin membership, storage buckets and audit writer are not applied.
+- DEV-0301–0308 — admin catalog/variant/inventory/content CMS not implemented.
+- DEV-0404 — complete dynamic filter/sort system not implemented.
+- DEV-0501 — local guest cart foundation exists; server quote, atomic order, reservation, COD/QR and payment review are not implemented.
+- DEV-0601–0606 — invoice snapshot, number allocator, private PDF and access control not implemented.
+- DEV-0701–0713 — notification/outbox/consent/campaign/alert workflows not implemented.
+- DEV-0801–0806 — secure admin operational screens not implemented.
+- DEV-09 — release readiness not started.
+
+### Environment blockers and safety
+- No Supabase project named Naffeez is connected. Existing inactive projects belong to other work and were not selected or modified.
+- Owner must select/provision a dedicated project and confirm org/region/budget before a live schema is applied.
+- Authentication, size charts, shipping/fees/COD, returns, QR proof rules, stock reservation, invoice legal/tax fields and staff roles remain owner decisions.
+- The application renders explicit setup states instead of using fake products, stock, payment QR, delivery totals or invoices.
+- The responsive layout refinement checklist is a Phase 4 implementation and Phase 5 acceptance dependency.
