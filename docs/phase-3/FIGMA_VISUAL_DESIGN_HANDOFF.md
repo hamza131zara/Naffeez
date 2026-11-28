@@ -1,0 +1,101 @@
+# Naffeez — Figma Visual Design Handoff
+
+**Document ID:** NAF-P3-FIGMA-001  
+**Version:** 1.3  
+**Status:** Light/Dark visual directions and both motion styles accepted by owner; additional SVG import and full native Figma QA remain pending.  
+**Date:** 2026-11-28
+
+## Source file
+
+[Open Naffeez design file in Figma](https://www.figma.com/design/PEKxJAmDkJgfVpBL8nDTrT)
+
+- Workspace: Ameer Hamza's team
+- Page: `01 — Visual System & Screens`
+- Design direction: Monochrome Editorial + Functional Glassmorphism + Selective 3D
+- Typography: Space Grotesk for headings; Inter for body and UI
+- Language/currency: English / PKR
+- Theme approach: Light and Dark semantic token collections; System behavior remains an implementation concern for Phase 4.
+
+## Frames in the first review tranche
+
+| Frame | Node ID | Review focus |
+|---|---:|---|
+| Design system and components | `5:252` | Colour palette, typography, spacing, radius, button states and product card |
+| Homepage desktop | `5:22` | Editorial hero, category navigation, curated products, Product Studio feature and Journal preview |
+| Homepage mobile | `6:403` | Compact navigation, stacked hero, category grid and two-column product cards |
+| Product Studio desktop | `6:237` | Image-first gallery, purchase details, cursor zoom lens and source-specific fabric detail |
+| Product Studio mobile | `6:145` | Tap-to-zoom gallery, touch thumbnails, product options and sticky purchase bar |
+| Motion and interaction studies | `6:556` | Button states, card hover, header scroll transition, scroll-direction reveals and reduced motion |
+
+## Reusable Figma assets
+
+The file contains locally editable icon and garment artwork components, a reusable product-card component, and a button component set with Default, Hover, Pressed and Disabled variants.
+
+## Gallery zoom design
+
+The Product Studio demonstrates separate image/zoom-source pairs for:
+- Front view → front high-resolution zoom source
+- Fabric texture → fabric high-resolution zoom source
+- Stitching detail → stitching high-resolution zoom source
+
+The intended implementation contract remains the one in [Motion, Hover, Scroll and Product Image Inspection](MOTION_HOVER_SCROLL_AND_PRODUCT_ZOOM_SPEC.md): a selected gallery item changes both its main image and its own matching `zoomSrc`. The design does not authorize reusing one global zoom image for every gallery item.
+
+## Content and asset limitations
+
+- Garment artwork is an editable visual placeholder, not a real Naffeez SKU photo.
+- Product names and `PKR 0,000` are sample placeholders, not live catalog data.
+- Actual product photographs, variants, prices, stock, care details, delivery and returns copy must be supplied or managed through the approved catalog/admin workflow.
+- The Figma screens show design states only. No working hover animation, scroll observer, magnifier tracking, pinch-to-zoom, cart, checkout, API or payment behavior has been implemented.
+
+## Verification status
+
+The Figma creation calls returned frame IDs for all six deliverables. A rendered screenshot QA pass could not be completed because the Figma MCP Starter-plan call quota was reached during screenshot requests. Therefore, visual accuracy, clipping, wrapping, responsive spacing and interaction presentation remain **pending manual review in Figma**.
+
+## Next visual work
+
+Continue the full Phase 3 inventory in `DESIGN_HANDOFF_AND_ACCEPTANCE.md`: catalog/search/filter screens, quick view, wishlist/compare, cart, COD/QR checkout, confirmation, customer invoices/account/notifications, Journal, and the admin dashboard and operational screens. Complete the remaining responsive and empty/error states, use approved photography, then complete visual QA and collect owner approval before Phase 4.
+
+
+## 7. Additional commerce and admin visual boards
+
+The next customer/admin screen set is delivered as importable SVG assets in the Phase 3 repository branch while native Figma editing is blocked by the Starter-plan MCP call limit:
+
+- [Product Card Hover Preview](design-assets/PRODUCT_CARD_HOVER_PREVIEW.svg)
+- [Customer Commerce Screens](design-assets/COMMERCE_CUSTOMER_WORKFLOWS.svg)
+- [Admin Operations Screens](design-assets/ADMIN_OPERATIONS_WORKFLOWS.svg)
+- [Customer and Admin Workflow Map](design-assets/CUSTOMER_ADMIN_WORKFLOW_MAP.svg)
+- [Detailed screen and interaction blueprint](COMMERCE_AND_ADMIN_VISUAL_WORKFLOW_BLUEPRINT.md)
+
+These are vector source files that can be imported and arranged as native Figma content when editing capacity is available. They are not yet part of the native Figma page and have not completed screenshot-based visual QA.
+
+
+## 8. Additional vector design boards in the Phase 3 repository
+
+The following importable SVG boards extend the native first tranche:
+
+- [Customer discovery and Journal](design-assets/CUSTOMER_DISCOVERY_AND_JOURNAL.svg)
+- [Order confirmation and invoice](design-assets/ORDER_CONFIRMATION_AND_INVOICE.svg)
+- [Journal, Offers and Support pages](design-assets/JOURNAL_OFFERS_SUPPORT_PAGES.svg)
+- [Admin hero campaign and 360° Spin Builder](design-assets/ADMIN_HERO_CAMPAIGN_AND_SPIN_BUILDER.svg)
+- [Inventory and sold-out states](design-assets/INVENTORY_STOCK_STATES.svg)
+- [Responsive and state coverage](design-assets/RESPONSIVE_AND_STATE_COVERAGE.svg)
+
+Detailed design/behavior contract: [Hero Video Campaign and 360° Spin Builder](HERO_VIDEO_AND_360_SPIN_BUILDER_SPEC.md).
+
+These remain repository SVG assets and await import into the existing Figma file. The Starter-plan editing quota blocked further native Figma operations in this session; screenshot QA in Figma remains pending.
+
+
+## 9. Light-mode review and animation references
+
+- [Light Theme Review Board](design-assets/LIGHT_THEME_REVIEW_BOARD.svg) — repository SVG showing the proposed Light theme treatment for desktop homepage, product cards/hover and Product Studio purchase panel.
+- [Motion Pattern Preview](design-assets/MOTION_PATTERN_PREVIEW.svg) — two proposed scroll effects.
+- [Motion Pattern Evaluation](MOTION_PATTERN_EVALUATION.md) — detailed review of the Onda source and Naffeez recommendations.
+
+The native Figma first tranche was Dark-mode-led. These Light/motion boards have been added as repository vector assets because the Figma Starter-plan MCP editing quota is still exhausted. They have not yet been imported as native Figma frames or screenshot-QA'd in Figma. Do not mark Light mode or motion as fully approved from these static review boards alone.
+
+
+## 10. Owner approval record
+
+On 2026-11-28, the owner accepted the Light and Dark visual directions and both motion styles described in the motion review.
+
+This acceptance does not make the entire native Figma file complete. The additional customer/admin, Light-mode and motion boards are still repository SVG assets that must be imported and reviewed in the native Figma source. The original native frames remain a first Dark-led tranche, not a complete all-route, all-theme design source.

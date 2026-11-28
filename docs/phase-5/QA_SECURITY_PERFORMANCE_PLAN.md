@@ -1,12 +1,12 @@
-# Phase 4 — QA, Security and Performance Execution Plan
+# Phase 5 — QA, Security and Performance Execution Plan
 
-**Document ID:** NAF-P4-QA-001  
+**Document ID:** NAF-P5-QA-001  
 **Version:** 1.0  
 **Status:** Planned; execute against a fixed release candidate
 
 ## 1. Entry requirements
 
-- Phase 3 P0 features are implemented.
+- Phase 4 P0 features are implemented.
 - Staging environment and representative synthetic data exist.
 - Build SHA and dependency lockfile are frozen for test run.
 - Test accounts exist for guest, customer A/B, payment operator, manager and owner.

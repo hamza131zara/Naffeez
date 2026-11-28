@@ -83,6 +83,6 @@ Phase 2 is approved only when:
 - no security-critical open question remains unresolved;
 - hosting/provider assumptions are explicitly identified;
 - owner accepts any remaining cost or scope trade-off;
-- Phase 3 implementation plan and acceptance tests are ready.
+- Phase 3 visual design and frontend architecture handoff is ready to begin.
 
 A document being present in GitHub does not mean it is approved or implemented.

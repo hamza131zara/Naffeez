@@ -1,531 +1,364 @@
-# Naffeez — Detailed Phase-Based Delivery Roadmap
+# Naffeez — Detailed Project Roadmap
 
-**Roadmap version:** 2.0  
+**Roadmap version:** 3.0  
 **Product baseline:** Phase 1 v1.0 + notification/editorial addendum v1.1  
+**Technical baseline:** Phase 2 documentation approved and merged  
 **Repository:** https://github.com/hamza131zara/Naffeez  
 **Production domain:** https://naffeez.com  
-**Roadmap status:** Phase 1 accepted; Phase 2 documentation under owner review
+**Current phase:** Phase 3 — Visual Design and Website Architecture
 
-## Project delivery rules
+## Project delivery principles
 
-1. This roadmap is the execution index. Each phase has a dedicated detailed plan linked below.
-2. Phase tasks are performed in dependency order unless the owner approves a documented exception.
-3. A task is not complete because a file exists. Its outputs must be reviewed and acceptance criteria met.
-4. Product, architecture, security and policy assumptions must be labelled Proposed or Open until approved.
-5. Use feature branches and pull requests. Do not commit directly to main for substantive work.
-6. Inspect existing repository content before edits; preserve working files.
-7. Every implementation task includes tests and documentation updates.
-8. No API keys, passwords, service-role keys, production QR/account details, customer data, invoices, payment proofs or personal photos in Git.
-9. AI, virtual try-on and advanced 3D remain later modules and must never block core commerce.
-10. Any email marketing send requires confirmed address, active topic consent, no suppression, admin approval and working unsubscribe.
-11. Core commerce must continue working if email, AI, 3D or any optional provider is unavailable.
+1. Use the accepted Phase 1 and Phase 2 baselines as sources of truth.
+2. Phase 3 produces implementation-ready visual designs and detailed website architecture; it is not application coding.
+3. Phase 4 starts only after Phase 3 design/architecture approval.
+4. Each task has a requirement ID, output, acceptance check and owner where relevant.
+5. Use focused branches and pull requests; substantive work is not committed directly to main.
+6. Inspect repository state before edits and preserve working functionality.
+7. Keep decisions marked Accepted, Proposed or Open; do not invent policy, price, stock or legal details.
+8. Never commit API keys, service-role keys, passwords, production QR/account details, customer data, invoice PDFs, payment proofs or private images.
+9. Core commerce must continue if email, AI, 3D or optional providers are unavailable.
+10. No marketing send without confirmed address, topic-specific opt-in, suppression check, approved content and unsubscribe.
+11. Every implementation task needs tests and a documentation update.
+12. A phase is complete only after its exit gate and owner acceptance.
 
-## Phase status summary
+## Phase overview
 
-| Phase | Name | Status | Primary output |
+| Phase | Name | Status | Primary result |
 |---|---|---|---|
-| 1 | Product definition and UI/UX baseline | Accepted; additive notification/editorial handoff documented | Accepted experience baseline and screen handoff |
-| 2 | Technical documentation and architecture | Draft set prepared; expanded review pending | Approved technical contracts and decisions |
-| 3 | MVP development | Not started | Working commerce/admin/notification product |
-| 4 | QA, security and performance | Not started | Evidence-based release candidate |
-| 5 | Deployment and maintenance | Not started | Verified production store and operational runbooks |
-| Later | AI Style Studio, virtual try-on and advanced 3D | Deferred | Optional modules after commercial/privacy feasibility review |
+| 1 | Product definition and UI/UX baseline | Accepted | Product scope and initial user experience |
+| 2 | Technical documentation and architecture | Approved and merged into main | PRD, logical architecture, data/API/security/workflow/notification contracts |
+| 3 | Visual design, website templates and detailed frontend architecture | In progress; design pack prepared for review | Final screen designs, theme, components, flows and frontend handoff |
+| 4 | MVP development | Planned | Working storefront, admin, commerce and notifications |
+| 5 | QA, security, accessibility and performance | Planned | Verified release candidate with evidence |
+| 6 | Deployment, operations and maintenance | Planned | Live naffeez.com and operational runbooks |
+| Later | AI Style Studio, virtual try-on and advanced 3D | Deferred | Optional modules after provider/privacy/commercial review |
 
 ---
 
 # Phase 1 — Product definition and UI/UX baseline
 
-**Goal:** define the experience, every important screen, every customer/admin journey, and the expected behavior before code is built.
+**Status:** Accepted by owner.  
+**Purpose:** Decide what Naffeez is, launch scope, customers, key routes, major interactions and product priorities.
 
-**Status:** Owner accepted the Phase 1 v1.0 baseline. Journal, email preferences and notification surfaces are recorded as an additive v1.1 addendum. Detailed design handoff is documented separately.
+### Completed decisions
+- Men's clothing only.
+- Initial categories: Casual Shirts, Dress Shirts, Seasonal Trousers, Winter Trousers and Hoodies.
+- English-only launch, PKR display and Pakistan delivery context.
+- Admin-managed product entry.
+- COD plus manually verified Easypaisa/bank QR.
+- WhatsApp customer support/product enquiry.
+- Customer and admin invoice view/download.
+- Light, Dark and System theme direction.
+- Monochrome Editorial + Functional Glassmorphism + Selective 3D.
+- Product card opens dedicated Naffeez Product Studio.
+- Journal and customer notification/marketing preferences added as v1.1 extension.
+- AI try-on, photo preview, advanced AI and full 3D showroom deferred.
 
-**References:**
-- [Phase 1 baseline](phase-1/NAFFEEZ_PHASE_1_UI_UX_SPECIFICATION_v1.0.md)
-- [Phase 1 detailed execution and design handoff](phase-1/EXECUTION_AND_DESIGN_HANDOFF.md)
-- [Phase 1 Journal and notification addendum v1.1](phase-1/NOTIFICATIONS_AND_JOURNAL_UX_ADDENDUM_v1.1.md)
+### Source documents
+- `docs/phase-1/NAFFEEZ_PHASE_1_UI_UX_SPECIFICATION_v1.0.md`
+- `docs/phase-1/EXECUTION_AND_DESIGN_HANDOFF.md`
+- `docs/phase-1/NOTIFICATIONS_AND_JOURNAL_UX_ADDENDUM_v1.1.md`
 
-## P1 — Step-by-step tasks
-
-### P1-01 — Confirm source and scope
-- Read Phase 1 baseline and addendum.
-- Confirm men's-only categories and current product taxonomy.
-- Confirm English-only language and PKR currency.
-- Confirm COD and admin-verified Easypaisa/bank QR.
-- Confirm admin-managed product entry, invoices, WhatsApp and customer accounts.
-- Record deferred AI/try-on/3D features.
-**Output:** traceability matrix.
-**Acceptance:** no undocumented category or channel is added.
-
-### P1-02 — Brand assets and design tokens
-- Collect logo/wordmark and approved brand photography.
-- Confirm font licenses and font weights.
-- Define light/dark/system semantic tokens.
-- Define headings, body typography, spacing, radii, borders and elevation.
-- Define glassmorphism surfaces only for selected navigation/overlays/panels.
-- Define restrained motion and reduced-motion fallback.
-- Check text/control contrast in both themes.
-**Output:** brand asset inventory and token sheet.
-**Acceptance:** every token has light/dark treatment and components do not hard-code theme-specific colors.
-
-### P1-03 — Global shell and responsive layout
-- Design desktop navigation and dropdown behavior.
-- Design mobile header and drawer.
-- Define search, account, wishlist, compare, cart and theme controls.
-- Define announcement bar and footer.
-- Define breadcrumbs, buttons, form controls, modals, drawers, toasts and skeletons.
-- Define focus, hover, pressed, selected, disabled and loading states.
-**Output:** global screen and component handoff.
-**Acceptance:** keyboard and touch access; no hover-only action; 320px minimum width.
-
-### P1-04 — Homepage and catalog discovery
-- Design hero carousel slides, timing, arrows, pagination and pause behavior.
-- Design category shortcuts for Casual Shirts, Dress Shirts, Seasonal Trousers, Winter Trousers and Hoodies.
-- Design trending, new arrivals, curated/best-seller and featured collection sections.
-- Design Product Studio teaser and Journal teaser.
-- Design empty/hidden state when section data is unavailable.
-- Design Shop All, category, search, filter, sort, result count and no-result states.
-**Output:** homepage and catalog responsive screen inventory.
-**Acceptance:** all CTAs lead to real routes; result counts and filter options are data-driven.
-
-### P1-05 — Product cards and Product Studio
-- Design image/title navigation.
-- Design secondary image hover, wishlist, compare, Quick View and Select Options.
-- Design sold-out, sale, new and best-seller badge states.
-- Design Product Studio gallery, zoom, variants, size guide, stock, quantity, Add to Cart, Buy Now, WhatsApp and related products.
-- Define image failure fallback and unavailable variant behavior.
-- Keep heavy 3D out of the default product-page bundle.
-**Output:** product card component states and Product Studio screens.
-**Acceptance:** no invalid variant can be added to cart.
-
-### P1-06 — Cart, checkout, payment and invoice UX
-- Design empty/populated cart and changed-price/stock state.
-- Design guest/customer delivery form and validation.
-- Design COD state and order review.
-- Design QR instructions for desktop and mobile.
-- Design transfer reference/proof submission, pending, verified and rejected states.
-- Design order confirmation and secure invoice view/download.
-- Design invoice A4 print and mobile preview.
-**Output:** annotated customer purchase journey.
-**Acceptance:** QR display or uploaded proof never appears as confirmed payment.
-
-### P1-07 — Customer account and notifications UX
-- Design sign-in, sign-up, email verification and recovery.
-- Design profile, addresses, order history and invoices.
-- Design notification inbox and unread count.
-- Design topic preference center and global unsubscribe.
-- Design explicit marketing consent checkboxes, all unchecked by default.
-- Separate order/security emails from promotional preferences.
-**Output:** account and notification UX.
-**Acceptance:** an account email is not automatically a marketing subscription.
-
-### P1-08 — Journal and marketing UX
-- Design Journal listing, category/tag view, article detail and related products.
-- Design article cover, byline/date, reading layout and SEO/content preview.
-- Design newsletter/preference signup for guests and account users.
-- Design campaign preview, test-send and unsubscribe states in admin.
-**Output:** Journal and campaign screen handoff.
-**Acceptance:** only published articles are public; publication alone does not send marketing email.
-
-### P1-09 — Admin operations UX
-- Design dashboard, product editor, image manager, variants and inventory.
-- Design categories, collections, hero slides and Journal CMS.
-- Design orders, payment review, invoices and customer views.
-- Design campaign templates, subscribers, consent preferences and delivery logs.
-- Design payment/provider settings, staff roles and audit log.
-**Output:** admin screen inventory with permissions.
-**Acceptance:** sensitive actions require confirmation and permission; secrets are masked.
-
-### P1-10 — Final UX review
-- Verify all P0 requirements map to screens and flows.
-- Verify desktop/tablet/mobile states.
-- Verify light/dark states.
-- Verify keyboard/accessibility and reduced motion.
-- Verify empty, loading, error, permission-denied and success states.
-- Record all remaining owner-provided assets/policies.
-**Exit gate:** design handoff is complete enough for Phase 3 feature implementation without inventing core interaction behavior.
+### Exit gate
+Owner accepted the Phase 1 baseline. Visual screen design and frontend architecture are expanded in Phase 3.
 
 ---
 
 # Phase 2 — Technical documentation and architecture
 
-**Goal:** translate the accepted experience into detailed, consistent implementation contracts.
+**Status:** Approved by owner and merged into `main` through PR #2.  
+**Purpose:** Establish product requirements, logical system architecture, database model, APIs, auth/RLS, commerce workflows, integrations, notification rules, privacy, deployment and tests.
 
-**Status:** documentation draft prepared on branch phase-2/technical-documentation. Review and approval are still required; no production architecture is silently finalized.
+### Approved document set
+- PRD.
+- Application architecture.
+- Database schema.
+- API specification.
+- Authentication and RLS.
+- Order/payment/invoice workflows.
+- Integrations and plugin contracts.
+- Notifications and alerts.
+- Security and privacy.
+- Deployment and operations.
+- Test strategy.
+- Decision log.
+- Phase 2 review checklist.
 
-**References:**
-- [Phase 2 documentation index](phase-2/)
-- [Phase 2 review checklist](phase-2/PHASE_2_REVIEW_CHECKLIST.md)
-- [Notifications and alerts specification](phase-2/NOTIFICATIONS_AND_ALERTS.md)
+### Important distinction
+Phase 2 approval accepts the documentation baseline. It does not automatically resolve every operational decision, such as delivery fees, COD coverage, return policy, exact size charts, email provider, sender address, hosting plan or invoice legal fields. Open decisions remain documented and must be resolved before the affected implementation or launch.
 
-## P2 — Step-by-step tasks
-
-### P2-01 — Repository and requirement audit
-- Inspect README, Phase 1 baseline/addendum and all current Phase 2 documents.
-- Confirm route names, product taxonomy and launch priorities.
-- Identify requirement duplicates, contradictions and missing owner decisions.
-- Establish requirement IDs and traceability.
-**Output:** PRD and traceability map.
-**Acceptance:** every P0 flow has a requirement and test target.
-
-### P2-02 — Architecture decision
-- Confirm Next.js App Router and TypeScript modular monolith proposal.
-- Confirm which logic runs in Server Components, Route Handlers and domain services.
-- Confirm standard Node runtime vs alternative deployment adapter using a representative build.
-- Confirm Supabase roles: database, Auth, Storage, request-scoped session client and server-only privileged client.
-- Confirm when Python/FastAPI is justified and keep it deferred for MVP.
-**Output:** approved architecture and ADRs.
-**Acceptance:** hosting/runtime choice is supported by current docs and commercial terms.
-
-### P2-03 — Route and module map
-- Define public, customer, admin and API routes.
-- Define feature modules for catalog, cart, orders, payments, invoices, content, notifications, campaigns and admin.
-- Define shared UI components and server-only modules.
-- Define caching rules for public versus user-specific data.
-**Output:** route/module responsibility matrix.
-**Acceptance:** private user content is never served from shared public cache.
-
-### P2-04 — Database design
-- Finalize tables, columns, types and naming.
-- Define foreign keys, unique/check constraints and delete/archive rules.
-- Define product/variant/stock/inventory ledger.
-- Define guest and authenticated customer order records.
-- Define order-item and invoice snapshots.
-- Define payment submissions and audit events.
-- Define articles/tags/related products.
-- Define notification preferences, consent events, outbox, deliveries, campaigns, suppression and alerts.
-- Define indexes and retention.
-**Output:** logical schema and migration plan.
-**Acceptance:** all entities used by API/workflows exist in the schema model.
-
-### P2-05 — Authentication, roles and data access
-- Select email/OTP/recovery flow and provider.
-- Define guest order capability and recovery.
-- Define Owner, Manager, Payment Operator, Marketing Editor and Campaign Approver capabilities.
-- Define grants and RLS separately for every exposed table.
-- Define private storage access policies.
-- Define session revocation and admin MFA.
-**Output:** role matrix and RLS policies.
-**Acceptance:** customer A cannot access customer B; customer metadata cannot grant admin.
-
-### P2-06 — Commerce state machines
-- Define product publish/archive states.
-- Define variant and inventory states.
-- Define inventory reservation, expiry and release.
-- Define checkout quote and idempotency.
-- Define COD payment state separately from fulfillment.
-- Define QR submission/verification/rejection.
-- Define cancellation/refund state.
-- Define invoice numbering and immutable snapshot.
-**Output:** order/payment/inventory/invoice workflows.
-**Acceptance:** no ambiguous money or stock transitions.
-
-### P2-07 — API and integration contracts
-- Define request/response/error schemas.
-- Define endpoints and permission requirements.
-- Define file upload contract and private signed access.
-- Define PaymentMethod, EmailProvider, NotificationProvider, ImageStorageProvider and future AI adapter.
-- Define provider health test, secret handling, timeouts, retry and idempotency.
-**Output:** API specification and adapter contracts.
-**Acceptance:** every mutation has server-side validation and authorization.
-
-### P2-08 — Notification and editorial contracts
-- Confirm transactional versus marketing categories.
-- Define required event matrix for order, payment, fulfillment, invoice, account and admin events.
-- Define marketing topics, explicit opt-in, confirmation, preferences, digest and unsubscribe.
-- Define Journal publishing and campaign approval workflow.
-- Define outbox, dedupe, delivery webhooks, bounce/complaint suppression and retries.
-- Define admin alerts, recipients, acknowledgement and escalation.
-- Define templates, sender identity and email DNS setup.
-**Output:** notification/alert specification and linked data/API/security requirements.
-**Acceptance:** login/email address alone never means marketing opt-in; unsubscribe prevents future marketing sends.
-
-### P2-09 — Security, privacy and sender deliverability
-- Define data classification and threat model.
-- Define customer/order/invoice/photo access.
-- Define upload validation and private storage.
-- Define secrets, logs, rate limits and audit.
-- Define consent records and suppression.
-- Define SPF/DKIM/DMARC, visible unsubscribe and one-click unsubscribe.
-- Review legal requirements for target customer jurisdictions with qualified advice.
-**Output:** security/privacy and sender setup checklist.
-**Acceptance:** no secret or private proof/invoice/photo in public storage or logs.
-
-### P2-10 — Hosting, deployment and operations
-- Compare commercial hosting/runtime plans.
-- Compare Supabase plan/backup/project-pause/storage limits.
-- Define environments and secrets.
-- Define migration and release procedures.
-- Define backup/export/restore and rollback.
-- Define monitoring and incident response.
-- Define sender DNS, email webhooks and scheduled notification worker.
-**Output:** deployment/operations plan.
-**Acceptance:** no unverified free-tier or uptime assumptions.
-
-### P2-11 — Test strategy and traceability
-- Map P0 requirements to unit, DB, API and browser tests.
-- Include RLS allow/deny matrix.
-- Include concurrency and idempotency tests.
-- Include notification consent, unsubscribe, webhook and campaign tests.
-- Include responsive/accessibility/performance/security tests.
-**Output:** test strategy and test traceability.
-**Acceptance:** every P0 critical path has a reproducible test.
-
-### P2-12 — Cross-document review and owner decisions
-- Check schema/API/RLS/workflow agreement.
-- Check notification matrix and consent model agreement.
-- Resolve owner decisions on shipping, auth, QR, inventory and invoice rules.
-- Resolve hosting and email provider selection or explicitly keep them as implementation-stage decisions.
-- Update decision log.
-- Obtain owner approval.
-**Exit gate:** PRD, architecture, data model, API, RLS, workflows, notification contracts, security, operations and tests are mutually consistent and approved.
+### Exit gate
+Completed and approved.
 
 ---
 
-# Phase 3 — MVP development
+# Phase 3 — Visual design, website templates and detailed frontend architecture
 
-**Goal:** implement and integrate the real customer store and admin operation platform.
+**Status:** Owner accepted Light/Dark visual directions and both motion styles (2026-11-28); native Figma import, full responsive/accessibility QA, remaining P0 detail and owner business inputs remain before Phase 3 exit.  
+**Purpose:** Turn the accepted UX and technical baselines into the final website design and implementation-ready frontend plan before any application coding starts.
 
-**Status:** not started. Begin only after Phase 2 exit gate and owner approval.
+## P3-01 — Design baseline and reference analysis
+1. Read Phase 1 and Phase 2 baselines.
+2. Review the Blackenwhite reference for general retail patterns.
+3. Record which patterns to adapt: category navigation, collection-led discovery, product cards, Quick View, Select Options, social proof and reassurance.
+4. Record what must remain unique to Naffeez: wordmark, photography, copy, page composition and Product Studio.
+5. Confirm the design direction: Monochrome Editorial + Functional Glassmorphism + Selective 3D.
+**Output:** design rationale and reference adaptation rules.
+**Acceptance:** inspiration does not become an asset/layout copy.
 
-**Reference:** [Phase 3 detailed development execution plan](phase-3/DEVELOPMENT_EXECUTION_PLAN.md)
+## P3-02 — Brand and theme system
+1. Confirm logo/wordmark asset and clear-space use.
+2. Confirm heading/body font pairing and licenses.
+3. Define semantic light/dark/system tokens.
+4. Define typography scale, spacing, grid, border, radius and shadow.
+5. Define glass surface and fallback rules.
+6. Define hover/focus/pressed/disabled/loading/success/error states.
+7. Define motion and reduced-motion behavior.
+8. Check contrast and touch targets.
+**Output:** token sheet and typography/spacing guide.
+**Acceptance:** all surfaces work in both themes and glass is limited to selected components.
 
-## P3 — Development milestones
+## P3-03 — Global shell and navigation
+1. Design announcement bar.
+2. Design desktop header and category mega-menu.
+3. Design mobile header and menu drawer.
+4. Design Search overlay and search results.
+5. Place Account, Wishlist, Compare, Cart and Theme controls.
+6. Design footer, breadcrumbs and contextual support.
+7. Specify sticky/transparent/scroll transitions.
+**Output:** desktop/tablet/mobile global shell.
+**Acceptance:** no mobile header overflow, hover-only controls or contrast failure over hero images.
 
-### P3-00 — Repo/tooling foundation
-- Audit branch and working tree.
-- Scaffold selected framework/runtime.
-- Pin versions and commit lockfile.
-- Configure lint, format, strict typecheck, tests, build and CI.
-- Add safe environment template and secret scanning.
-**Gate:** clean baseline build and CI.
+## P3-04 — Homepage and content template
+1. Design editorial hero carousel and slide variants.
+2. Design five category shortcut tiles.
+3. Design Trending/curated product section.
+4. Design New Arrivals.
+5. Design Product Studio introduction.
+6. Design Best Sellers only where data/admin curation supports it.
+7. Design Journal teaser.
+8. Design brand story and Instagram/social section.
+9. Design optional marketing subscription.
+10. Design footer and empty section behavior.
+**Output:** complete responsive homepage template and CMS field mapping.
+**Acceptance:** every CTA destination and content fallback is defined.
 
-### P3-01 — Design system and shell
-- Implement semantic theme tokens.
-- Implement responsive container/grid and typography.
-- Implement UI primitives and state variants.
-- Implement announcement bar, desktop nav, mobile drawer and footer.
-- Implement search overlay and theme preference.
-**Gate:** shell passes responsive, theme and accessibility checks.
+## P3-05 — Catalog, product card and Product Studio
+1. Design Shop All.
+2. Design each initial category and subcategory.
+3. Design search, filter sidebar/drawer, active chips, sort and count.
+4. Design product card default/hover/focus/wishlist/compare/sold-out states.
+5. Design Quick View.
+6. Design Product Studio gallery and studio-stage.
+7. Design variant, size guide, stock, quantity and purchase actions.
+8. Design optional 3D view and static fallback.
+**Output:** catalog, card and Product Studio component/screen designs.
+**Acceptance:** customer can select a real variant and purchase without relying on 3D.
 
-### P3-02 — Supabase and permissions
-- Configure local/staging Supabase.
-- Add migrations for schema.
-- Implement request-scoped client and server-only admin client.
-- Implement auth/recovery and admin membership.
-- Apply grants/RLS/storage policies.
-- Add seed/test fixtures.
-**Gate:** authorization and storage tests pass.
+## P3-06 — Cart, checkout and invoice design
+1. Design empty/populated cart.
+2. Design contact/address form.
+3. Design server-quoted price/shipping/discount summary.
+4. Design COD payment path.
+5. Design Easypaisa QR and Bank QR paths.
+6. Design transaction reference/proof submission.
+7. Design pending/verified/rejected payment states.
+8. Design order confirmation and order status.
+9. Design responsive invoice screen and A4 PDF.
+**Output:** complete customer commerce journey.
+**Acceptance:** no screen implies a QR scan/upload itself confirms payment.
 
-### P3-03 — Admin catalog/content
-- Build categories and collections.
-- Build product create/edit/draft/publish flow.
-- Build image gallery upload/reorder/alt text.
-- Build size/color/SKU variants.
-- Build inventory and stock adjustments.
-- Build homepage announcement/hero content.
-- Build Journal article editor and publication lifecycle.
-**Gate:** admin can publish a real product and article; drafts remain private.
+## P3-07 — Customer account and notification UX
+1. Design sign-in/sign-up/recovery using the Phase 2-approved auth decision.
+2. Design profile, addresses, wishlist, orders and invoices.
+3. Design notification inbox and unread count.
+4. Design marketing topic preferences.
+5. Design consent confirmation, pause and unsubscribe.
+6. Design transactional/marketing distinction.
+7. Design notification empty/error states.
+**Output:** customer account and notification screens.
+**Acceptance:** email login or purchase never silently subscribes a customer to marketing.
 
-### P3-04 — Storefront discovery
-- Build homepage sections.
-- Build Shop All and category pages.
-- Build search, filters, sort, result count and empty states.
-- Build product cards and quick view.
-- Build Product Studio and gallery.
-- Build wishlist and compare.
-- Build Journal listing/detail.
-**Gate:** customers can discover product/article content without login.
+## P3-08 — Journal, offers and campaign templates
+1. Design Journal listing/detail.
+2. Design article cards and related products.
+3. Design Offer detail and valid-date states.
+4. Design admin article editor and preview.
+5. Design campaign builder, audience preview and test-send.
+6. Design approval, schedule/send, pause and delivery report.
+**Output:** editorial and campaign screens.
+**Acceptance:** publish action does not automatically send marketing.
 
-### P3-05 — Cart and checkout
-- Implement local/session cart.
-- Implement quote endpoint and server recalculation.
-- Implement guest checkout and selected authentication behavior.
-- Implement idempotency and atomic stock reservation.
-- Implement COD.
-- Implement QR payment instructions and proof/reference submission.
-- Implement admin payment review and status.
-**Gate:** end-to-end COD and QR workflows pass.
+## P3-09 — Admin dashboard design
+1. Design admin shell/sidebar and mobile navigation.
+2. Design overview and actionable work queues.
+3. Design product editor and media manager.
+4. Design variants, SKU and inventory.
+5. Design orders and fulfillment.
+6. Design manual QR payment review.
+7. Design invoice list/preview/download.
+8. Design categories, collections, homepage CMS, Journal and Offers.
+9. Design subscribers, preferences, templates, campaigns and delivery logs.
+10. Design alerts, settings, integrations, staff roles and audit.
+**Output:** admin screen and permission annotation pack.
+**Acceptance:** each control maps to a documented role and audit requirement.
 
-### P3-06 — Orders and invoices
-- Implement customer order confirmation/history/access.
-- Implement order status history.
-- Implement invoice number allocator.
-- Implement immutable invoice snapshot.
-- Implement PDF rendering and recovery.
-- Implement customer/admin invoice view/download authorization.
-**Gate:** invoice and order access tests pass.
+## P3-10 — Component library and interaction system
+1. Define primitive controls and component variants.
+2. Define product, gallery, filter, cart, checkout and account components.
+3. Define admin tables, forms, dashboards and review panels.
+4. Define loading, empty, success, error, stale and permission states.
+5. Define touch, keyboard, focus and reduced-motion interactions.
+**Output:** component library specification and design source.
+**Acceptance:** same component behaves consistently on Home, Shop, Search and Collections.
 
-### P3-07 — Notification and alert subsystem
-- Implement transactional/marketing categories.
-- Implement subscriber and consent model.
-- Implement preferences center and confirmation.
-- Implement durable outbox and idempotency.
-- Implement transactional email templates and provider adapter.
-- Trigger order/payment/fulfillment/invoice emails.
-- Implement in-app inbox and unread count.
-- Implement admin alert queues and escalation.
-- Implement provider webhooks, delivery states and suppression.
-- Implement product/article/offer campaign draft, test, approval and schedule.
-- Implement delivery dashboard.
-**Gate:** no marketing without opt-in; provider failure never blocks purchase.
+## P3-11 — Frontend architecture and route map
+1. Define Storefront, Account and Admin shells.
+2. Define route tree and page responsibilities.
+3. Map routes to feature modules.
+4. Define server/client component boundaries.
+5. Define source-of-truth data ownership.
+6. Define local/server state and forms.
+7. Define public/private caching rules.
+8. Define error boundaries and server authorization.
+9. Define optional 3D code-split boundary.
+**Output:** frontend architecture map.
+**Acceptance:** private account/order/invoice/admin data cannot enter shared public cache.
 
-### P3-08 — Admin operations finish
-- Dashboard and real operational metrics.
-- Order/payment/invoice queues.
-- Staff role enforcement.
-- Notification templates and campaign manager.
-- Integration settings with masked secrets and test status.
-- Audit log and store settings.
-**Gate:** authorized owner/team can operate core store without direct database edits.
+## P3-12 — Visual QA and approval
+1. Review every P0 route on desktop/tablet/mobile.
+2. Review Light, Dark and System modes.
+3. Review product photography and layout hierarchy.
+4. Review component states and interaction paths.
+5. Review accessibility and performance budgets.
+6. Check UI against Phase 1/2 requirements.
+7. Resolve contradictions and mark open owner inputs.
+8. Obtain owner sign-off.
+**Exit gate:** all P0 screens/workflows and frontend route architecture approved; design handoff is ready for Phase 4.
 
-### P3-09 — SEO and feature completion
-- Add metadata/canonical/sitemap/robots.
-- Add accurate Product/Article structured data.
-- Optimize images/fonts/scripts.
-- Add error boundaries and logging.
-- Verify policy/content pages.
-- Update docs and prepare staging build.
-**Exit gate:** feature complete P0 MVP with testable evidence; no production launch yet.
+### Phase 3 deliverables
+- `DESIGN_SYSTEM_AND_THEME.md`
+- `WEBSITE_TEMPLATE_AND_PAGE_SPECIFICATION.md`
+- `CUSTOMER_AND_ADMIN_WORKFLOW_DESIGN.md`
+- `FRONTEND_ARCHITECTURE_AND_ROUTE_MAP.md`
+- `ADMIN_DASHBOARD_DESIGN.md`
+- `COMPONENT_LIBRARY_AND_INTERACTION_SPEC.md`
+- `STUDIO_ROOM_AND_3D_VISUAL_SPEC.md`
+- `VISUAL_ASSET_AND_CONTENT_GUIDE.md`
+- `DESIGN_HANDOFF_AND_ACCEPTANCE.md`
+- `MOTION_HOVER_SCROLL_AND_PRODUCT_ZOOM_SPEC.md`
 
 ---
 
-# Phase 4 — QA, security and performance
+# Phase 4 — MVP development
 
-**Goal:** verify correctness, security, accessibility, responsiveness and speed on a release candidate.
+**Status:** Planned; begin only after Phase 3 design/architecture sign-off.  
+**Detailed plan:** [Phase 4 Development Execution Plan](phase-4/DEVELOPMENT_EXECUTION_PLAN.md)
 
-**Status:** not started.
+Milestones:
+1. Repository/tooling foundation, pinned dependencies and CI.
+2. Theme tokens, responsive shell and component primitives.
+3. Supabase setup, migrations, grants, RLS, auth and storage.
+4. Admin catalog, variant, inventory, collection and content management.
+5. Storefront, category, search, filter, product cards and Product Studio.
+6. Wishlist, compare, cart and checkout quote.
+7. COD and manual QR payment verification.
+8. Orders, invoices and secure customer/admin access.
+9. Transactional email, in-app notifications, marketing consent/preferences, admin alerts and basic campaigns.
+10. Journal and Offers publishing.
+11. SEO, performance and staging preparation.
 
-**Reference:** [Phase 4 QA/security/performance plan](phase-4/QA_SECURITY_PERFORMANCE_PLAN.md)
-
-## P4 — Step-by-step QA tasks
-
-1. Freeze release candidate SHA and test environment.
-2. Confirm test accounts and synthetic data.
-3. Run formatting, lint, strict typecheck and production build.
-4. Run unit tests for price, stock, state transitions and invoices.
-5. Run component tests for shared UI and theme states.
-6. Run database constraints and transaction tests.
-7. Run RLS tests as anon, customer A/B, payment operator, manager and owner.
-8. Run storage object access tests.
-9. Run customer browse/search/filter/Product Studio journey.
-10. Run wishlist/compare/cart journey.
-11. Run COD checkout and order confirmation.
-12. Run QR transfer submission and pending/verify/reject.
-13. Run inventory concurrency and oversell tests.
-14. Run invoice generation, PDF parity, access and regeneration tests.
-15. Run Journal draft/publish and SEO visibility tests.
-16. Run transactional email event and duplicate-send tests.
-17. Run marketing consent, topic, preference, unsubscribe and suppression tests.
-18. Run campaign preview/test/approval/schedule/pause tests.
-19. Run signed email webhook, duplicate and out-of-order event tests.
-20. Run admin alert routing, dedupe, acknowledge and escalation tests.
-21. Run file upload validation and private-storage tests.
-22. Run responsive tests at agreed viewports and both themes.
-23. Run accessibility and reduced-motion tests.
-24. Run Core Web Vitals and server/database latency measurements.
-25. Run dependency/security review and secret scan.
-26. Run outage/retry/dead-letter/rollback scenarios.
-27. Fix defects and rerun full regression.
-28. Produce evidence report with severity and release recommendation.
-**Exit gate:** no unresolved critical/high defects; all P0 workflows and notification consent rules pass; owner accepts any documented residual risk.
+**Exit gate:** all P0 features work end-to-end in a non-production environment; implementation tests pass; no production deployment claim.
 
 ---
 
-# Phase 5 — Deployment and maintenance
+# Phase 5 — QA, security, accessibility and performance
 
-**Goal:** deploy safely to naffeez.com and operate customer orders, payments, email and platform health.
+**Status:** Planned; execute against a fixed Phase 4 release candidate.  
+**Detailed plan:** [Phase 5 QA/Security/Performance Plan](phase-5/QA_SECURITY_PERFORMANCE_PLAN.md)
 
-**Status:** not started.
+1. Freeze release SHA and synthetic test data.
+2. Run format, lint, typecheck and production build.
+3. Run unit/component tests.
+4. Run DB constraints, transaction and concurrency tests.
+5. Run RLS/authorization and private-storage tests.
+6. Run catalog, Product Studio, cart and checkout E2E tests.
+7. Verify COD and QR payment state transitions.
+8. Verify inventory reservation and oversell protection.
+9. Verify invoice snapshot, PDF and authorization.
+10. Verify Journal/Offers publish rules.
+11. Verify transactional messages, consent, unsubscribe and suppression.
+12. Verify campaigns, provider webhooks, bounce/complaint and dedupe.
+13. Verify admin alerts and audit.
+14. Run security, upload and dependency review.
+15. Run responsive, accessibility and both-theme visual QA.
+16. Measure Core Web Vitals and JS/image budgets.
+17. Test provider outage and recovery.
+18. Fix and rerun regression.
+19. Publish evidence-based QA report.
 
-**Reference:** [Phase 5 deployment, operations and maintenance runbook](phase-5/DEPLOYMENT_OPERATIONS_MAINTENANCE_RUNBOOK.md)
+**Exit gate:** no unresolved critical/high defects; all P0 customer/admin/notification flows pass; residual risks are documented and owner accepted.
 
-## P5 — Deployment steps
+---
 
-1. Select approved commercial hosting/runtime and plan.
-2. Confirm production/staging separation and budget.
-3. Configure environment secrets outside Git.
-4. Configure production database and access policies.
-5. Back up before production migrations.
-6. Apply reviewed migrations and verify schema.
-7. Verify RLS, grants and storage policies.
-8. Create owner/admin identities and enable MFA.
-9. Configure products, categories, size guides and policies.
-10. Configure delivery/COD settings.
-11. Configure Easypaisa/bank QR privately in admin settings.
-12. Configure sender identity and provider credentials.
-13. Publish SPF/DKIM/DMARC DNS records and verify sender alignment.
-14. Configure webhook secret and endpoint.
-15. Configure notification worker/scheduler, limits and alerts.
-16. Configure suppression/consent policy; never import unverified/purchased lists.
-17. Configure custom domain, canonical host and TLS.
-18. Run production build and deployment.
-19. Run smoke test for catalog, product, cart, COD, QR pending, invoice and admin.
-20. Run authorized email test and verify transactional deliverability.
-21. Run internal-only campaign test and verify unsubscribe.
-22. Verify dashboards, logs, alerts, backup and rollback.
-23. Obtain explicit owner launch approval.
-24. Monitor closely after launch and document any incidents.
+# Phase 6 — Deployment, operations and maintenance
 
-## P5 — Ongoing operation cadence
+**Status:** Planned; execute after Phase 5 release approval.  
+**Detailed plan:** [Phase 6 Deployment/Operations Runbook](phase-6/DEPLOYMENT_OPERATIONS_MAINTENANCE_RUNBOOK.md)
 
-### Daily
-- Review new orders and order confirmations.
-- Review pending QR transfers against actual account receipt.
-- Process order fulfilment and update statuses.
-- Check low-stock and out-of-stock alerts.
-- Check failed invoices, outbox backlog and critical errors.
+1. Confirm commercial hosting plan/runtime and total cost.
+2. Confirm production/staging environments and secrets.
+3. Configure database, migrations, RLS and storage.
+4. Configure admin identities/MFA.
+5. Configure domain, DNS and SSL.
+6. Configure products, policies, shipping/COD and invoice details.
+7. Configure approved Easypaisa/bank QR through admin.
+8. Configure email sender identity, SPF, DKIM, DMARC and webhooks.
+9. Configure outbox scheduler, admin alerts and monitoring.
+10. Deploy application and run production smoke tests.
+11. Verify COD, QR pending state, admin verification and PDF access.
+12. Verify transactional email and internal-only campaign test.
+13. Verify backup, restore and rollback.
+14. Obtain owner launch approval.
+15. Monitor orders, payment queue, stock, email, uptime and performance.
+16. Run daily/weekly/monthly maintenance and incident procedures.
 
-### Weekly
-- Review marketing campaign delivery, bounces, complaints and unsubscribes.
-- Review subscriber consent/suppression integrity.
-- Review article/product/offer publishing calendar.
-- Review WhatsApp support and customer enquiries.
-- Review storage, bandwidth, database and provider quotas.
-
-### Monthly
-- Review admin users/roles and audit logs.
-- Test backups/restoration.
-- Update dependencies with regression.
-- Review sender authentication and domain reputation.
-- Review templates, notification preferences and campaign performance.
-- Review provider costs and service plan limits.
-- Review Core Web Vitals and slow queries.
-
-### Per campaign
-- Verify product/article/offer accuracy and validity dates.
-- Check stock and price.
-- Preview eligible consented audience.
-- Exclude unconfirmed/unsubscribed/suppressed recipients.
-- Preview responsive HTML and text version.
-- Test links and unsubscribe.
-- Send internal test.
-- Get approval.
-- Send/schedule and monitor results.
-- Pause if provider health or complaint guardrail is breached.
-
-**Exit gate:** production domain/SSL verified, purchase journeys pass, email delivery/suppression works, backups and rollback documented, owner receives operational handoff.
+**Exit gate:** naffeez.com, HTTPS and all critical customer/admin flows are verified; alerts, backup/rollback and operational handoff are in place.
 
 ---
 
 # Later — AI Style Studio, virtual try-on and advanced 3D
 
-These features remain deferred until MVP operations are stable.
+These are explicitly outside the initial launch dependency chain:
+1. Validate customer use cases and consent UX.
+2. Re-check current provider quotas, pricing, commercial licensing, data use and retention.
+3. Implement catalog-grounded outfit recommendation.
+4. Prototype photo-based try-on with approved providers and test images.
+5. Build private photo storage/deletion and usage quota.
+6. Add optional Python/FastAPI worker only where model runtime requires it.
+7. Add virtual try-on provider adapter and asynchronous job state.
+8. Add selected 3D models/room experiences with static fallbacks.
+9. Test on low-end mobile before public enablement.
 
-1. Validate exact feature scope and customer value.
-2. Select an AI/virtual try-on provider using current terms, quota, pricing and commercial rights.
-3. Review image privacy, retention, deletion, geographic processing and training terms.
-4. Obtain explicit customer consent and build private image flow.
-5. Build product-grounded AI styling against real active catalog products.
-6. Build asynchronous virtual try-on jobs with quota/cost controls.
-7. Integrate optional Python/FastAPI worker only if the selected model requires it.
-8. Add provider health/status and graceful fallbacks.
-9. Add selective 3D Product Studio assets with static fallback.
-10. Test low-end mobile and performance before enabling publicly.
+## Cross-phase change control
 
-## Cross-phase completion and change control
+- Update the affected requirement, design, architecture, schema, API and tests together.
+- Record material changes in Phase 2 decision log.
+- Do not treat an unresolved business policy as an implementation default.
+- Keep old decisions traceable; don't silently rewrite accepted baselines.
+- Use a pull request for each phase gate.
 
-- Update the relevant phase task and roadmap status only with evidence.
-- Update PRD/schema/API/RLS/workflows together when a requirement changes.
-- Record owner decisions in DECISION_LOG.md.
-- Keep open decisions visible; do not substitute guesses.
-- A phase is complete only after its exit gate is met and owner accepts it.
+
+## Phase 3 owner approval update — 2026-11-28
+
+The owner accepted the Light and Dark visual directions and both proposed Onda-inspired motion styles: restrained section text reveal and circular image-mask reveal. This closes the visual-direction decision for theme and motion. It does not close native Figma import, all-route responsive/accessibility QA, exact motion placement, P0 design completeness or the owner business decisions listed in the Phase 3 handoff.
+
+Phase 4 remains gated on documented Phase 3 exit sign-off.
+
+
+## Responsive refinement decision — 2026-11-28
+
+The owner accepted the existing visual design and theme templates and confirmed that the remaining screenshot concerns are layout responsiveness (logo/header spacing, hero width/proportions and consistent section containers). These are not a new visual redesign. They are scheduled as Phase 4 implementation tasks and Phase 5 browser/accessibility QA gates.
+
+Follow `docs/phase-3/RESPONSIVE_LAYOUT_REFINEMENT_CHECKLIST.md` for concrete container gutters, header, hero, section, Product Studio, checkout and admin responsive acceptance criteria.

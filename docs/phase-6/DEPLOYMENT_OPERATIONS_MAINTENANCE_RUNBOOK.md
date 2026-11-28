@@ -1,12 +1,12 @@
-# Phase 5 — Deployment, Operations and Maintenance Runbook
+# Phase 6 — Deployment, Operations and Maintenance Runbook
 
-**Document ID:** NAF-P5-OPS-001  
+**Document ID:** NAF-P6-OPS-001  
 **Version:** 1.0  
 **Status:** Planned; values depend on approved providers and business inputs
 
 ## 1. Entry gate
 
-- Phase 4 release candidate has no unresolved critical/high defects.
+- Phase 5 release candidate has no unresolved critical/high defects.
 - Owner has approved hosting plan, production budget and provider terms.
 - Production product content, size guide, policies, invoice details and QR instructions are approved.
 - Admin owner account and MFA are ready.
