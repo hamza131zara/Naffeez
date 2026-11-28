@@ -88,7 +88,7 @@ function mapProduct(
 
 const PRODUCT_SELECT = `
   id, slug, title, description, base_price_minor, category_id,
-  product_media(id, storage_path, alt_text, sort_order, media_role),
+  product_media(id, storage_path, alt_text, sort_order, media_role, variant_id, zoom_storage_path, detail_label),
   product_variants(
     id, sku, size_label, color_name, color_code, price_override_minor, is_active,
     inventory_levels(quantity_on_hand, quantity_reserved)
