@@ -56,7 +56,7 @@ Build footer links and policy page shells; publish only owner-approved text.
 ## 4. Milestone 2 — Supabase and security foundation
 
 ### DEV-0201 — Supabase project/environment
-Configure local/test project and environment values.
+A dedicated Naffeez project is provisioned (`tglnolhzjapcbkzdwybe`, Mumbai `ap-south-1`, `ACTIVE_HEALTHY`, `$0/month` quoted at creation). Local CLI linking and `.env.local` setup remain to be completed.
 ### DEV-0202 — Schema migrations
 Create migration files using installed CLI guidance; apply locally first.
 ### DEV-0203 — RLS/grants
@@ -224,7 +224,8 @@ Contact, WhatsApp, shipping, COD and invoice fields.
 
 ### In progress / not yet done
 - DEV-0103/0104 — shared primitives and complete accessibility checks.
-- DEV-0201–0207 — no dedicated Naffeez Supabase project selected; migrations, RLS, authentication, admin membership, storage buckets and audit writer are not applied.
+- DEV-0201 — dedicated Supabase project provisioned; local CLI linking and app environment remain pending.
+- DEV-0202–0207 — migrations, RLS/grants, authentication, admin membership, storage buckets and audit writer remain unapplied.
 - DEV-0301–0308 — admin catalog/variant/inventory/content CMS not implemented.
 - DEV-0404 — complete dynamic filter/sort system not implemented.
 - DEV-0501 — local guest cart foundation exists; server quote, atomic order, reservation, COD/QR and payment review are not implemented.
@@ -234,8 +235,8 @@ Contact, WhatsApp, shipping, COD and invoice fields.
 - DEV-09 — release readiness not started.
 
 ### Environment blockers and safety
-- No Supabase project named Naffeez is connected. Existing inactive projects belong to other work and were not selected or modified.
-- Owner must select/provision a dedicated project and confirm org/region/budget before a live schema is applied.
+- Naffeez project `tglnolhzjapcbkzdwybe` is provisioned and healthy in Mumbai; no schema has been applied. Existing inactive projects belong to other work and were not selected or modified.
+- Generate and validate migrations locally before pushing them to this remote project; do not apply the logical Phase 2 schema as unreviewed SQL.
 - Authentication, size charts, shipping/fees/COD, returns, QR proof rules, stock reservation, invoice legal/tax fields and staff roles remain owner decisions.
 - The application renders explicit setup states instead of using fake products, stock, payment QR, delivery totals or invoices.
 - The responsive layout refinement checklist is a Phase 4 implementation and Phase 5 acceptance dependency.
