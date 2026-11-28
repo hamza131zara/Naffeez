@@ -60,7 +60,7 @@ A dedicated Naffeez project is provisioned (`tglnolhzjapcbkzdwybe`, Mumbai `ap-s
 ### DEV-0202 — Schema migrations
 Catalog foundation migrations created, applied to the dedicated Supabase project and tracked in `supabase/migrations/`. Local CLI reset/replay verification remains pending.
 ### DEV-0203 — RLS/grants
-Catalog-table grants and published-only RLS are applied. A rollback-based anonymous-role test and column privilege checks passed. Customer ownership and admin operation policies remain pending their corresponding features.
+Catalog-table grants and published-only RLS are applied. Anonymous-role, column-privilege and default-object-privilege probes passed. New public tables/sequences/functions created by postgres no longer receive automatic client grants. Customer ownership and admin operation policies remain pending their corresponding features.
 ### DEV-0204 — Auth integration
 Implement chosen email/OTP/recovery flow and secure session handling.
 ### DEV-0205 — Admin membership
