@@ -28,7 +28,7 @@ export function AddToBagButton({
 
   function addToBag() {
     const variant = product.variants.find((item) => item.id === variantId);
-    if (!variant || !variant.isActive || variant.availableQuantity === 0) return;
+    if (!variant || !variant.isActive || variant.isInStock === false) return;
 
     const key = "naffeez-cart-v1";
     let lines: CartLine[] = [];
