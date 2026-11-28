@@ -29,6 +29,8 @@ The dashboard must let the owner manage the entire store without editing code or
 17. Staff & Roles
 18. Audit Log
 19. Store Settings
+20. Homepage Hero Campaigns
+21. Media / 360° Spin Builder
 
 Show modules only to staff with permission. Navigation visibility is not an access-control mechanism.
 
@@ -226,3 +228,53 @@ Every table/form includes loading, empty, validation error, server error, permis
 - [ ] Alert acknowledge/resolve specified.
 - [ ] Secrets remain masked/server-only.
 - [ ] Roles map to each module and action.
+
+
+## 16. Homepage hero campaign manager
+
+Provide a dedicated Homepage → Hero Campaigns management surface. This is a CMS workflow, not a developer-only configuration.
+
+### Campaign list
+- Campaign name, slide count/order, draft/scheduled/published/expired state, active dates, media completeness, last editor and actions.
+- Draft, preview, duplicate, schedule/publish and archive actions.
+- Publishing homepage content does not automatically create or send an email marketing campaign.
+
+### Slide editor
+- Internal slide name, eyebrow, headline, short description and one primary CTA.
+- CTA label and destination.
+- Optional association to a published product or collection.
+- Required desktop poster; mobile poster/crop or focal point when needed.
+- Optional muted 6–10 second video loop with validation and poster fallback.
+- Slide order, enabled state and active dates where scheduling is enabled.
+- Preview for desktop/mobile, poster-only/video state and text contrast.
+
+### Media and publishing rules
+- Poster required even when video exists.
+- Video contains no audio track and never autoplays sound.
+- Only active/in-view slide media loads and plays; pause inactive/offscreen videos.
+- Respect reduced-motion, data-saving and constrained playback by using the poster.
+- Validate CTA destination and published product/collection binding before publish.
+- Keep campaign revision/history and require confirmation before replacing active content.
+- If video fails, retain the poster and keep the homepage CTA usable.
+
+## 17. 360° Spin Builder
+
+The first proposed version creates a **photograph-sequence 360° spin**, not a true geometry-based 3D model.
+
+### Input and output
+- Select product and exact color/variant/SKU.
+- Upload a complete fixed-camera rotation video or an ordered real frame sequence.
+- Output preset: 24 / 36 / 72 frames; 36 proposed default.
+- Extract/validate frames, preserve consistent dimensions and provide a preview.
+- Admin reviews blur, duplicates, missing angles, crop, lighting and product-shape continuity.
+- Approve and attach to the exact product/variant before public display.
+
+Four to ten sparse photographs may be used as ordinary gallery angles, but must not be represented as a smooth factual 360° turn by silently inventing intermediate angles. Any experimental AI frame interpolation requires separate human review and must not become the default publication path.
+
+### Customer behavior
+- Product Studio remains image-gallery-first.
+- Show a separate “360° view” option only when an approved spin exists.
+- Desktop drag and keyboard controls; mobile swipe/drag.
+- Load frames only after explicit activation; show a poster first.
+- Return to the standard gallery on processing/asset failure.
+- 360° photo spin does not replace high-resolution fabric/stitch zoom and does not imply a geometry-based 3D model.
