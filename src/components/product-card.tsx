@@ -25,8 +25,24 @@ export function ProductCard({ product }: Props) {
   const secondary = product.images.find((image) => image.id !== primary?.id && image.mediaRole !== "zoom");
 
   useEffect(() => {
-    setSaved(readIds("naffeez-wishlist").includes(product.id));
-    setCompared(readIds("naffeez-compare").includes(product.id));
+    let active = true;
+
+    async function syncSavedState() {
+      await Promise.resolve();
+      if (!active) return;
+      setSaved(readIds("naffeez-wishlist").includes(product.id));
+      setCompared(readIds("naffeez-compare").includes(product.id));
+    }
+
+    void syncSavedState();
+    window.addEventListener("naffeez:wishlist-updated", syncSavedState);
+    window.addEventListener("naffeez:compare-updated", syncSavedState);
+
+    return () => {
+      active = false;
+      window.removeEventListener("naffeez:wishlist-updated", syncSavedState);
+      window.removeEventListener("naffeez:compare-updated", syncSavedState);
+    };
   }, [product.id]);
 
   function toggleList(key: string, value: boolean, setter: (next: boolean) => void, max?: number) {
