@@ -41,10 +41,13 @@ Product image baseline:
 - Focal subject has safe space for text on one side.
 - Mobile crop composed separately where required.
 - Avoid text baked into image.
-- Provide poster/static image for any video.
-- No auto-play audio.
-- Ensure contrast scrim can adapt to image.
-- Provide campaign title, short copy and CTA in CMS fields.
+- Provide a poster/static image for every optional video; poster is required and is the no-playback fallback.
+- Optional homepage campaign video is a 6–10 second muted, inline, seamless loop with no audio track.
+- Provide separate desktop/mobile crop or focal-point metadata where required.
+- Load active media only; do not download all campaign slide videos on initial homepage render.
+- Pause inactive/offscreen media and respect reduced-motion/data-saving/constrained playback by showing the poster.
+- Ensure contrast scrim adapts to image/video focal point.
+- Provide campaign title, short copy, selected published product/collection, CTA, poster and optional video fields in CMS.
 
 ## 4. Category/collection assets
 
@@ -139,3 +142,35 @@ An admin/media workflow should allow the owner to select the primary image, reor
 - Keep image dimensions and aspect ratio reserved to prevent layout shifts.
 - Provide mobile crops for hero banners; motion must not move important product text outside the safe area.
 
+
+
+## 11. Hero video production checklist
+
+- Film real products worn/presented by a model; do not rely on a generic animation that does not match the catalog SKU.
+- Suggested creative length is 6–10 seconds with a clean loop; not every slide needs video.
+- Capture a still poster that communicates the same product/campaign when video cannot play.
+- Keep the model/product focal point safe for desktop and mobile crops.
+- No audio track, voiceover or music is required in the homepage hero.
+- Use restrained movement: natural turn, fabric movement or a short walk; avoid rapid cuts and flashing.
+- Optimize the video rendition separately from the poster; exact codec, bitrate and file-size budgets are finalized and measured during implementation/QA.
+- Provide an image-only fallback for data saver, reduced motion, unsupported playback and media failure.
+
+## 12. 360° Spin capture assets
+
+- Preferred source is one complete real rotation capture with a fixed camera, consistent lighting, framing and product display.
+- Alternatively supply an ordered sequence of real frames at consistent angular intervals.
+- Suggested output presets are 24, 36 and 72 frames; 36 is the proposed default balance.
+- Four to ten sparse still images remain useful gallery angles but are not sufficient for a truthful smooth full rotation without inventing unseen views.
+- Every spin must be associated with the exact product and, where appearance differs, the exact color/variant.
+- Human approval is required after inspecting continuity, blur, duplicate frames, crop, lighting and product shape.
+- A frame-sequence spin is not a geometry-based 3D asset. Any later GLB/glTF model has separate modelling, materials, optimization and fallback requirements.
+- See [Hero Video Campaign and 360° Spin Builder](HERO_VIDEO_AND_360_SPIN_BUILDER_SPEC.md).
+
+## 13. Additional vector review boards
+
+- [Customer discovery and Journal](design-assets/CUSTOMER_DISCOVERY_AND_JOURNAL.svg)
+- [Order confirmation and A4 invoice](design-assets/ORDER_CONFIRMATION_AND_INVOICE.svg)
+- [Journal, Offers and Support pages](design-assets/JOURNAL_OFFERS_SUPPORT_PAGES.svg)
+- [Admin hero campaign and 360° Spin Builder](design-assets/ADMIN_HERO_CAMPAIGN_AND_SPIN_BUILDER.svg)
+- [Inventory and sold-out states](design-assets/INVENTORY_STOCK_STATES.svg)
+- [Responsive and state coverage](design-assets/RESPONSIVE_AND_STATE_COVERAGE.svg)
