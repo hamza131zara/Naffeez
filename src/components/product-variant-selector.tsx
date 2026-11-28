@@ -17,7 +17,7 @@ export function ProductVariantSelector({ product }: { product: Product }) {
 
   const selected = size ? matching.find((variant) => variant.sizeLabel === size) ?? null : (sizes.length ? null : matching[0] ?? null);
   const allMatchingSoldOut = matching.length > 0 && matching.every((variant) => variant.isInStock === false);
-  const ready = Boolean(selected && selected.isActive && selected.availableQuantity !== 0);
+  const ready = Boolean(selected && selected.isActive && selected.isInStock !== false);
 
   return (
     <>
@@ -37,7 +37,7 @@ export function ProductVariantSelector({ product }: { product: Product }) {
           <div className="variant-options">
             {sizes.map((value) => {
               const variant = activeVariants.find((item) => item.colorName === color && item.sizeLabel === value);
-              const soldOut = variant?.availableQuantity === 0;
+              const soldOut = variant?.isInStock === false;
               return (
                 <button
                   className="variant-option"
