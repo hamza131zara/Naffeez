@@ -1,7 +1,7 @@
 # Naffeez — Figma Visual Design Handoff
 
 **Document ID:** NAF-P3-FIGMA-001  
-**Version:** 1.1  
+**Version:** 1.2  
 **Status:** First native Figma tranche created; additional commerce/admin SVG boards prepared for import; owner review pending  
 **Date:** 2026-11-28
 
@@ -83,3 +83,12 @@ The following importable SVG boards extend the native first tranche:
 Detailed design/behavior contract: [Hero Video Campaign and 360° Spin Builder](HERO_VIDEO_AND_360_SPIN_BUILDER_SPEC.md).
 
 These remain repository SVG assets and await import into the existing Figma file. The Starter-plan editing quota blocked further native Figma operations in this session; screenshot QA in Figma remains pending.
+
+
+## 9. Light-mode review and animation references
+
+- [Light Theme Review Board](design-assets/LIGHT_THEME_REVIEW_BOARD.svg) — repository SVG showing the proposed Light theme treatment for desktop homepage, product cards/hover and Product Studio purchase panel.
+- [Motion Pattern Preview](design-assets/MOTION_PATTERN_PREVIEW.svg) — two proposed scroll effects.
+- [Motion Pattern Evaluation](MOTION_PATTERN_EVALUATION.md) — detailed review of the Onda source and Naffeez recommendations.
+
+The native Figma first tranche was Dark-mode-led. These Light/motion boards have been added as repository vector assets because the Figma Starter-plan MCP editing quota is still exhausted. They have not yet been imported as native Figma frames or screenshot-QA'd in Figma. Do not mark Light mode or motion as fully approved from these static review boards alone.
