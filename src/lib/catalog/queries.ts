@@ -52,8 +52,11 @@ function mapProduct(
         alt: image.alt_text || row.title,
         sortOrder: image.sort_order ?? 0,
         mediaRole: image.media_role,
-        zoomSrc: null,
-        detailLabel: null
+        variantId: image.variant_id,
+        zoomSrc: image.zoom_storage_path
+          ? client.storage.from("product-media").getPublicUrl(image.zoom_storage_path).data.publicUrl
+          : null,
+        detailLabel: image.detail_label
       };
     });
 
