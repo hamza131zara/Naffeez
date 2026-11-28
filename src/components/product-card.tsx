@@ -33,7 +33,7 @@ export function ProductCard({ product }: Props) {
     const ids = readIds(key);
     if (value) {
       window.localStorage.setItem(key, JSON.stringify(ids.filter((id) => id !== product.id)));
-      window.dispatchEvent(new Event("naffeez:wishlist-updated"));
+      window.dispatchEvent(new Event(key === "naffeez-wishlist" ? "naffeez:wishlist-updated" : "naffeez:compare-updated"));
       setter(false);
       return;
     }
