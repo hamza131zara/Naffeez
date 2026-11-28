@@ -224,3 +224,22 @@ Use transform and opacity. Avoid layout-affecting animation and large continuous
 - [ ] Texture/stitching inspection falls back honestly when high-resolution source is absent.
 - [ ] Touch and keyboard zoom controls exist.
 
+
+
+## 15. Light-theme screen review
+
+The semantic Light palette was already defined in Section 3.1, but the first native Figma page was presented mainly in Dark mode; it did not contain a complete, visually reviewed Light-mode counterpart for all screens.
+
+A Light-mode visual review board is now available at [Light Theme Review Board](design-assets/LIGHT_THEME_REVIEW_BOARD.svg). It shows the proposed Light surfaces, navigation, homepage hero, product cards and hover state, Product Studio purchase panel and QA checkpoints.
+
+This is a static repository SVG review asset, not a native Figma frame. It is a first visual pass—not sign-off that all customer/admin screens have passed Light-mode QA.
+
+When native Figma editing is available, duplicate/rebuild the screen inventory in Light mode and verify:
+- every customer and admin surface, not only the homepage;
+- text/control contrast, muted and disabled states;
+- focus rings, field borders, errors, dialogs, menus and drawers;
+- product-photo backdrops and floating controls;
+- responsive 320–374, 375–767, 768–1023, 1024–1439 and 1440+ widths;
+- theme switching without page reload, state reset or wrong-theme flash.
+
+Owner review and visual QA remain pending.
