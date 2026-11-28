@@ -22,7 +22,7 @@ export default async function ShopPage({ searchParams }: { searchParams: SearchP
       <header className="page-intro">
         <p className="eyebrow">THE COLLECTION</p>
         <h1>{category?.label ?? "Shop all"}</h1>
-        <p>Browse the Naffeez men's collection. Product options and availability are shown from the published catalog.</p>
+        <p>Browse the Naffeez men&apos;s collection. Product options and availability are shown from the published catalog.</p>
       </header>
       <div className="category-chips" aria-label="Shop categories">
         <Link className={"category-chip " + (!category ? "is-active" : "")} href="/shop">All</Link>
