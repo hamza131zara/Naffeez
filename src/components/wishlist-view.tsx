@@ -7,7 +7,7 @@ import { ProductCard } from "./product-card";
 
 function readWishlistIds(): string[] {
   try {
-    const value = JSON.parse(window.localStorage.getItem("naffeez-wishlist") ?? "[]");
+    const value: unknown = JSON.parse(window.localStorage.getItem("naffeez-wishlist") ?? "[]");
     return Array.isArray(value) ? value.filter((item): item is string => typeof item === "string") : [];
   } catch {
     return [];
@@ -19,22 +19,22 @@ export function WishlistView() {
   const [loaded, setLoaded] = useState(false);
 
   const refresh = useCallback(async () => {
+    await Promise.resolve();
     const ids = readWishlistIds();
-    if (!ids.length) {
-      setProducts([]);
-      setLoaded(true);
-      return;
+    let next: Product[] = [];
+
+    if (ids.length) {
+      try {
+        const response = await fetch("/api/catalog/wishlist?ids=" + encodeURIComponent(ids.join(",")), { cache: "no-store" });
+        if (!response.ok) throw new Error("Wishlist request failed");
+        next = await response.json() as Product[];
+      } catch {
+        next = [];
+      }
     }
-    try {
-      const response = await fetch("/api/catalog/wishlist?ids=" + encodeURIComponent(ids.join(",")), { cache: "no-store" });
-      if (!response.ok) throw new Error("Wishlist request failed");
-      const data = await response.json() as Product[];
-      setProducts(data);
-    } catch {
-      setProducts([]);
-    } finally {
-      setLoaded(true);
-    }
+
+    setProducts(next);
+    setLoaded(true);
   }, []);
 
   useEffect(() => {
