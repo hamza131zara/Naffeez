@@ -10,6 +10,9 @@ type RawImage = {
   alt_text: string | null;
   sort_order: number | null;
   media_role: string | null;
+  zoom_storage_path: string | null;
+  detail_label: string | null;
+  variant_id: string | null;
 };
 
 type RawVariant = {
