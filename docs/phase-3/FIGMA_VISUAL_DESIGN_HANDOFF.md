@@ -67,3 +67,19 @@ The next customer/admin screen set is delivered as importable SVG assets in the 
 - [Detailed screen and interaction blueprint](COMMERCE_AND_ADMIN_VISUAL_WORKFLOW_BLUEPRINT.md)
 
 These are vector source files that can be imported and arranged as native Figma content when editing capacity is available. They are not yet part of the native Figma page and have not completed screenshot-based visual QA.
+
+
+## 8. Additional vector design boards in the Phase 3 repository
+
+The following importable SVG boards extend the native first tranche:
+
+- [Customer discovery and Journal](design-assets/CUSTOMER_DISCOVERY_AND_JOURNAL.svg)
+- [Order confirmation and invoice](design-assets/ORDER_CONFIRMATION_AND_INVOICE.svg)
+- [Journal, Offers and Support pages](design-assets/JOURNAL_OFFERS_SUPPORT_PAGES.svg)
+- [Admin hero campaign and 360° Spin Builder](design-assets/ADMIN_HERO_CAMPAIGN_AND_SPIN_BUILDER.svg)
+- [Inventory and sold-out states](design-assets/INVENTORY_STOCK_STATES.svg)
+- [Responsive and state coverage](design-assets/RESPONSIVE_AND_STATE_COVERAGE.svg)
+
+Detailed design/behavior contract: [Hero Video Campaign and 360° Spin Builder](HERO_VIDEO_AND_360_SPIN_BUILDER_SPEC.md).
+
+These remain repository SVG assets and await import into the existing Figma file. The Starter-plan editing quota blocked further native Figma operations in this session; screenshot QA in Figma remains pending.
