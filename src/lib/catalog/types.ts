@@ -4,6 +4,7 @@ export type ProductImage = {
   alt: string;
   sortOrder: number;
   mediaRole: string | null;
+  variantId?: string | null;
   zoomSrc?: string | null;
   detailLabel?: string | null;
 };
