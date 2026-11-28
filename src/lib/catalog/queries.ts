@@ -119,8 +119,8 @@ export async function getPublishedProducts(options?: {
   }
 
   if (options?.search?.trim()) {
-    const term = options.search.trim().replace(/[,%()]/g, " ");
-    query = query.or(`title.ilike.%${term}%,description.ilike.%${term}%`);
+    const term = options.search.trim().replace(/[%]/g, " ").slice(0, 80);
+    query = query.ilike("title", "%" + term + "%");
   }
 
   const { data, error } = await query;
@@ -170,5 +170,32 @@ export async function getActiveCategories(): Promise<Category[]> {
     return [];
   }
 
-  return data as Category[];
+  return data.map((row) => ({
+    id: row.id,
+    name: row.name,
+    slug: row.slug,
+    description: row.description,
+    sortOrder: row.sort_order
+  })) as Category[];
+}
+
+export async function getPublishedProductsByIds(ids: string[]): Promise<Product[]> {
+  const safeIds = [...new Set(ids.filter((id) => /^[0-9a-f-]{36}$/i.test(id)))].slice(0, 50);
+  if (!safeIds.length) return [];
+
+  const client = await createSupabaseServerClient();
+  if (!client) return [];
+
+  const { data, error } = await client
+    .from("products")
+    .select(PRODUCT_SELECT)
+    .eq("status", "published")
+    .in("id", safeIds);
+
+  if (error || !data) {
+    console.error("[catalog] Saved product query failed", { code: error?.code });
+    return [];
+  }
+
+  return (data as unknown as RawProduct[]).map((row) => mapProduct(client, row));
 }
