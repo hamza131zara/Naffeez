@@ -355,3 +355,10 @@ These are explicitly outside the initial launch dependency chain:
 The owner accepted the Light and Dark visual directions and both proposed Onda-inspired motion styles: restrained section text reveal and circular image-mask reveal. This closes the visual-direction decision for theme and motion. It does not close native Figma import, all-route responsive/accessibility QA, exact motion placement, P0 design completeness or the owner business decisions listed in the Phase 3 handoff.
 
 Phase 4 remains gated on documented Phase 3 exit sign-off.
+
+
+## Responsive refinement decision — 2026-11-28
+
+The owner accepted the existing visual design and theme templates and confirmed that the remaining screenshot concerns are layout responsiveness (logo/header spacing, hero width/proportions and consistent section containers). These are not a new visual redesign. They are scheduled as Phase 4 implementation tasks and Phase 5 browser/accessibility QA gates.
+
+Follow `docs/phase-3/RESPONSIVE_LAYOUT_REFINEMENT_CHECKLIST.md` for concrete container gutters, header, hero, section, Product Studio, checkout and admin responsive acceptance criteria.
