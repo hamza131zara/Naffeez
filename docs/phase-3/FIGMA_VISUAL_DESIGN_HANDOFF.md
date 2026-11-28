@@ -1,8 +1,8 @@
 # Naffeez — Figma Visual Design Handoff
 
 **Document ID:** NAF-P3-FIGMA-001  
-**Version:** 1.2  
-**Status:** First native Figma tranche created; additional commerce/admin SVG boards prepared for import; owner review pending  
+**Version:** 1.3  
+**Status:** Light/Dark visual directions and both motion styles accepted by owner; additional SVG import and full native Figma QA remain pending.  
 **Date:** 2026-11-28
 
 ## Source file
@@ -92,3 +92,10 @@ These remain repository SVG assets and await import into the existing Figma file
 - [Motion Pattern Evaluation](MOTION_PATTERN_EVALUATION.md) — detailed review of the Onda source and Naffeez recommendations.
 
 The native Figma first tranche was Dark-mode-led. These Light/motion boards have been added as repository vector assets because the Figma Starter-plan MCP editing quota is still exhausted. They have not yet been imported as native Figma frames or screenshot-QA'd in Figma. Do not mark Light mode or motion as fully approved from these static review boards alone.
+
+
+## 10. Owner approval record
+
+On 2026-11-28, the owner accepted the Light and Dark visual directions and both motion styles described in the motion review.
+
+This acceptance does not make the entire native Figma file complete. The additional customer/admin, Light-mode and motion boards are still repository SVG assets that must be imported and reviewed in the native Figma source. The original native frames remain a first Dark-led tranche, not a complete all-route, all-theme design source.
