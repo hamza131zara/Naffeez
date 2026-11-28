@@ -35,9 +35,9 @@ The local reset should replay the committed migrations against the local Docker-
 supabase gen types --lang typescript --linked > src/lib/supabase/database.types.ts
 ```
 
-## Initial schema scope
+## Applied catalog foundation
 
-The logical source of truth is the Phase 2 Database Schema at docs/phase-2/DATABASE_SCHEMA.md. The implementation migration must include, at minimum:
+The logical source of truth remains the Phase 2 Database Schema at docs/phase-2/DATABASE_SCHEMA.md. The following catalog foundation is applied through the committed migrations:
 
 - Categories and product taxonomy.
 - Products, product media and per-image optional zoom metadata (zoom_storage_path, detail_label, optional variant_id).
@@ -45,10 +45,10 @@ The logical source of truth is the Phase 2 Database Schema at docs/phase-2/DATAB
 - Collections and collection-product ordering.
 - Store settings and private admin membership/audit boundaries.
 - Public read grants and RLS for published catalog records only.
-- Admin writes only through an authenticated, authorized server path.
+- Admin writes are not enabled for public/authenticated roles. Admin write paths must be implemented only through an authenticated, authorized server path.
 - A private `product-media` Storage bucket. The bucket and Storage SELECT policy are applied; the policy permits objects referenced by published products and active variants where applicable. The storefront adapter requests 1-hour signed URLs.
 - QR/payment-proof and invoices remain private and are deferred until their relevant features and policies are implemented.
-- A database test plan for anonymous public reads, customer ownership and admin-only operations.
+- Anonymous public-read visibility and write-denial checks have been run against the catalog foundation. Customer ownership and admin-only workflow tests remain pending their corresponding features.
 
 ## Important implementation/security boundary
 
