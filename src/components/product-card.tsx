@@ -42,7 +42,7 @@ export function ProductCard({ product }: Props) {
       return;
     }
     window.localStorage.setItem(key, JSON.stringify([...ids.filter((id) => id !== product.id), product.id]));
-    if (key === "naffeez-wishlist") window.dispatchEvent(new Event("naffeez:wishlist-updated"));
+    window.dispatchEvent(new Event(key === "naffeez-wishlist" ? "naffeez:wishlist-updated" : "naffeez:compare-updated"));
     setter(true);
   }
 
