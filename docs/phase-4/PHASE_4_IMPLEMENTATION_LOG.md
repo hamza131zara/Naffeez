@@ -68,14 +68,15 @@
 - Dedicated project `tglnolhzjapcbkzdwybe` provisioned in Mumbai (`ap-south-1`); latest project status check returned `ACTIVE_HEALTHY`.
 - Quoted project creation cost: `$0/month` on the organization's Free plan at creation time.
 - Project URL: `https://tglnolhzjapcbkzdwybe.supabase.co`.
-- Applied remote migrations: `20261128142143_catalog_foundation`, `20261128142218_catalog_foundation_hardening` and `20261128142311_catalog_availability_not_null`.
+- Applied remote migrations: `20261128142143_catalog_foundation`, `20261128142218_catalog_foundation_hardening`, `20261128142311_catalog_availability_not_null`, `20261128143026_secure_public_default_privileges` and `20261128143102_revoke_public_function_defaults`.
 - Created catalog tables in `public`: categories, collections, products, product_variants, product_media, inventory_levels, inventory_movements and collection_products; created private tables: admin_memberships, audit_events and store_settings. All have RLS enabled. No real category/product data has been seeded; all tables contain zero rows.
 - The private `product-media` bucket is created with `public=false`, plus an object SELECT policy requiring a matching published product/media record and an active variant where relevant.
 - The publishable key was retrieved for local configuration but is intentionally not committed to the repository. No service-role/secret key was retrieved or stored.
 - The storefront adapter has been updated to request 1-hour signed URLs for product media and zoom images. The database migration must enforce Storage-object reads only for files referenced by published products before the private bucket is provisioned.
-- Supabase Security Advisors return no current security lints. Performance Advisors show informational unused-index notices because the new tables are empty and have not received query traffic.
+- Supabase Security Advisors return no current security lints. Public-schema default privileges for tables, sequences and functions created by postgres are now restricted; new functions do not inherit PUBLIC EXECUTE. Performance Advisors show informational unused-index notices because the new tables are empty and have not received query traffic.
 - A transaction-based anon-role test verified active categories, published products, active variants and the stock flag are visible; draft products are hidden. The transaction rolled back cleanly.
 - Privilege checks verified anon cannot insert products, authenticated cannot update products, and anon can read `is_in_stock` but cannot read raw on-hand/reserved quantities.
+- A transaction-based default-privilege probe created a temporary table, identity sequence and SQL function, then rolled back. It confirmed anon/authenticated received no automatic table or sequence privileges and no default function EXECUTE privilege.
 - The repository-editing environment does not have the Supabase CLI or Docker. The migration source files were reconstructed from the SQL applied successfully via the Supabase management tool and committed using the matching remote migration versions. No local `supabase db reset`, app npm install, lint, typecheck, unit tests, build or browser checks have run in this environment.
 
 ## Verification status
