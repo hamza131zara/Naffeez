@@ -16,7 +16,7 @@ export function ProductVariantSelector({ product }: { product: Product }) {
   ), [activeVariants, color, size, colors.length, sizes.length]);
 
   const selected = size ? matching.find((variant) => variant.sizeLabel === size) ?? null : (sizes.length ? null : matching[0] ?? null);
-  const allMatchingSoldOut = matching.length > 0 && matching.every((variant) => variant.availableQuantity === 0);
+  const allMatchingSoldOut = matching.length > 0 && matching.every((variant) => variant.isInStock === false);
   const ready = Boolean(selected && selected.isActive && selected.availableQuantity !== 0);
 
   return (
@@ -54,10 +54,10 @@ export function ProductVariantSelector({ product }: { product: Product }) {
           </div>
         </div>
       )}
-      {selected?.availableQuantity === 0 || allMatchingSoldOut ? (
+      {selected?.isInStock === false || allMatchingSoldOut ? (
         <p className="stock-message stock-message--sold">This option is currently sold out.</p>
-      ) : selected?.availableQuantity !== null && selected?.availableQuantity !== undefined ? (
-        <p className="stock-message">{selected.availableQuantity > 0 ? "Available" : "Currently unavailable"}</p>
+      ) : selected?.isInStock !== null && selected?.isInStock !== undefined ? (
+        <p className="stock-message">{selected.isInStock ? "Available" : "Currently unavailable"}</p>
       ) : (
         <p className="stock-message">Availability is confirmed again when you check out.</p>
       )}
