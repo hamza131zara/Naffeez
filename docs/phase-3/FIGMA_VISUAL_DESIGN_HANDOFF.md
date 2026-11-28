@@ -1,8 +1,8 @@
 # Naffeez — Figma Visual Design Handoff
 
 **Document ID:** NAF-P3-FIGMA-001  
-**Version:** 1.0  
-**Status:** First visual tranche created; owner review pending  
+**Version:** 1.1  
+**Status:** First native Figma tranche created; additional commerce/admin SVG boards prepared for import; owner review pending  
 **Date:** 2026-11-28
 
 ## Source file
