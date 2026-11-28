@@ -72,7 +72,7 @@ export function ProductStudio({ product }: { product: Product }) {
             <div className="variant-options">
               {sizes.map((value) => {
                 const variant = colorVariants.find((item) => item.sizeLabel === value);
-                const soldOut = variant?.availableQuantity === 0;
+                const soldOut = variant?.isInStock === false;
                 return (
                   <button
                     className="variant-option"
