@@ -1,29 +1,25 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-
-function availableQuantity(onHand, reserved) {
-  if (!Number.isInteger(onHand) || !Number.isInteger(reserved)) {
-    throw new TypeError("Inventory quantities must be integers.");
-  }
-  if (onHand < 0 || reserved < 0 || reserved > onHand) {
-    throw new RangeError("Inventory quantities are outside the permitted range.");
-  }
-  return onHand - reserved;
-}
+import { getAvailableQuantity, isVariantSoldOut } from "../src/lib/catalog/availability.mjs";
 
 test("available quantity subtracts reservations", () => {
-  assert.equal(availableQuantity(8, 3), 5);
+  assert.equal(getAvailableQuantity(8, 3), 5);
 });
 
 test("fully reserved stock is unavailable", () => {
-  assert.equal(availableQuantity(4, 4), 0);
+  assert.equal(getAvailableQuantity(4, 4), 0);
+  assert.equal(isVariantSoldOut(getAvailableQuantity(4, 4)), true);
 });
 
 test("negative or inconsistent inventory is rejected", () => {
-  assert.throws(() => availableQuantity(-1, 0), RangeError);
-  assert.throws(() => availableQuantity(2, 3), RangeError);
+  assert.throws(() => getAvailableQuantity(-1, 0), RangeError);
+  assert.throws(() => getAvailableQuantity(2, 3), RangeError);
 });
 
 test("fractional inventory is rejected", () => {
-  assert.throws(() => availableQuantity(2.5, 0), TypeError);
+  assert.throws(() => getAvailableQuantity(2.5, 0), TypeError);
+});
+
+test("unknown stock is not falsely labelled sold out", () => {
+  assert.equal(isVariantSoldOut(null), false);
 });
