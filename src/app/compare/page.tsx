@@ -1,16 +1,16 @@
-import Link from "next/link";
+import { CompareView } from "@/components/compare-view";
 
-export const metadata = { title: "Compare" };
+export const metadata = { title: "Compare products" };
 
 export default function ComparePage() {
   return (
     <div className="container page-section--compact">
-      <div className="empty-state">
+      <header className="page-intro">
         <p className="eyebrow">PRODUCT COMPARISON</p>
         <h1>Compare selected pieces.</h1>
-        <p>Compare up to four products. Attribute-level comparison will become available as the published catalog includes fit, material and size information.</p>
-        <Link className="button button--primary" href="/shop">Explore products</Link>
-      </div>
+        <p>Compare up to four products. Missing product attributes are shown as not provided.</p>
+      </header>
+      <CompareView />
     </div>
   );
 }
