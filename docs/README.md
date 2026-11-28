@@ -8,7 +8,7 @@ This directory is the source of truth for product requirements, UX, visual desig
 |---|---|---|---|
 | 1 | [phase-1](phase-1/) | Product scope and initial UI/UX baseline | Accepted |
 | 2 | [phase-2](phase-2/) | PRD, system architecture, data/API/security/workflow/notification contracts | Approved and merged into main |
-| 3 | [phase-3](phase-3/) | Visual design system, website templates, complete customer/admin workflows, component library and frontend architecture | Design pack prepared; owner review pending |
+| 3 | [phase-3](phase-3/) | Visual design system, website templates, complete customer/admin workflows, component library and frontend architecture | Design pack and first Figma visual tranche prepared; owner review pending |
 | 4 | [phase-4](phase-4/) | MVP development execution | Planned |
 | 5 | [phase-5](phase-5/) | QA, security, accessibility and performance | Planned |
 | 6 | [phase-6](phase-6/) | Deployment, operations and maintenance | Planned |
@@ -48,6 +48,7 @@ This directory is the source of truth for product requirements, UX, visual desig
 8. [Visual Asset and Content Guide](phase-3/VISUAL_ASSET_AND_CONTENT_GUIDE.md)
 9. [Design Handoff and Acceptance Checklist](phase-3/DESIGN_HANDOFF_AND_ACCEPTANCE.md)
 10. [Motion, Hover, Scroll and Product Image Inspection](phase-3/MOTION_HOVER_SCROLL_AND_PRODUCT_ZOOM_SPEC.md)
+11. [Figma Visual Design Handoff](phase-3/FIGMA_VISUAL_DESIGN_HANDOFF.md)
 
 ## Phase 4–6 execution plans
 
