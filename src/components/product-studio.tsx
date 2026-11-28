@@ -30,11 +30,11 @@ export function ProductStudio({ product }: { product: Product }) {
   }, [product.images, selectedVariant, colorVariants]);
 
   const allColorVariantsSoldOut = colorVariants.length > 0 &&
-    colorVariants.every((variant) => variant.availableQuantity === 0);
+    colorVariants.every((variant) => variant.isInStock === false);
   const canAdd = Boolean(
     selectedVariant &&
     selectedVariant.isActive &&
-    selectedVariant.availableQuantity !== 0
+    selectedVariant.isInStock !== false
   );
   const price = selectedVariant?.priceOverrideMinor ?? product.basePriceMinor;
 
@@ -90,11 +90,11 @@ export function ProductStudio({ product }: { product: Product }) {
           </div>
         )}
 
-        {selectedVariant?.availableQuantity === 0 || allColorVariantsSoldOut ? (
+        {selectedVariant?.isInStock === false || allColorVariantsSoldOut ? (
           <p className="stock-message stock-message--sold" role="status">This option is currently sold out.</p>
-        ) : selectedVariant?.availableQuantity !== null && selectedVariant?.availableQuantity !== undefined ? (
+        ) : selectedVariant?.isInStock !== null && selectedVariant?.isInStock !== undefined ? (
           <p className="stock-message" role="status">
-            {selectedVariant.availableQuantity > 0 ? "Available" : "Currently unavailable"}
+            {selectedVariant.isInStock ? "Available" : "Currently unavailable"}
           </p>
         ) : (
           <p className="stock-message" role="status">Availability is confirmed again at checkout.</p>
