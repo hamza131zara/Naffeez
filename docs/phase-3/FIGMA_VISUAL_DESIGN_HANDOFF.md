@@ -54,3 +54,16 @@ The Figma creation calls returned frame IDs for all six deliverables. A rendered
 ## Next visual work
 
 Continue the full Phase 3 inventory in `DESIGN_HANDOFF_AND_ACCEPTANCE.md`: catalog/search/filter screens, quick view, wishlist/compare, cart, COD/QR checkout, confirmation, customer invoices/account/notifications, Journal, and the admin dashboard and operational screens. Complete the remaining responsive and empty/error states, use approved photography, then complete visual QA and collect owner approval before Phase 4.
+
+
+## 7. Additional commerce and admin visual boards
+
+The next customer/admin screen set is delivered as importable SVG assets in the Phase 3 repository branch while native Figma editing is blocked by the Starter-plan MCP call limit:
+
+- [Product Card Hover Preview](design-assets/PRODUCT_CARD_HOVER_PREVIEW.svg)
+- [Customer Commerce Screens](design-assets/COMMERCE_CUSTOMER_WORKFLOWS.svg)
+- [Admin Operations Screens](design-assets/ADMIN_OPERATIONS_WORKFLOWS.svg)
+- [Customer and Admin Workflow Map](design-assets/CUSTOMER_ADMIN_WORKFLOW_MAP.svg)
+- [Detailed screen and interaction blueprint](COMMERCE_AND_ADMIN_VISUAL_WORKFLOW_BLUEPRINT.md)
+
+These are vector source files that can be imported and arranged as native Figma content when editing capacity is available. They are not yet part of the native Figma page and have not completed screenshot-based visual QA.
