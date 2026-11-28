@@ -5,7 +5,7 @@
 **Technical baseline:** Phase 2 documentation approved and merged  
 **Repository:** https://github.com/hamza131zara/Naffeez  
 **Production domain:** https://naffeez.com  
-**Current phase:** Phase 3 — Visual Design and Website Architecture
+**Current phase:** Phase 4 — MVP Development
 
 ## Project delivery principles
 
@@ -362,3 +362,19 @@ Phase 4 remains gated on documented Phase 3 exit sign-off.
 The owner accepted the existing visual design and theme templates and confirmed that the remaining screenshot concerns are layout responsiveness (logo/header spacing, hero width/proportions and consistent section containers). These are not a new visual redesign. They are scheduled as Phase 4 implementation tasks and Phase 5 browser/accessibility QA gates.
 
 Follow `docs/phase-3/RESPONSIVE_LAYOUT_REFINEMENT_CHECKLIST.md` for concrete container gutters, header, hero, section, Product Studio, checkout and admin responsive acceptance criteria.
+
+
+## Phase 3 closure and Phase 4 start — 2026-11-28
+
+Phase 3 PR #3 was squash-merged into `main` (merge commit `a003124acda2645af9341983d7ca27370bf037b7`). The owner accepted the Light/Dark directions and both scroll-animation styles. The homepage spacing/width feedback remains an explicit Phase 4 implementation and Phase 5 QA workstream.
+
+Phase 4 branch: `phase-4/mvp-implementation`.
+
+Initial development slice:
+- Next.js App Router/React/TypeScript scaffold and GitHub CI workflow.
+- Light/Dark/System theme shell and shared responsive storefront layout.
+- Homepage, shop/search/category route, Product Studio gallery, product card hover/quick view, guest wishlist/compare and local cart foundations.
+- Published-catalog Supabase adapter with explicit empty/setup states.
+
+Not yet configured: a dedicated Naffeez Supabase project, executable schema migrations, auth choice, production catalog/media, approved delivery/returns/QR/legal invoice details and staff role assignments. No other inactive Supabase project has been re-used.
+See `docs/phase-4/PHASE_4_IMPLEMENTATION_LOG.md`.
