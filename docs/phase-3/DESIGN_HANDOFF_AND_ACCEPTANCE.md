@@ -1,8 +1,8 @@
 # Naffeez — Phase 3 Design Handoff and Acceptance Checklist
 
 **Document ID:** NAF-P3-HANDOFF-001  
-**Version:** 1.2  
-**Status:** Written design pack and first high-fidelity Figma tranche prepared; additional commerce/admin SVG boards prepared for import; owner review pending
+**Version:** 1.3  
+**Status:** Written design pack, first native Figma tranche and additional SVG review boards prepared; Light-mode counterpart and Onda motion candidates documented; native import, full theme QA and owner approval pending
 
 ## 1. Phase 3 objective
 
@@ -258,3 +258,19 @@ New acceptance checks:
 - [ ] Inventory sold-out state is driven by available quantity per variant.
 - [ ] 360° photo spin is distinguished from geometry-based 3D and only uses reviewed real capture frames.
 - [ ] Responsive desktop/tablet/mobile states and loading/empty/error/retry states are reviewed.
+
+
+## 15. Light theme and reference-motion review
+
+- [Light Theme Review Board](design-assets/LIGHT_THEME_REVIEW_BOARD.svg) — first Light-mode companion board for homepage, cards, hover state and Product Studio.
+- [Motion Pattern Preview](design-assets/MOTION_PATTERN_PREVIEW.svg) — two proposed motion patterns for owner inspection.
+- [Motion Pattern Evaluation](MOTION_PATTERN_EVALUATION.md) — source review, selected/rejected Onda patterns, proposed placements and performance/accessibility guardrails.
+
+**Important:** the Light-mode board is a repository SVG visual review asset, not a complete native Figma screen set. The original Figma page still primarily demonstrates Dark mode. Likewise, the two motion styles are proposals for review, not approved implementation decisions. Import these assets into the native Figma file and rebuild/review the corresponding screens in both themes when Figma editing capacity is available.
+
+Additional acceptance checks:
+- [ ] Light-mode screen set is reviewed across homepage, catalog, Product Studio, cart, checkout, account, invoice, Journal and admin.
+- [ ] Contrast, borders, focus, muted/disabled and status states pass in Light mode.
+- [ ] The two Onda-inspired candidate effects are individually reviewed by the owner.
+- [ ] Owner confirms which Naffeez sections, if any, receive each effect.
+- [ ] No horizontal pinned track, wheel, stacked-card sequence or scroll hijacking is included without separate approval.
