@@ -95,7 +95,7 @@ Completed and approved.
 
 # Phase 3 — Visual design, website templates and detailed frontend architecture
 
-**Status:** Design documentation and multiple visual tranches prepared; native Figma import/visual QA and owner approval remain pending.  
+**Status:** Design documentation and multiple visual tranches prepared, including Light-mode and motion review boards; native Figma import/visual QA and owner approval remain pending.  
 **Purpose:** Turn the accepted UX and technical baselines into the final website design and implementation-ready frontend plan before any application coding starts.
 
 ## P3-01 — Design baseline and reference analysis
