@@ -233,3 +233,28 @@ Importable vector design boards have been added to `docs/phase-3/design-assets/`
 - [ ] Transactional inbox is separate from optional topic-based marketing consent.
 - [ ] Admin role checks, private proof/invoice access and audit reasons are visibly represented.
 - [ ] SVGs are imported to the native Figma source, visually checked and owner-reviewed.
+
+
+## 14. Additional visual deliverables — remaining customer/admin routes
+
+Importable SVG vector boards:
+- [Customer discovery and Journal](design-assets/CUSTOMER_DISCOVERY_AND_JOURNAL.svg).
+- [Order confirmation and invoice](design-assets/ORDER_CONFIRMATION_AND_INVOICE.svg).
+- [Journal, Offers and Support pages](design-assets/JOURNAL_OFFERS_SUPPORT_PAGES.svg).
+- [Inventory and sold-out states](design-assets/INVENTORY_STOCK_STATES.svg).
+- [Responsive and state coverage](design-assets/RESPONSIVE_AND_STATE_COVERAGE.svg).
+- [Admin hero campaigns and 360° Spin Builder](design-assets/ADMIN_HERO_CAMPAIGN_AND_SPIN_BUILDER.svg).
+
+Detailed media specification: [Hero Video Campaign and 360° Spin Builder](HERO_VIDEO_AND_360_SPIN_BUILDER_SPEC.md).
+
+**Native Figma status:** the additional SVGs remain repository assets awaiting import into the native Figma file. They are not being marked as native Figma frames or visually QA'd there. The existing native first tranche remains identified in Section 11.
+
+New acceptance checks:
+- [ ] Search, Quick View, Wishlist, Compare and order tracking states reviewed.
+- [ ] A4 invoice print layout reviewed against the immutable snapshot contract.
+- [ ] Journal listing/detail, offers/collection, size guide and contact/support pages reviewed.
+- [ ] Admin hero campaign manager includes poster-first video fallback and responsive preview.
+- [ ] Hero video does not download/play for all inactive slides and respects reduced motion/data-saving.
+- [ ] Inventory sold-out state is driven by available quantity per variant.
+- [ ] 360° photo spin is distinguished from geometry-based 3D and only uses reviewed real capture frames.
+- [ ] Responsive desktop/tablet/mobile states and loading/empty/error/retry states are reviewed.
