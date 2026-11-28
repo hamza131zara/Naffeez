@@ -322,3 +322,26 @@ On thumbnail or variant change, reset stale lens/pan state and bind the matching
 ### Testing boundary
 Test media ID → zoom source mapping; thumbnail navigation; variant switch; zoom reset; pointer boundaries; lens coordinate mapping; source failure fallback; keyboard controls; touch pan/pinch; reduced motion; and ensuring a gallery image's old zoom crop cannot remain after switching images.
 
+
+
+## 13. Hero media and optional product spin boundaries
+
+### Homepage hero
+- Treat hero video as optional media attached to a CMS-controlled slide, not a hard-coded page animation.
+- The slide data includes poster (required), optional video source, desktop/mobile crop/focal point, text/CTA and optional published product/collection binding.
+- The first poster is available as a stable render/LCP fallback. Do not put all slide video sources into initial browser loading.
+- A client-side media controller should mount/play only the active visible slide, pause inactive/offscreen slides and fall back to poster on playback failure or constrained preferences.
+- Carousel navigation, pause, reduced-motion and manual interaction state must be independent of video decoding.
+- Exact video transformations/hosting and byte budgets are an implementation/provider decision and must be verified in Phase 4/5.
+
+### Product 360° spin
+- Keep the standard ProductGallery as the default and source of truth.
+- Add an optional, lazy-loaded SpinViewer module only when the product/variant has an approved frame sequence.
+- Spin frames and viewer code must not enter the homepage bundle or initial Product Studio media download.
+- The first implementation is an image-sequence viewer. Treat an actual GLB/glTF model viewer as a separate later module and content type.
+- A missing, failed or unsupported spin returns to the normal image gallery without blocking purchase.
+
+### Inventory state boundary
+- Public availability is derived from server-authoritative available quantity per variant; available quantity is on-hand minus reserved quantity under the Phase 2 inventory model.
+- A variant is sold out when its available quantity is zero or below. Product-level sold-out state applies only when all purchasable variants are unavailable.
+- The browser can present disabled size/color selectors and sold-out badges, but checkout/order creation revalidates stock on the server.
