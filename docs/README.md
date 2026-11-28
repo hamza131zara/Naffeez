@@ -8,8 +8,8 @@ This directory is the source of truth for product requirements, UX, visual desig
 |---|---|---|---|
 | 1 | [phase-1](phase-1/) | Product scope and initial UI/UX baseline | Accepted |
 | 2 | [phase-2](phase-2/) | PRD, system architecture, data/API/security/workflow/notification contracts | Approved and merged into main |
-| 3 | [phase-3](phase-3/) | Visual design system, website templates, complete customer/admin workflows, component library and frontend architecture | Written design pack, first native Figma tranche and additional SVG workflow boards prepared; owner review pending |
-| 4 | [phase-4](phase-4/) | MVP development execution | Planned |
+| 3 | [phase-3](phase-3/) | Visual design system, website templates, complete customer/admin workflows, component library and frontend architecture | Accepted and merged into main; responsive refinement is assigned to Phase 4/5 |
+| 4 | [phase-4](phase-4/) | MVP development execution | In progress — app foundation and first storefront slice on `phase-4/mvp-implementation` |
 | 5 | [phase-5](phase-5/) | QA, security, accessibility and performance | Planned |
 | 6 | [phase-6](phase-6/) | Deployment, operations and maintenance | Planned |
 | Later | future | AI Style Studio, virtual try-on, optional Python worker and advanced 3D | Deferred |
@@ -88,3 +88,9 @@ This directory is the source of truth for product requirements, UX, visual desig
 7. Product, order, payment, stock and invoice truth is server/database authoritative.
 8. Do not claim functionality is implemented, tested or deployed without evidence.
 9. Phase 4 development begins only after Phase 3 design/architecture is approved.
+
+
+## Phase 4 implementation records
+
+1. [Development Execution Plan](phase-4/DEVELOPMENT_EXECUTION_PLAN.md)
+2. [Phase 4 Implementation Log](phase-4/PHASE_4_IMPLEMENTATION_LOG.md)
