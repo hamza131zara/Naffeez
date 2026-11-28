@@ -30,7 +30,7 @@ The initial implementation branch contains:
 - Account/admin/checkout placeholders that do not bypass unresolved authentication, shipping, payment or authorization decisions.
 - Node test runner and GitHub Actions workflow for lint, typecheck, tests and production build.
 
-**This is an in-progress development slice, not a complete or production-ready store.** The dedicated Naffeez Supabase project is provisioned in Mumbai. The catalog foundation migrations, grants, RLS policies and private `product-media` bucket are applied and security-advisor checks are clear. The project has no product/category seed data yet. Checkout, COD/QR payment, invoices, customer authentication and admin operations remain gated on owner inputs and secure backend implementation.
+**This is an in-progress development slice, not a complete or production-ready store.** The dedicated Naffeez Supabase project is provisioned in Mumbai. The catalog foundation migrations, grants, RLS policies and private `product-media` bucket are applied and security-advisor checks are clear. The five approved launch categories are seeded; no sample products, prices or inventory are present. Checkout, COD/QR payment, invoices, customer authentication and admin operations remain gated on owner inputs and secure backend implementation.
 
 ## Run locally
 
