@@ -7,7 +7,7 @@ import { formatPKR } from "@/lib/format";
 
 function readIds(): string[] {
   try {
-    const value = JSON.parse(window.localStorage.getItem("naffeez-compare") ?? "[]");
+    const value: unknown = JSON.parse(window.localStorage.getItem("naffeez-compare") ?? "[]");
     return Array.isArray(value) ? value.filter((item): item is string => typeof item === "string").slice(0, 4) : [];
   } catch {
     return [];
@@ -19,28 +19,37 @@ export function CompareView() {
   const [loaded, setLoaded] = useState(false);
 
   const refresh = useCallback(async () => {
+    await Promise.resolve();
     const ids = readIds();
-    if (!ids.length) {
-      setProducts([]);
-      setLoaded(true);
-      return;
+    let next: Product[] = [];
+
+    if (ids.length) {
+      try {
+        const response = await fetch("/api/catalog/compare?ids=" + encodeURIComponent(ids.join(",")), { cache: "no-store" });
+        if (!response.ok) throw new Error("Compare request failed");
+        next = await response.json() as Product[];
+      } catch {
+        next = [];
+      }
     }
-    try {
-      const response = await fetch("/api/catalog/compare?ids=" + encodeURIComponent(ids.join(",")), { cache: "no-store" });
-      if (!response.ok) throw new Error("Compare request failed");
-      setProducts(await response.json() as Product[]);
-    } catch {
-      setProducts([]);
-    } finally {
-      setLoaded(true);
-    }
+
+    setProducts(next);
+    setLoaded(true);
   }, []);
 
   useEffect(() => {
-    void refresh();
-    const handler = () => { void refresh(); };
+    let active = true;
+    const sync = async () => {
+      await refresh();
+      if (!active) return;
+    };
+    void sync();
+    const handler = () => { void sync(); };
     window.addEventListener("naffeez:compare-updated", handler);
-    return () => window.removeEventListener("naffeez:compare-updated", handler);
+    return () => {
+      active = false;
+      window.removeEventListener("naffeez:compare-updated", handler);
+    };
   }, [refresh]);
 
   function remove(id: string) {
