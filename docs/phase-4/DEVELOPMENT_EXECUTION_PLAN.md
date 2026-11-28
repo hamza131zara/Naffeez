@@ -58,15 +58,15 @@ Build footer links and policy page shells; publish only owner-approved text.
 ### DEV-0201 — Supabase project/environment
 A dedicated Naffeez project is provisioned (`tglnolhzjapcbkzdwybe`, Mumbai `ap-south-1`, `ACTIVE_HEALTHY`, `$0/month` quoted at creation). Local CLI linking and `.env.local` setup remain to be completed.
 ### DEV-0202 — Schema migrations
-Create migration files using installed CLI guidance; apply locally first.
+Catalog foundation migrations created, applied to the dedicated Supabase project and tracked in `supabase/migrations/`. Local CLI reset/replay verification remains pending.
 ### DEV-0203 — RLS/grants
-Implement explicit table grants and per-table RLS; add allow/deny tests.
+Catalog-table grants and published-only RLS are applied. A rollback-based anonymous-role test and column privilege checks passed. Customer ownership and admin operation policies remain pending their corresponding features.
 ### DEV-0204 — Auth integration
 Implement chosen email/OTP/recovery flow and secure session handling.
 ### DEV-0205 — Admin membership
 Seed/grant owner membership through a controlled server/admin operation; never permit self-elevation.
 ### DEV-0206 — Storage buckets
-Create product-media, homepage-media, QR, payment-proof and invoice storage with intended public/private boundaries. Product media must be private and served by short-lived signed URLs only when referenced by a published product; the catalog adapter is prepared for this contract.
+The private `product-media` bucket and published-product object-read policy are applied; the catalog adapter requests 1-hour signed URLs. Homepage-media, QR, payment-proof and invoice buckets remain deferred until their workflows and permissions are ready.
 ### DEV-0207 — Audit events
 Create server-side audit writer for sensitive admin/payment/stock/role/config actions.
 **Milestone gate:** security tests prove customer separation and admin-only access.
@@ -224,8 +224,11 @@ Contact, WhatsApp, shipping, COD and invoice fields.
 
 ### In progress / not yet done
 - DEV-0103/0104 — shared primitives and complete accessibility checks.
-- DEV-0201 — dedicated Supabase project provisioned; local CLI linking and app environment remain pending.
-- DEV-0202–0207 — migrations, RLS/grants, authentication, admin membership, storage buckets and audit writer remain unapplied.
+- DEV-0201 — dedicated Supabase project provisioned; local CLI linking and `.env.local` setup remain pending.
+- DEV-0202 — catalog migrations applied and committed; local CLI replay verification pending.
+- DEV-0203 — catalog grants/RLS and anonymous allow/deny checks applied; customer/admin feature policies pending.
+- DEV-0206 — private product media bucket and published-product object policy applied; other feature-specific buckets pending.
+- DEV-0204/0205/0207 — authentication, owner admin-membership provisioning and audit-writer workflows are not implemented.
 - DEV-0301–0308 — admin catalog/variant/inventory/content CMS not implemented.
 - DEV-0404 — complete dynamic filter/sort system not implemented.
 - DEV-0501 — local guest cart foundation exists; server quote, atomic order, reservation, COD/QR and payment review are not implemented.
@@ -235,8 +238,8 @@ Contact, WhatsApp, shipping, COD and invoice fields.
 - DEV-09 — release readiness not started.
 
 ### Environment blockers and safety
-- Naffeez project `tglnolhzjapcbkzdwybe` is provisioned and healthy in Mumbai; no schema has been applied. Existing inactive projects belong to other work and were not selected or modified.
-- Generate and validate migrations locally before pushing them to this remote project; do not apply the logical Phase 2 schema as unreviewed SQL.
+- Naffeez project `tglnolhzjapcbkzdwybe` is provisioned and healthy in Mumbai; catalog foundation migrations are applied. Existing inactive projects belong to other work and were not selected or modified.
+- Run the local CLI replay/reset before future schema changes. Do not use `supabase db reset --linked` because it is destructive.
 - Authentication, size charts, shipping/fees/COD, returns, QR proof rules, stock reservation, invoice legal/tax fields and staff roles remain owner decisions.
 - The application renders explicit setup states instead of using fake products, stock, payment QR, delivery totals or invoices.
 - The responsive layout refinement checklist is a Phase 4 implementation and Phase 5 acceptance dependency.
