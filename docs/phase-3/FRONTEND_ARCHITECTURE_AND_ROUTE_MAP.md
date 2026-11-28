@@ -1,7 +1,7 @@
 # Naffeez — Frontend Architecture and Route Map
 
 **Document ID:** NAF-P3-FE-ARCH-001  
-**Version:** 1.0  
+**Version:** 1.1  
 **Status:** Phase 3 design proposal for owner review
 
 ## 1. Architecture objective
@@ -345,3 +345,20 @@ Test media ID → zoom source mapping; thumbnail navigation; variant switch; zoo
 - Public availability is derived from server-authoritative available quantity per variant; available quantity is on-hand minus reserved quantity under the Phase 2 inventory model.
 - A variant is sold out when its available quantity is zero or below. Product-level sold-out state applies only when all purchasable variants are unavailable.
 - The browser can present disabled size/color selectors and sold-out badges, but checkout/order creation revalidates stock on the server.
+
+
+## 14. Responsive layout implementation handoff
+
+The owner has accepted the current visual design and theme templates; layout refinement is assigned to Phase 4 implementation and Phase 5 verification. Follow [Responsive Layout Refinement Checklist](RESPONSIVE_LAYOUT_REFINEMENT_CHECKLIST.md).
+
+Implementation contract:
+- Use a shared centered content container (target max 1360px) and breakpoint-specific gutters rather than independent section padding.
+- Protect the Naffeez wordmark from wrapping/compression; switch header navigation mode before collisions.
+- Keep the hero two-column only when both copy/media retain usable minimum widths; otherwise stack deliberately.
+- Use shared section alignment for benefits, categories, product grids, Product Studio feature, Journal and footer.
+- Reflow category/product grids and filters according to available width; do not scale the desktop composition as a single fixed canvas.
+- Product Studio and checkout become deliberate stacked layouts at narrow widths.
+- Admin tables/forms have mobile patterns rather than miniature desktop layouts.
+- Test 320, 360, 390, 430, 768, 820, 1024, 1280, 1440 and 1920px in Light/Dark/System.
+
+Do not change approved styling tokens/components solely to fix spacing. No layout is considered responsive until browser screenshots and interaction checks pass at the defined widths.
