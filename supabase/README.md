@@ -50,7 +50,7 @@ The logical source of truth is the Phase 2 Database Schema at docs/phase-2/DATAB
 - Store settings and private admin membership/audit boundaries.
 - Public read grants and RLS for published catalog records only.
 - Admin writes only through an authenticated, authorized server path.
-- A private `product-media` Storage bucket. Product/zoom assets must be exposed through short-lived signed URLs only when the associated product is published; the current storefront adapter still uses public URLs and must be updated before the bucket is created.
+- A private `product-media` Storage bucket. The storefront adapter now requests 1-hour signed URLs for product/zoom assets. The migration must add a Storage SELECT policy that only permits objects referenced by published products (and active variants where applicable); create the bucket only with that policy in place.
 - QR/payment-proof and invoices remain private and are deferred until their relevant features and policies are implemented.
 - A database test plan for anonymous public reads, customer ownership and admin-only operations.
 
