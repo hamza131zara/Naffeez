@@ -297,3 +297,16 @@ When the gallery image has no high-resolution source, use a normal lightbox with
 The homepage hero may pair a required poster image with an optional muted 6–10 second campaign loop. The admin configures title, copy, selected published product/collection, poster, optional video, crop/focal point, CTA, display order and active dates. The first poster loads first; inactive slide videos do not all download at initial render.
 
 The optional Product Studio 360° control is a photograph-sequence spin created from a genuine full-rotation capture or ordered real frames. It is not a geometry-based 3D model and does not replace the standard image gallery or individual zoom sources. Use the full [Hero Video Campaign and 360° Spin Builder Specification](HERO_VIDEO_AND_360_SPIN_BUILDER_SPEC.md) for capture rules, admin approval and customer fallbacks.
+
+
+## 17. Scroll animation pattern selection — proposed
+
+Use [Motion Pattern Evaluation](MOTION_PATTERN_EVALUATION.md) and [Motion Pattern Preview](design-assets/MOTION_PATTERN_PREVIEW.svg) for the Onda reference analysis.
+
+Only two restrained candidates are proposed for owner review:
+1. Section text reveal: a heading and short supporting copy rise 12–16px and settle into full opacity as the section enters view; no default word-by-word splitting.
+2. Circular image-mask reveal: one or two large editorial images open from a small circular mask as they enter view.
+
+Candidate placements are the Homepage section headings/short copy and the Homepage Product Studio feature image or one Journal cover. Exact placements remain subject to owner verification. Do not apply these animations across product cards, gallery zoom, checkout, order/invoice actions or admin tables.
+
+Do not adopt Onda's pinned horizontal case-study track, rotating client wheel, sticky stacking service cards, process ring or cross-section travelling hero photo. Preserve native vertical scrolling; no scroll hijacking. Prefer CSS scroll-driven effects with feature detection, static/low-motion fallback and reduced-motion behavior. No GSAP/Lenis dependency is justified for these two effects alone.
