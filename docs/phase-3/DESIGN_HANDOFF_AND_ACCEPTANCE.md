@@ -1,8 +1,8 @@
 # Naffeez — Phase 3 Design Handoff and Acceptance Checklist
 
 **Document ID:** NAF-P3-HANDOFF-001  
-**Version:** 1.0  
-**Status:** Design specification package prepared; high-fidelity visual frames/prototype are still to be produced and reviewed
+**Version:** 1.2  
+**Status:** Written design pack and first high-fidelity Figma tranche prepared; additional commerce/admin SVG boards prepared for import; owner review pending
 
 ## 1. Phase 3 objective
 
