@@ -63,12 +63,19 @@ Global shell:
 - Loading: skeletons only for data that is not server-rendered with a stable placeholder.
 
 ### Hero behavior
-- 3 active slides recommended, 1–5 supported by admin.
-- 6–7 second advance, pause on hover/focus and when reduced motion is enabled.
-- Manual previous/next and pagination.
-- Text position and scrim must adapt to image focal point.
-- One primary CTA per slide.
-- No fake countdown or false “limited pieces” copy.
+- Target three editorial campaign slides; admin can manage 1–5 active slides.
+- Right side uses a real Naffeez campaign/product photograph as the poster and may use an optional 6–10 second muted, seamless-loop video.
+- Example campaign directions: a shirt edit, a trouser edit and a winter/hoodie edit. Actual product/collection bindings and slide copy are admin-selected; do not hard-code or invent best-seller status.
+- The left column retains eyebrow, headline, short copy and one primary CTA.
+- Poster is required even when video is present; provide desktop/mobile crops and focal-point preview.
+- Video is muted and inline, has no audio track, and plays only while its slide is active and visible.
+- Load the first poster first; do not download all slide videos at initial page load. Load later media only on activation or just before needed.
+- Pause inactive/offscreen video. Use the poster on data-saving, reduced-motion, constrained playback or video failure.
+- Manual previous/next, pagination and pause/play controls remain available. Pause auto movement on hover, focus, manual interaction and reduced-motion preference.
+- Do not transition away before a video has had a meaningful viewing opportunity. The 6–10 second clip length is separate from the carousel transition interval.
+- Reserve media dimensions, use responsive optimized assets and never show an empty media stage.
+- Text position and contrast scrim adapt to image focal point. No fake countdown or false “limited pieces” copy.
+- See [Hero Video Campaign and 360° Spin Builder](HERO_VIDEO_AND_360_SPIN_BUILDER_SPEC.md).
 
 ## 4. Shop and category templates
 
@@ -284,3 +291,9 @@ When the gallery image has no high-resolution source, use a normal lightbox with
 - Avoid large parallax, forced pinned scenes or full-grid animation cascades.
 - All effects have reduced-motion and no-JavaScript fallbacks.
 
+
+
+## 16. Homepage hero video and 360° Spin Builder
+The homepage hero may pair a required poster image with an optional muted 6–10 second campaign loop. The admin configures title, copy, selected published product/collection, poster, optional video, crop/focal point, CTA, display order and active dates. The first poster loads first; inactive slide videos do not all download at initial render.
+
+The optional Product Studio 360° control is a photograph-sequence spin created from a genuine full-rotation capture or ordered real frames. It is not a geometry-based 3D model and does not replace the standard image gallery or individual zoom sources. Use the full [Hero Video Campaign and 360° Spin Builder Specification](HERO_VIDEO_AND_360_SPIN_BUILDER_SPEC.md) for capture rules, admin approval and customer fallbacks.
