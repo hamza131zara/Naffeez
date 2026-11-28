@@ -33,8 +33,7 @@
 - Product Studio gallery, per-image zoom-source contract, desktop cursor lens when a high-resolution source exists, and detail viewer.
 - Catalog adapter requests 1-hour signed URLs for product/zoom images and reads only a derived boolean stock-availability field, not raw inventory quantities.
 - Generated public-schema TypeScript database types are committed at `src/lib/supabase/database.types.ts`; the server Supabase client uses the generated `Database` type.
-- Catalog adapter requests short-lived signed URLs for product/zoom images and reads only a derived boolean stock-availability field, not raw inventory quantities.
-- Variant selection and stock-state presentation based on available quantity where database data exists.
+- Variant selection and stock-state presentation use the derived boolean availability value exposed to public catalog clients.
 - Guest local-browser wishlist, compare and cart-review foundations.
 - Account/admin/checkout and policy placeholders that do not bypass unresolved owner decisions.
 - Inventory availability helper and Node unit tests.
@@ -72,13 +71,13 @@
 - Created catalog tables in `public`: categories, collections, products, product_variants, product_media, inventory_levels, inventory_movements and collection_products; created private tables: admin_memberships, audit_events and store_settings. All have RLS enabled. No real category/product data has been seeded; all tables contain zero rows.
 - The private `product-media` bucket is created with `public=false`, plus an object SELECT policy requiring a matching published product/media record and an active variant where relevant.
 - The publishable key was retrieved for local configuration but is intentionally not committed to the repository. No service-role/secret key was retrieved or stored.
-- The storefront adapter has been updated to request 1-hour signed URLs for product media and zoom images. The database migration must enforce Storage-object reads only for files referenced by published products before the private bucket is provisioned.
+- The storefront adapter requests 1-hour signed URLs for product media and zoom images. The private bucket policy restricts object reads to media referenced by published products and active variants.
 - Supabase Security Advisors return no current security lints. Public-schema default privileges for tables, sequences and functions created by postgres are now restricted; new functions do not inherit PUBLIC EXECUTE. Performance Advisors show informational unused-index notices because the new tables are empty and have not received query traffic.
 - A transaction-based anon-role test verified active categories, published products, active variants and the stock flag are visible; draft products are hidden. The transaction rolled back cleanly.
 - Privilege checks verified anon cannot insert products, authenticated cannot update products, and anon can read `is_in_stock` but cannot read raw on-hand/reserved quantities.
 - A transaction-based default-privilege probe created a temporary table, identity sequence and SQL function, then rolled back. It confirmed anon/authenticated received no automatic table or sequence privileges and no default function EXECUTE privilege.
-- The repository-editing environment does not have the Supabase CLI or Docker. The migration source files were reconstructed from the SQL applied successfully via the Supabase management tool and committed using the matching remote migration versions. No local `supabase db reset`, app npm install, lint, typecheck, unit tests, build or browser checks have run in this environment.
+- The repository-editing environment does not have the Supabase CLI or Docker. The migration source files were reconstructed from SQL applied successfully via the Supabase management tool and committed using the matching remote migration versions. Local `supabase db reset` and browser checks remain pending.
 
 ## Verification status
 
-Source files are committed through the GitHub repository connector. No local dependency install, npm lockfile generation, lint, TypeScript check, unit test, production build, browser test or database migration has been executed in this editing environment. The new GitHub Actions workflow is intended to provide the first CI evidence when the Phase 4 PR is opened; failures must be fixed before the slice is treated as verified.
+Latest GitHub Actions validation run #106, on commit `6531996e57c125935e5f66fceb549609cc06910e`, completed successfully: dependency installation, TypeScript check, ESLint, unit tests and production build all passed. The previous run exposed lint issues; they were corrected before this passing run. Local Docker-backed migration replay and browser QA remain unverified. A `package-lock.json` is still not committed, so deterministic dependency installation remains an outstanding task.
