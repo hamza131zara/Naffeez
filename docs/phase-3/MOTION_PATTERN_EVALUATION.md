@@ -1,8 +1,8 @@
 # Naffeez — Light Theme Review and Onda Motion Pattern Evaluation
 
 **Document ID:** NAF-P3-MOTION-002  
-**Version:** 1.0  
-**Status:** Light theme review board prepared; two motion candidates proposed for owner verification; no motion style is approved for implementation yet.
+**Version:** 1.1  
+**Status:** Owner-approved: Light/Dark visual directions and both proposed motion styles (2026-11-28). Exact section placement, native Figma import and full responsive/accessibility QA remain pending.
 
 ## 1. Source reviewed
 
@@ -127,11 +127,13 @@ It demonstrates the light canvas/surfaces, navigation, editorial hero, product c
 
 ## 8. Owner review checklist
 
-- [ ] Review [Light Theme Review Board](design-assets/LIGHT_THEME_REVIEW_BOARD.svg).
-- [ ] Confirm whether the Light theme should use the same monochrome layout and only change surfaces/tokens.
-- [ ] Review [Motion Pattern Preview](design-assets/MOTION_PATTERN_PREVIEW.svg).
-- [ ] Confirm whether Style 01 (section text reveal) is acceptable.
-- [ ] Confirm whether Style 02 (circular image-mask reveal) is acceptable.
+**Owner decision recorded — 2026-11-28:** Light and Dark visual directions are accepted, and both motion styles in the preview are accepted as the two Naffeez animation styles. This approval is for the styles/directions; the exact section placements and final implementation QA remain open.
+
+- [x] Review [Light Theme Review Board](design-assets/LIGHT_THEME_REVIEW_BOARD.svg).
+- [x] Confirm the Light theme retains the Naffeez monochrome layout with theme-appropriate surfaces/tokens.
+- [x] Review [Motion Pattern Preview](design-assets/MOTION_PATTERN_PREVIEW.svg).
+- [x] Style 01 (restrained section text reveal) accepted by owner.
+- [x] Style 02 (circular image-mask reveal) accepted by owner.
 - [ ] Select exact Naffeez sections for each effect only after viewing the preview.
 - [ ] Confirm that pinned horizontal scroll, client wheel and sticky card stacks are excluded.
 - [ ] After approval, import boards into native Figma and complete both-theme responsive QA before Phase 3 sign-off.
@@ -143,3 +145,13 @@ It demonstrates the light canvas/surfaces, navigation, editorial hero, product c
 - [Motion, Hover, Scroll and Product Image Inspection](MOTION_HOVER_SCROLL_AND_PRODUCT_ZOOM_SPEC.md)
 - [Hero Video Campaign and 360° Spin Builder](HERO_VIDEO_AND_360_SPIN_BUILDER_SPEC.md)
 - [Design Handoff and Acceptance](DESIGN_HANDOFF_AND_ACCEPTANCE.md)
+
+
+## 10. Proposed placement after style approval
+
+The two approved styles should be applied sparingly, with these placements proposed for final screen review:
+
+- **Style 01 — section text reveal:** category-section heading, New Arrivals heading/supporting copy, and Journal teaser heading/supporting copy. Do not animate every product title, price, stock badge, form label or admin row.
+- **Style 02 — circular image-mask reveal:** the large Product Studio feature image on the homepage. A Journal cover may be considered later, but should not be included in the first implementation unless the first use passes mobile performance/accessibility review.
+
+The owner has approved both styles, not yet the exact per-section placement. Confirm placement during final native Figma review. Both remain subject to reduced-motion and browser-support fallbacks.
