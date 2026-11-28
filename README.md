@@ -30,7 +30,7 @@ The initial implementation branch contains:
 - Account/admin/checkout placeholders that do not bypass unresolved authentication, shipping, payment or authorization decisions.
 - Node test runner and GitHub Actions workflow for lint, typecheck, tests and production build.
 
-**This is an in-progress development slice, not a complete or production-ready store.** The dedicated Naffeez Supabase project is now provisioned in Mumbai, but the database is still empty: migrations, grants/RLS and private media access must be completed before a live catalog is available. Checkout, COD/QR payment, invoices, customer authentication and admin operations remain gated on owner inputs and secure backend implementation.
+**This is an in-progress development slice, not a complete or production-ready store.** The dedicated Naffeez Supabase project is provisioned in Mumbai. The catalog foundation migrations, grants, RLS policies and private `product-media` bucket are applied and security-advisor checks are clear. The project has no product/category seed data yet. Checkout, COD/QR payment, invoices, customer authentication and admin operations remain gated on owner inputs and secure backend implementation.
 
 ## Run locally
 
@@ -42,7 +42,7 @@ cp .env.example .env.local
 npm run dev
 ```
 
-Add the approved Naffeez Supabase URL and publishable key to `.env.local` after the dedicated project is provisioned. The server secret key must remain server-only and must never use a `NEXT_PUBLIC_` prefix.
+Add the Naffeez Supabase URL and publishable key to `.env.local` (see `supabase/README.md`). Keep `SUPABASE_SECRET_KEY` blank until a protected server feature requires it. A secret key must remain server-only and must never use a `NEXT_PUBLIC_` prefix.
 
 Quality commands:
 
