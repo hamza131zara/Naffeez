@@ -62,7 +62,7 @@ function mapProduct(
 
   const variants: ProductVariant[] = (row.product_variants ?? []).map((variant) => {
     const level = variant.inventory_levels?.[0];
-    const available = level
+    const availableQuantity = level
       ? getAvailableQuantity(level.quantity_on_hand, level.quantity_reserved)
       : null;
     return {
@@ -73,7 +73,7 @@ function mapProduct(
       colorCode: variant.color_code,
       priceOverrideMinor: variant.price_override_minor,
       isActive: variant.is_active,
-      availableQuantity: available
+      isInStock: availableQuantity === null ? null : availableQuantity > 0
     };
   });
 
