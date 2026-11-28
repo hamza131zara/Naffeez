@@ -1,8 +1,8 @@
 # Naffeez — Phase 3 Design Handoff and Acceptance Checklist
 
 **Document ID:** NAF-P3-HANDOFF-001  
-**Version:** 1.3  
-**Status:** Written design pack, first native Figma tranche and additional SVG review boards prepared; Light-mode counterpart and Onda motion candidates documented; native import, full theme QA and owner approval pending
+**Version:** 1.4  
+**Status:** Owner accepted Light/Dark visual directions and both motion styles; full native Figma import, all-screen responsive/accessibility QA, remaining P0 visual detail and owner business inputs remain pending.
 
 ## 1. Phase 3 objective
 
@@ -266,11 +266,50 @@ New acceptance checks:
 - [Motion Pattern Preview](design-assets/MOTION_PATTERN_PREVIEW.svg) — two proposed motion patterns for owner inspection.
 - [Motion Pattern Evaluation](MOTION_PATTERN_EVALUATION.md) — source review, selected/rejected Onda patterns, proposed placements and performance/accessibility guardrails.
 
-**Important:** the Light-mode board is a repository SVG visual review asset, not a complete native Figma screen set. The original Figma page still primarily demonstrates Dark mode. Likewise, the two motion styles are proposals for review, not approved implementation decisions. Import these assets into the native Figma file and rebuild/review the corresponding screens in both themes when Figma editing capacity is available.
+**Approval recorded — 2026-11-28:** the owner accepted the Light and Dark visual directions and both motion styles (section text reveal and circular image-mask reveal). The Light-mode board is a repository SVG visual review asset, not a complete native Figma screen set. The original Figma page still primarily demonstrates Dark mode. Import the assets into native Figma and review corresponding screens in both themes when editing capacity is available.
 
 Additional acceptance checks:
-- [ ] Light-mode screen set is reviewed across homepage, catalog, Product Studio, cart, checkout, account, invoice, Journal and admin.
+- [ ] Full Light-mode screen set is reviewed across homepage, catalog, Product Studio, cart, checkout, account, invoice, Journal and admin.
 - [ ] Contrast, borders, focus, muted/disabled and status states pass in Light mode.
-- [ ] The two Onda-inspired candidate effects are individually reviewed by the owner.
-- [ ] Owner confirms which Naffeez sections, if any, receive each effect.
+- [x] The two Onda-inspired candidate effects are individually reviewed and accepted by the owner.
+- [ ] Owner confirms final section placement for each accepted effect.
 - [ ] No horizontal pinned track, wheel, stacked-card sequence or scroll hijacking is included without separate approval.
+
+
+## 16. Owner approval record and remaining Phase 3 gates
+
+### Approved on 2026-11-28
+- Light and Dark visual directions are accepted.
+- Both proposed motion styles are accepted: restrained section text reveal and circular image-mask reveal.
+- The selected styles remain subject to accessibility, reduced-motion, performance and responsive implementation checks.
+
+### Still required for Phase 3 exit
+1. Import the additional SVG boards into the native [Naffeez design file](https://www.figma.com/design/PEKxJAmDkJgfVpBL8nDTrT) and organize them into customer, admin and Light/motion pages.
+2. Rebuild/review the complete Light-mode counterpart for all P0 routes; the existing native Figma tranche is Dark-led and the Light board is only a repository SVG companion.
+3. Complete actual desktop, tablet and mobile visual QA for every P0 route and key state; schematic SVG boards do not prove pixel-level responsive behavior.
+4. Complete contrast, keyboard/focus, touch-target, dialog, form-error, status-label and reduced-motion QA in both themes.
+5. Confirm exact section placements for the two accepted motion styles. Proposed first placement: text reveal on category/New Arrivals/Journal headings; circular reveal on the homepage Product Studio feature image.
+6. Resolve any owner inputs that materially change P0 screens or data behavior before locking the Phase 4 implementation handoff.
+7. Confirm official logo/wordmark and provide real product imagery, alternate angles, size measurements and approved policies where applicable.
+8. Record final Phase 3 owner sign-off and close the PR only after all exit criteria are evidenced.
+
+### Open owner/business decisions carried from the Phase 2 decision log
+
+| Decision IDs | Remaining input |
+|---|---|
+| OPEN-001, OPEN-013 | Customer sign-in/recovery choice; guest/account requirement and persisted cart/compare scope |
+| OPEN-003 | Approved size charts and measurement units |
+| OPEN-004, OPEN-005 | Delivery coverage, shipping charges and COD eligibility |
+| OPEN-006 | Return/exchange time limits and conditions |
+| OPEN-007, OPEN-008 | Approved Easypaisa/bank QR details and proof/reference requirements |
+| OPEN-009 | Stock reservation timing and expiry rules |
+| OPEN-010, OPEN-014 | Invoice seller/legal fields, numbering and applicable tax fields |
+| OPEN-012, OPEN-017, OPEN-019 | Staff identities/roles, campaign approver and alert recipients |
+| OPEN-002, OPEN-015, OPEN-016, OPEN-018, OPEN-020 | Email provider/plan, sender identities, marketing cadence and approved consent wording |
+| OPEN-011 | Hosting provider/plan and cost ceiling |
+
+These are not silently assumed. Some provider/hosting choices can be finalized during the relevant Phase 4/6 integration/deployment work, but authentication, checkout rules, inventory reservations, invoice data and access roles must be settled before implementing those P0 flows.
+
+### Deferred features (not Phase 3 blockers)
+- The 360° photograph-sequence Spin Builder is P1/post-MVP after the standard gallery, per-image zoom, stock validation and purchase journey are stable.
+- Geometry-based 3D, AI-generated intermediate spin frames and virtual try-on are later enhancements, not MVP purchase dependencies.
