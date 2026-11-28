@@ -2,7 +2,6 @@ import "server-only";
 
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import type { Category, Product, ProductImage, ProductVariant } from "./types";
-import { getAvailableQuantity } from "./availability.mjs";
 
 type RawImage = {
   id: string;
