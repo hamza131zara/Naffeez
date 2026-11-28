@@ -352,3 +352,26 @@ Resolve these through the existing Phase 2 decision log and handoff process befo
 - [Order, Payment and Invoice Workflows](../phase-2/ORDER_PAYMENT_INVOICE_WORKFLOWS.md)
 - [Notifications, Email Marketing and Admin Alerts](../phase-2/NOTIFICATIONS_AND_ALERTS.md)
 - [Authorization and RLS](../phase-2/AUTHORIZATION_AND_RLS.md)
+
+
+## 11. Remaining visual screen coverage and media decisions
+
+### Additional customer boards
+- [Customer discovery and Journal](design-assets/CUSTOMER_DISCOVERY_AND_JOURNAL.svg): Search, query results, Quick View, Wishlist, Compare, order result/tracking and Journal entry.
+- [Order confirmation and invoice](design-assets/ORDER_CONFIRMATION_AND_INVOICE.svg): COD confirmation, order summary, status timeline and A4 invoice layout.
+- [Journal, Offers and Support pages](design-assets/JOURNAL_OFFERS_SUPPORT_PAGES.svg): Journal listing/detail, offer/collection, size guide and contact support.
+- [Inventory and sold-out states](design-assets/INVENTORY_STOCK_STATES.svg): variant-level available/reserved/on-hand values, sold-out cards and disabled variant selection.
+- [Responsive and state coverage](design-assets/RESPONSIVE_AND_STATE_COVERAGE.svg): desktop/tablet/mobile catalog, Product Studio, checkout and admin layout intent.
+
+### Admin media boards
+- [Hero campaign and 360° Spin Builder](design-assets/ADMIN_HERO_CAMPAIGN_AND_SPIN_BUILDER.svg): three-slide editorial campaign manager, poster/video editing, live preview, capture upload, frame extraction and human approval.
+- Admin media workflow remains protected and role-checked. Active hero campaigns are CMS-managed; publishing a homepage campaign does not send email.
+- Product availability is derived from available inventory quantity at variant/SKU level; zero available quantity automatically presents a sold-out variant state. A product remains browseable when sold out, and a product-level Sold Out state is used only when all purchasable variants are unavailable.
+
+### Hero-video design recommendation
+Use a real campaign photograph as the poster and optionally pair it with a 6–10 second muted, seamless loop featuring a real Naffeez product. Three example campaign directions are Shirts, Trousers and Winter/Hoodies, but the admin selects the actual published product/collection. The active slide alone plays media; posters are required and all playback failures/constrained preferences fall back to the poster.
+
+### 360° spin design recommendation
+The proposed first tool creates a photograph-sequence spin, not a real 3D geometry model. Preferred input is a complete fixed-camera rotation capture or an ordered real-frame set; 24/36/72 are proposed output presets with 36 as default. Four to ten isolated images remain gallery angles and are not enough for a truthful full rotation without invented intermediate views. Admin must inspect and approve the result, and the customer loads it only after choosing “360° view”.
+
+See [Hero Video Campaign and 360° Spin Builder Specification](HERO_VIDEO_AND_360_SPIN_BUILDER_SPEC.md) for the detailed workflow and acceptance rules.
