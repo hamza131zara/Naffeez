@@ -8,7 +8,7 @@ This directory is the source of truth for product requirements, UX, visual desig
 |---|---|---|---|
 | 1 | [phase-1](phase-1/) | Product scope and initial UI/UX baseline | Accepted |
 | 2 | [phase-2](phase-2/) | PRD, system architecture, data/API/security/workflow/notification contracts | Approved and merged into main |
-| 3 | [phase-3](phase-3/) | Visual design system, website templates, complete customer/admin workflows, component library and frontend architecture | Design pack and first Figma visual tranche prepared; owner review pending |
+| 3 | [phase-3](phase-3/) | Visual design system, website templates, complete customer/admin workflows, component library and frontend architecture | Written design pack, first native Figma tranche and additional SVG workflow boards prepared; owner review pending |
 | 4 | [phase-4](phase-4/) | MVP development execution | Planned |
 | 5 | [phase-5](phase-5/) | QA, security, accessibility and performance | Planned |
 | 6 | [phase-6](phase-6/) | Deployment, operations and maintenance | Planned |
