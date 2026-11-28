@@ -362,3 +362,12 @@ Implementation contract:
 - Test 320, 360, 390, 430, 768, 820, 1024, 1280, 1440 and 1920px in Light/Dark/System.
 
 Do not change approved styling tokens/components solely to fix spacing. No layout is considered responsive until browser screenshots and interaction checks pass at the defined widths.
+
+
+## 15. Phase 4 implementation notes
+
+The initial app shell and public storefront code are being implemented in `src/app`, `src/components` and `src/lib`. The first slice uses Next.js App Router and server-side Supabase catalog reads, with guest-only localStorage wishlist/compare/cart foundations. The app does not seed fake product data.
+
+The responsive refinements from `RESPONSIVE_LAYOUT_REFINEMENT_CHECKLIST.md` are implemented in the shared CSS container/breakpoint layer, but no browser screenshot evidence is claimed yet.
+
+Checkout, payment review, invoice and operational admin are intentionally not active until the dedicated Supabase project, required RLS/grants and owner decisions are resolved. A server-only Supabase secret client boundary exists but is not wired to any action in this slice.
