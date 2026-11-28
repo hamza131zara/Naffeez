@@ -267,3 +267,11 @@ States derive from server-authoritative variant data: In Stock, Sold Out, Mixed 
 
 ### SpinViewer
 An optional image-sequence viewer associated with a product/variant and approved frame list. Lazy-load only after explicit user activation; desktop drag/keyboard and mobile swipe; poster and standard gallery fallback. Do not conflate this component with a geometry-based 3D model viewer.
+
+
+## 16. Light theme and scroll motion review links
+
+- Light mode preview: [Light Theme Review Board](design-assets/LIGHT_THEME_REVIEW_BOARD.svg).
+- Onda motion source analysis: [Motion Pattern Evaluation](MOTION_PATTERN_EVALUATION.md).
+- Two proposed effects only: subtle section text rise/reveal and circular editorial image-mask reveal.
+- Final section placement is owner-reviewed and remains unapproved. Do not add scroll motion to product-card grids, gallery zoom, checkout, invoice controls or admin tables.
