@@ -213,7 +213,7 @@ Contact, WhatsApp, shipping, COD and invoice fields.
 ### Completed in first development slice
 - DEV-0001 — repository audit completed: no previous app scaffold or package manifest existed.
 - DEV-0002 — stack selected and exact package versions pinned in `package.json`; Node >=22. A package lock still needs to be generated in the installed development environment.
-- DEV-0003 — lint, typecheck, unit-test and build scripts plus GitHub Actions workflow added. Passing CI evidence is pending.
+- DEV-0003 — lint, typecheck, unit-test and build scripts plus GitHub Actions workflow added. Latest CI run #106 passed dependency install, typecheck, lint, unit tests and production build; package lock and local replay remain outstanding.
 - DEV-0004 — safe `.env.example` created; no real secrets committed.
 - DEV-0101 — semantic Light/Dark tokens and first-load theme preference bootstrap added; System follows OS preference.
 - DEV-0102 — shared container and responsive breakpoints implemented in CSS.
