@@ -37,7 +37,7 @@ export default async function ProductStudioPage({ params }: { params: Params }) 
             <p className="form-note">No purchasable variants have been configured for this product yet.</p>
           )}
           <p className="size-guide-note">Size guide: measurements will be published when the approved Naffeez size charts are available.</p>
-          <Link className="whatsapp-link" href="https://wa.me/923716492220" target="_blank" rel="noreferrer">Ask Naffeez about this product ↗</Link>
+          <Link className="whatsapp-link" href="/contact">Ask Naffeez about this product ↗</Link>
         </section>
       </div>
     </div>
