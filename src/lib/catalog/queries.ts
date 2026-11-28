@@ -2,6 +2,7 @@ import "server-only";
 
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import type { Category, Product, ProductImage, ProductVariant } from "./types";
+import { getAvailableQuantity } from "./availability.mjs";
 
 type RawImage = {
   id: string;
@@ -56,7 +57,7 @@ function mapProduct(
   const variants: ProductVariant[] = (row.product_variants ?? []).map((variant) => {
     const level = variant.inventory_levels?.[0];
     const available = level
-      ? Math.max(0, level.quantity_on_hand - level.quantity_reserved)
+      ? getAvailableQuantity(level.quantity_on_hand, level.quantity_reserved)
       : null;
     return {
       id: variant.id,
