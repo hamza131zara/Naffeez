@@ -33,6 +33,7 @@ export function ProductCard({ product }: Props) {
     const ids = readIds(key);
     if (value) {
       window.localStorage.setItem(key, JSON.stringify(ids.filter((id) => id !== product.id)));
+      window.dispatchEvent(new Event("naffeez:wishlist-updated"));
       setter(false);
       return;
     }
@@ -41,6 +42,7 @@ export function ProductCard({ product }: Props) {
       return;
     }
     window.localStorage.setItem(key, JSON.stringify([...ids.filter((id) => id !== product.id), product.id]));
+    if (key === "naffeez-wishlist") window.dispatchEvent(new Event("naffeez:wishlist-updated"));
     setter(true);
   }
 
