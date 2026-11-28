@@ -19,24 +19,35 @@ type CartLine = {
 
 const CART_KEY = "naffeez-cart-v1";
 
+function readCartSnapshot(): CartLine[] {
+  try {
+    const value: unknown = JSON.parse(window.localStorage.getItem(CART_KEY) ?? "[]");
+    return Array.isArray(value) ? value as CartLine[] : [];
+  } catch {
+    return [];
+  }
+}
+
 export function CartView() {
   const [lines, setLines] = useState<CartLine[]>([]);
   const [ready, setReady] = useState(false);
 
-  function readCart() {
-    try {
-      const value = JSON.parse(window.localStorage.getItem(CART_KEY) ?? "[]");
-      setLines(Array.isArray(value) ? value as CartLine[] : []);
-    } catch {
-      setLines([]);
-    }
-    setReady(true);
-  }
-
   useEffect(() => {
-    readCart();
-    window.addEventListener("naffeez:cart-updated", readCart);
-    return () => window.removeEventListener("naffeez:cart-updated", readCart);
+    let active = true;
+
+    async function syncCart() {
+      const next = await Promise.resolve().then(readCartSnapshot);
+      if (!active) return;
+      setLines(next);
+      setReady(true);
+    }
+
+    void syncCart();
+    window.addEventListener("naffeez:cart-updated", syncCart);
+    return () => {
+      active = false;
+      window.removeEventListener("naffeez:cart-updated", syncCart);
+    };
   }, []);
 
   function save(next: CartLine[]) {
