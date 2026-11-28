@@ -53,7 +53,7 @@ npm test
 npm run build
 ```
 
-A lockfile has not yet been generated because dependencies were not installed in this repository-editing session. Generate and commit `package-lock.json` from the development environment after running `npm install`.
+GitHub Actions run #106 passed install, typecheck, lint, unit tests and production build. A `package-lock.json` is still not committed; run `npm install` in the development environment and commit the generated lockfile so installs are reproducible.
 
 ## Documentation
 
