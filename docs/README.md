@@ -51,6 +51,7 @@ This directory is the source of truth for product requirements, UX, visual desig
 11. [Figma Visual Design Handoff](phase-3/FIGMA_VISUAL_DESIGN_HANDOFF.md)
 12. [Commerce and Admin Visual Workflow Blueprint](phase-3/COMMERCE_AND_ADMIN_VISUAL_WORKFLOW_BLUEPRINT.md)
 13. [Hero Video Campaign and 360° Spin Builder](phase-3/HERO_VIDEO_AND_360_SPIN_BUILDER_SPEC.md)
+14. [Responsive Layout Refinement Checklist](phase-3/RESPONSIVE_LAYOUT_REFINEMENT_CHECKLIST.md)
 14. [Motion Pattern Evaluation](phase-3/MOTION_PATTERN_EVALUATION.md)
 11. [Figma Visual Design Handoff](phase-3/FIGMA_VISUAL_DESIGN_HANDOFF.md)
 12. [Commerce and Admin Visual Workflow Blueprint](phase-3/COMMERCE_AND_ADMIN_VISUAL_WORKFLOW_BLUEPRINT.md)
