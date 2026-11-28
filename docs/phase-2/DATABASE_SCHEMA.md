@@ -47,7 +47,7 @@ Admin membership belongs in private.admin_memberships, not customer-controlled p
 | products | id, slug, title, description, status, base_price_minor, category_id, material, fit, season, published_at, created_at, updated_at | Only published products appear publicly |
 | product_media | id, product_id, storage_path, alt_text, sort_order, media_role, variant_id nullable, zoom_storage_path nullable, detail_label nullable | Public catalog image plus its own optional high-resolution inspection source; variant association is used when imagery differs by variant. Paths are storage paths, not customer uploads |
 | product_variants | id, product_id, sku, size_label, color_name, color_code, price_override_minor, is_active | SKU unique; variant-specific price optional |
-| inventory_levels | variant_id, quantity_on_hand, quantity_reserved, low_stock_threshold, updated_at | One row per variant; available = on_hand - reserved |
+| inventory_levels | variant_id, quantity_on_hand, quantity_reserved, low_stock_threshold, is_in_stock (generated boolean), updated_at | One row per variant; available = on_hand - reserved. Public Data API reads should expose only the derived `is_in_stock` boolean, never exact quantity columns. |
 | inventory_movements | id, variant_id, movement_type, quantity_delta, reason, reference_type, reference_id, actor_id, created_at | Append-only stock ledger |
 | inventory_reservations | id, variant_id, order_id, quantity, status, expires_at, released_at, created_at | Reservation lifecycle and expiry policy require owner decision |
 | collection_products | collection_id, product_id, sort_order | Many-to-many collection membership |
@@ -247,3 +247,16 @@ The first Phase 4 Product Studio implementation requires the gallery contract to
 Each row's `storage_path` is the normal gallery source. Its optional `zoom_storage_path` must show the same image/variant at higher resolution. Missing zoom paths mean no magnifier/inspection action is shown. Do not infer a zoom file from a different gallery angle.
 
 This is a logical-schema update only. An executable migration and storage policy have not been applied because the Naffeez Supabase project has not yet been selected or configured. Generate the migration through the Supabase CLI after project initialization and test it against a local/test project before applying it to a shared environment.
+
+
+## 14. Phase 4 public catalog access contract
+
+The Phase 4 storefront's public Supabase adapter now reads only a derived availability flag from each variant's inventory relationship:
+
+- Add `inventory_levels.is_in_stock` as a stored generated boolean based on `quantity_on_hand > quantity_reserved`.
+- Grant `anon` and `authenticated` SELECT only on `variant_id` and `is_in_stock`; do not grant public SELECT on `quantity_on_hand`, `quantity_reserved` or `low_stock_threshold`.
+- Keep exact stock counts available only to trusted server-side operations using an appropriately protected secret key.
+- Product gallery and high-resolution zoom objects belong in a private `product-media` bucket. The application requests 1-hour signed URLs; a Storage SELECT policy must require a matching `public.product_media` row whose product is published (and whose associated variant is active, when a variant is specified).
+- Do not create the bucket until the policy and catalog table RLS/grants are applied together. Public buckets bypass object read controls and are not suitable for draft product media.
+
+These contracts are implemented in the Phase 4 query adapter, but remain pending the executable migration and database allow/deny tests.
