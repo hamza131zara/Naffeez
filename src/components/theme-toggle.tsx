@@ -23,16 +23,26 @@ export function ThemeToggle() {
   const [preference, setPreference] = useState<ThemePreference>("system");
 
   useEffect(() => {
-    const initial = getPreference();
-    setPreference(initial);
-    applyTheme(initial);
-
+    let active = true;
     const media = window.matchMedia("(prefers-color-scheme: dark)");
     const onSystemChange = () => {
       if (getPreference() === "system") applyTheme("system");
     };
+
+    async function hydratePreference() {
+      await Promise.resolve();
+      if (!active) return;
+      const initial = getPreference();
+      setPreference(initial);
+      applyTheme(initial);
+    }
+
+    void hydratePreference();
     media.addEventListener("change", onSystemChange);
-    return () => media.removeEventListener("change", onSystemChange);
+    return () => {
+      active = false;
+      media.removeEventListener("change", onSystemChange);
+    };
   }, []);
 
   function cycleTheme() {
