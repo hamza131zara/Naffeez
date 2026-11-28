@@ -66,7 +66,7 @@ Implement chosen email/OTP/recovery flow and secure session handling.
 ### DEV-0205 — Admin membership
 Seed/grant owner membership through a controlled server/admin operation; never permit self-elevation.
 ### DEV-0206 — Storage buckets
-Create product-media, homepage-media, QR, payment-proof and invoice storage with intended public/private boundaries.
+Create product-media, homepage-media, QR, payment-proof and invoice storage with intended public/private boundaries. Product media must be private and served by short-lived signed URLs only when referenced by a published product; the catalog adapter is prepared for this contract.
 ### DEV-0207 — Audit events
 Create server-side audit writer for sensitive admin/payment/stock/role/config actions.
 **Milestone gate:** security tests prove customer separation and admin-only access.
