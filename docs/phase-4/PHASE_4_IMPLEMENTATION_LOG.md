@@ -31,6 +31,7 @@
 - Shop, category, title search and Product Studio routes.
 - Product cards with same-product alternate-image hover, wishlist, compare and Quick View actions.
 - Product Studio gallery, per-image zoom-source contract, desktop cursor lens when a high-resolution source exists, and detail viewer.
+- Catalog adapter requests short-lived signed URLs for product/zoom images and reads only a derived boolean stock-availability field, not raw inventory quantities.
 - Variant selection and stock-state presentation based on available quantity where database data exists.
 - Guest local-browser wishlist, compare and cart-review foundations.
 - Account/admin/checkout and policy placeholders that do not bypass unresolved owner decisions.
@@ -51,16 +52,15 @@
 
 ## Owner/environment blockers
 
-1. Select/provision a dedicated Naffeez Supabase project (organization, region and any cost approval). No existing inactive project was reused.
-2. Choose authentication method and account/guest behavior.
-3. Supply size charts and measurement units.
-4. Confirm delivery coverage, charges and COD regions.
-5. Confirm returns/exchange rules.
-6. Supply approved Easypaisa/bank account QR assets and transaction proof/reference rules.
-7. Decide stock reservation timing and expiry.
-8. Supply invoice seller/legal/tax/numbering requirements.
-9. Confirm staff roles/permissions and operational alert recipients.
-10. Supply real product photography, variants, prices and policy copy before production content is published.
+1. Choose authentication method and account/guest behavior.
+2. Supply size charts and measurement units.
+3. Confirm delivery coverage, charges and COD regions.
+4. Confirm returns/exchange rules.
+5. Supply approved Easypaisa/bank account QR assets and transaction proof/reference rules.
+6. Decide stock reservation timing and expiry.
+7. Supply invoice seller/legal/tax/numbering requirements.
+8. Confirm staff roles/permissions and operational alert recipients.
+9. Supply real product photography, variants, prices and policy copy before production content is published.
 
 ## Supabase provisioning status — 2026-11-28
 
@@ -69,7 +69,7 @@
 - Project URL: `https://tglnolhzjapcbkzdwybe.supabase.co`.
 - Database inspection returned no migrations and no application tables in `public` or `private`; no schema has been applied.
 - The publishable key was retrieved for local configuration but is intentionally not committed to the repository. No service-role/secret key was retrieved or stored.
-- The current storefront query uses `getPublicUrl()`. Because product media should remain private until the associated product is published, the adapter must switch to signed URLs before a private `product-media` bucket is configured.
+- The storefront adapter has been updated to request 1-hour signed URLs for product media and zoom images. The database migration must enforce Storage-object reads only for files referenced by published products before the private bucket is provisioned.
 - The repository-editing environment does not have the Supabase CLI or Docker. Therefore no local migration file was generated, no local migration test was run, and no remote migration was applied.
 
 ## Verification status
