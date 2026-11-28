@@ -38,8 +38,12 @@ export function WishlistView() {
   }, []);
 
   useEffect(() => {
-    void refresh();
-    const handler = () => { void refresh(); };
+    const sync = async () => {
+      await refresh();
+    };
+
+    void sync();
+    const handler = () => { void sync(); };
     window.addEventListener("naffeez:wishlist-updated", handler);
     return () => window.removeEventListener("naffeez:wishlist-updated", handler);
   }, [refresh]);
