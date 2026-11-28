@@ -31,6 +31,8 @@
 - Shop, category, title search and Product Studio routes.
 - Product cards with same-product alternate-image hover, wishlist, compare and Quick View actions.
 - Product Studio gallery, per-image zoom-source contract, desktop cursor lens when a high-resolution source exists, and detail viewer.
+- Catalog adapter requests 1-hour signed URLs for product/zoom images and reads only a derived boolean stock-availability field, not raw inventory quantities.
+- Generated public-schema TypeScript database types are committed at `src/lib/supabase/database.types.ts`; the server Supabase client uses the generated `Database` type.
 - Catalog adapter requests short-lived signed URLs for product/zoom images and reads only a derived boolean stock-availability field, not raw inventory quantities.
 - Variant selection and stock-state presentation based on available quantity where database data exists.
 - Guest local-browser wishlist, compare and cart-review foundations.
@@ -39,7 +41,6 @@
 
 ## Not yet implemented
 
-- Applied catalog migrations, explicit grants, RLS allow/deny tests and private Storage setup. The dedicated project now exists, but its database is still empty.
 - Customer authentication/recovery and verified guest order capabilities.
 - Admin login, role membership, protected operational dashboard and product/inventory/media CMS.
 - Actual database-backed homepage campaign editor and hero video playback.
@@ -67,10 +68,15 @@
 - Dedicated project `tglnolhzjapcbkzdwybe` provisioned in Mumbai (`ap-south-1`); latest project status check returned `ACTIVE_HEALTHY`.
 - Quoted project creation cost: `$0/month` on the organization's Free plan at creation time.
 - Project URL: `https://tglnolhzjapcbkzdwybe.supabase.co`.
-- Database inspection returned no migrations and no application tables in `public` or `private`; no schema has been applied.
+- Applied remote migrations: `20261128142143_catalog_foundation`, `20261128142218_catalog_foundation_hardening` and `20261128142311_catalog_availability_not_null`.
+- Created catalog tables in `public`: categories, collections, products, product_variants, product_media, inventory_levels, inventory_movements and collection_products; created private tables: admin_memberships, audit_events and store_settings. All have RLS enabled. No real category/product data has been seeded; all tables contain zero rows.
+- The private `product-media` bucket is created with `public=false`, plus an object SELECT policy requiring a matching published product/media record and an active variant where relevant.
 - The publishable key was retrieved for local configuration but is intentionally not committed to the repository. No service-role/secret key was retrieved or stored.
 - The storefront adapter has been updated to request 1-hour signed URLs for product media and zoom images. The database migration must enforce Storage-object reads only for files referenced by published products before the private bucket is provisioned.
-- The repository-editing environment does not have the Supabase CLI or Docker. Therefore no local migration file was generated, no local migration test was run, and no remote migration was applied.
+- Supabase Security Advisors return no current security lints. Performance Advisors show informational unused-index notices because the new tables are empty and have not received query traffic.
+- A transaction-based anon-role test verified active categories, published products, active variants and the stock flag are visible; draft products are hidden. The transaction rolled back cleanly.
+- Privilege checks verified anon cannot insert products, authenticated cannot update products, and anon can read `is_in_stock` but cannot read raw on-hand/reserved quantities.
+- The repository-editing environment does not have the Supabase CLI or Docker. The migration source files were reconstructed from the SQL applied successfully via the Supabase management tool and committed using the matching remote migration versions. No local `supabase db reset`, app npm install, lint, typecheck, unit tests, build or browser checks have run in this environment.
 
 ## Verification status
 
