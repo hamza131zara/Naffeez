@@ -244,3 +244,26 @@ Keyboard focus inside the card exposes the same actions and visible focus stylin
 If `secondaryImage` is missing, do not crossfade to a blank/duplicate image. Wishlist and Compare do not navigate; Quick View opens a focus-managed dialog; Select Options opens variant selection or Product Studio. Reduced-motion mode swaps states without scale/lift animation.
 
 **Visual source:** [Product Card — Default and Hover Preview](design-assets/PRODUCT_CARD_HOVER_PREVIEW.svg). Runtime behavior is specified here for Phase 4; the SVG is a static design specimen, not working interaction code.
+
+
+## 15. Hero media, stock availability and 360° view components
+
+### HeroSlideMedia
+Props/data: poster image (required), optional video source, desktop/mobile crop, focal point, alt/accessible description, playback eligibility, slide active/visible state and reduced-motion/data-saving preference.
+- Poster is always rendered first and remains the fallback.
+- Video is muted/inline, plays only when the slide is active and visible, and pauses when inactive/offscreen.
+- The carousel controls and slide CTA remain usable when video is unavailable.
+- No audio autoplay and no initial download of all slide videos.
+
+### HeroCampaignSlide
+Fields: eyebrow, headline, description, CTA label/destination, optional published product/collection reference, poster, optional video, active dates, order and publication status. One primary CTA per slide.
+
+### StockAvailabilityBadge
+States derive from server-authoritative variant data: In Stock, Sold Out, Mixed Availability (product has available and unavailable variants), or Unavailable/unknown while data is loading/error. Do not use fabricated stock counts or urgency copy.
+- Disable only the unavailable color/size combination.
+- Product-level Sold Out appears only when all purchasable variants are unavailable.
+- A product may remain published and browseable when sold out.
+- Revalidate stock on cart/checkout.
+
+### SpinViewer
+An optional image-sequence viewer associated with a product/variant and approved frame list. Lazy-load only after explicit user activation; desktop drag/keyboard and mobile swipe; poster and standard gallery fallback. Do not conflate this component with a geometry-based 3D model viewer.
