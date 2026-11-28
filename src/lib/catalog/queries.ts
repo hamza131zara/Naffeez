@@ -23,7 +23,7 @@ type RawVariant = {
   color_code: string | null;
   price_override_minor: number | null;
   is_active: boolean;
-  inventory_levels?: { quantity_on_hand: number; quantity_reserved: number }[] | null;
+  inventory_levels?: { is_in_stock: boolean }[] | null;
 };
 
 type RawProduct = {
@@ -37,34 +37,53 @@ type RawProduct = {
   product_variants?: RawVariant[] | null;
 };
 
-function mapProduct(
+async function mapProduct(
   client: NonNullable<Awaited<ReturnType<typeof createSupabaseServerClient>>>,
   row: RawProduct
-): Product {
-  const images: ProductImage[] = (row.product_media ?? [])
+): Promise<Product> {
+  const media = (row.product_media ?? [])
     .slice()
-    .sort((a, b) => (a.sort_order ?? 0) - (b.sort_order ?? 0))
-    .map((image) => {
-      const { data } = client.storage.from("product-media").getPublicUrl(image.storage_path);
+    .sort((a, b) => (a.sort_order ?? 0) - (b.sort_order ?? 0));
+
+  const signedImages = await Promise.all(
+    media.map(async (image): Promise<ProductImage | null> => {
+      const storage = client.storage.from("product-media");
+      const { data: imageData, error: imageError } = await storage.createSignedUrl(
+        image.storage_path,
+        60 * 60
+      );
+
+      if (imageError || !imageData?.signedUrl) {
+        console.error("[catalog] Product media signing failed");
+        return null;
+      }
+
+      let zoomSrc: string | null = null;
+      if (image.zoom_storage_path) {
+        const { data: zoomData, error: zoomError } = await storage.createSignedUrl(
+          image.zoom_storage_path,
+          60 * 60
+        );
+        if (!zoomError && zoomData?.signedUrl) zoomSrc = zoomData.signedUrl;
+      }
+
       return {
         id: image.id,
-        src: data.publicUrl,
+        src: imageData.signedUrl,
         alt: image.alt_text || row.title,
         sortOrder: image.sort_order ?? 0,
         mediaRole: image.media_role,
         variantId: image.variant_id,
-        zoomSrc: image.zoom_storage_path
-          ? client.storage.from("product-media").getPublicUrl(image.zoom_storage_path).data.publicUrl
-          : null,
+        zoomSrc,
         detailLabel: image.detail_label
       };
-    });
+    })
+  );
+
+  const images = signedImages.filter((image): image is ProductImage => image !== null);
 
   const variants: ProductVariant[] = (row.product_variants ?? []).map((variant) => {
     const level = variant.inventory_levels?.[0];
-    const availableQuantity = level
-      ? getAvailableQuantity(level.quantity_on_hand, level.quantity_reserved)
-      : null;
     return {
       id: variant.id,
       sku: variant.sku,
@@ -73,7 +92,7 @@ function mapProduct(
       colorCode: variant.color_code,
       priceOverrideMinor: variant.price_override_minor,
       isActive: variant.is_active,
-      isInStock: availableQuantity === null ? null : availableQuantity > 0
+      isInStock: level ? level.is_in_stock : null
     };
   });
 
@@ -94,7 +113,7 @@ const PRODUCT_SELECT = `
   product_media(id, storage_path, alt_text, sort_order, media_role, variant_id, zoom_storage_path, detail_label),
   product_variants(
     id, sku, size_label, color_name, color_code, price_override_minor, is_active,
-    inventory_levels(quantity_on_hand, quantity_reserved)
+    inventory_levels(is_in_stock)
   )
 `;
 
@@ -137,7 +156,7 @@ export async function getPublishedProducts(options?: {
   }
 
   return {
-    products: (data as unknown as RawProduct[]).map((row) => mapProduct(client, row)),
+    products: await Promise.all((data as unknown as RawProduct[]).map((row) => mapProduct(client, row))),
     configured: true,
     unavailable: false
   };
@@ -159,7 +178,7 @@ export async function getPublishedProductBySlug(slug: string): Promise<Product |
     return null;
   }
 
-  return data ? mapProduct(client, data as unknown as RawProduct) : null;
+  return data ? await mapProduct(client, data as unknown as RawProduct) : null;
 }
 
 export async function getActiveCategories(): Promise<Category[]> {
@@ -204,5 +223,5 @@ export async function getPublishedProductsByIds(ids: string[]): Promise<Product[
     return [];
   }
 
-  return (data as unknown as RawProduct[]).map((row) => mapProduct(client, row));
+  return Promise.all((data as unknown as RawProduct[]).map((row) => mapProduct(client, row)));
 }
