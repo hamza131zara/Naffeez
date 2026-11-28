@@ -18,7 +18,7 @@
 - Next.js App Router 16.4.6, React 19.3.1, TypeScript 5.9.3, Node.js >=22.
 - Supabase adapters use `@supabase/ssr` 0.12.7 and `@supabase/supabase-js` 2.119.2.
 - Package versions are pinned in `package.json`. A lockfile has not been generated because dependencies were not installed in the repository-editing environment.
-- A dedicated Naffeez Supabase project is not configured. Existing inactive projects belong to other work and were not selected or modified.
+- Dedicated Naffeez Supabase project `tglnolhzjapcbkzdwybe` was created in Mumbai (`ap-south-1`) on 2026-11-28. It reports `ACTIVE_HEALTHY`; quoted project creation cost was `$0/month` on the Free organization. Existing inactive projects remain untouched.
 
 ## Implemented in the first slice
 
@@ -38,7 +38,7 @@
 
 ## Not yet implemented
 
-- Dedicated Supabase project provisioning, applied migrations, grants, RLS tests and storage buckets.
+- Applied catalog migrations, explicit grants, RLS allow/deny tests and private Storage setup. The dedicated project now exists, but its database is still empty.
 - Customer authentication/recovery and verified guest order capabilities.
 - Admin login, role membership, protected operational dashboard and product/inventory/media CMS.
 - Actual database-backed homepage campaign editor and hero video playback.
@@ -61,6 +61,16 @@
 8. Supply invoice seller/legal/tax/numbering requirements.
 9. Confirm staff roles/permissions and operational alert recipients.
 10. Supply real product photography, variants, prices and policy copy before production content is published.
+
+## Supabase provisioning status — 2026-11-28
+
+- Dedicated project `tglnolhzjapcbkzdwybe` provisioned in Mumbai (`ap-south-1`); latest project status check returned `ACTIVE_HEALTHY`.
+- Quoted project creation cost: `$0/month` on the organization's Free plan at creation time.
+- Project URL: `https://tglnolhzjapcbkzdwybe.supabase.co`.
+- Database inspection returned no migrations and no application tables in `public` or `private`; no schema has been applied.
+- The publishable key was retrieved for local configuration but is intentionally not committed to the repository. No service-role/secret key was retrieved or stored.
+- The current storefront query uses `getPublicUrl()`. Because product media should remain private until the associated product is published, the adapter must switch to signed URLs before a private `product-media` bucket is configured.
+- The repository-editing environment does not have the Supabase CLI or Docker. Therefore no local migration file was generated, no local migration test was run, and no remote migration was applied.
 
 ## Verification status
 
