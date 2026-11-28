@@ -51,6 +51,7 @@ This directory is the source of truth for product requirements, UX, visual desig
 11. [Figma Visual Design Handoff](phase-3/FIGMA_VISUAL_DESIGN_HANDOFF.md)
 12. [Commerce and Admin Visual Workflow Blueprint](phase-3/COMMERCE_AND_ADMIN_VISUAL_WORKFLOW_BLUEPRINT.md)
 13. [Hero Video Campaign and 360° Spin Builder](phase-3/HERO_VIDEO_AND_360_SPIN_BUILDER_SPEC.md)
+14. [Motion Pattern Evaluation](phase-3/MOTION_PATTERN_EVALUATION.md)
 11. [Figma Visual Design Handoff](phase-3/FIGMA_VISUAL_DESIGN_HANDOFF.md)
 12. [Commerce and Admin Visual Workflow Blueprint](phase-3/COMMERCE_AND_ADMIN_VISUAL_WORKFLOW_BLUEPRINT.md)
 
@@ -65,6 +66,8 @@ This directory is the source of truth for product requirements, UX, visual desig
 - [Admin Hero Campaign and 360° Spin Builder](phase-3/design-assets/ADMIN_HERO_CAMPAIGN_AND_SPIN_BUILDER.svg)
 - [Inventory and Sold-out States](phase-3/design-assets/INVENTORY_STOCK_STATES.svg)
 - [Responsive and State Coverage](phase-3/design-assets/RESPONSIVE_AND_STATE_COVERAGE.svg)
+- [Light Theme Review Board](phase-3/design-assets/LIGHT_THEME_REVIEW_BOARD.svg)
+- [Motion Pattern Preview](phase-3/design-assets/MOTION_PATTERN_PREVIEW.svg)
 11. [Figma Visual Design Handoff](phase-3/FIGMA_VISUAL_DESIGN_HANDOFF.md)
 
 ## Phase 4–6 execution plans
