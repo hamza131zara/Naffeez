@@ -95,7 +95,7 @@ Completed and approved.
 
 # Phase 3 — Visual design, website templates and detailed frontend architecture
 
-**Status:** Design documentation and multiple visual tranches prepared, including Light-mode and motion review boards; native Figma import/visual QA and owner approval remain pending.  
+**Status:** Owner accepted Light/Dark visual directions and both motion styles (2026-11-28); native Figma import, full responsive/accessibility QA, remaining P0 detail and owner business inputs remain before Phase 3 exit.  
 **Purpose:** Turn the accepted UX and technical baselines into the final website design and implementation-ready frontend plan before any application coding starts.
 
 ## P3-01 — Design baseline and reference analysis
@@ -348,3 +348,10 @@ These are explicitly outside the initial launch dependency chain:
 - Do not treat an unresolved business policy as an implementation default.
 - Keep old decisions traceable; don't silently rewrite accepted baselines.
 - Use a pull request for each phase gate.
+
+
+## Phase 3 owner approval update — 2026-11-28
+
+The owner accepted the Light and Dark visual directions and both proposed Onda-inspired motion styles: restrained section text reveal and circular image-mask reveal. This closes the visual-direction decision for theme and motion. It does not close native Figma import, all-route responsive/accessibility QA, exact motion placement, P0 design completeness or the owner business decisions listed in the Phase 3 handoff.
+
+Phase 4 remains gated on documented Phase 3 exit sign-off.
