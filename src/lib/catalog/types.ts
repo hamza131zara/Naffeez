@@ -17,7 +17,7 @@ export type ProductVariant = {
   colorCode: string | null;
   priceOverrideMinor: number | null;
   isActive: boolean;
-  availableQuantity: number | null;
+  isInStock: boolean | null;
 };
 
 export type Product = {
