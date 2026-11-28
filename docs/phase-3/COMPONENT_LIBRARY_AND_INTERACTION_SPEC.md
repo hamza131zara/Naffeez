@@ -219,3 +219,28 @@ Optional product-detail hotspots may mark fabric/stitching/collar/cuff details o
 - [ ] Touch and keyboard magnification controls exist.
 - [ ] High-resolution source failure falls back to standard image viewing.
 
+
+
+## 10. Product card alternate-image hover preview
+
+The product-card visual has two states for the **same SKU**. The hover preview is not a second product card with unrelated imagery.
+
+### Default state
+- Keep the compact 3:4 image stage and primary/front product image.
+- Show a source-backed badge only when supplied by catalog data (for example, New).
+- Keep product title and current PKR price visible below the image.
+- Keep a discoverable Wishlist action; all other controls remain reachable through keyboard/touch patterns.
+
+### Hover preview state
+1. Crossfade to a distinct secondary image of the same SKU (front to back/alternate angle) over 180–240ms.
+2. Lift the card by approximately 2–3px and scale only the clipped image to about 1.025–1.04.
+3. Reveal Wishlist, Compare and Quick View as a compact action stack.
+4. Reveal a `Select Options` CTA at the bottom of the image stage.
+5. Keep image/card dimensions and the product metadata position unchanged to avoid layout shift.
+6. On pointer leave, restore the primary image and default control presentation.
+
+Keyboard focus inside the card exposes the same actions and visible focus styling. Touch layouts must not require a hover simulation or a first tap solely to reveal controls; keep essential actions visible or place them behind a labelled action control.
+
+If `secondaryImage` is missing, do not crossfade to a blank/duplicate image. Wishlist and Compare do not navigate; Quick View opens a focus-managed dialog; Select Options opens variant selection or Product Studio. Reduced-motion mode swaps states without scale/lift animation.
+
+**Visual source:** [Product Card — Default and Hover Preview](design-assets/PRODUCT_CARD_HOVER_PREVIEW.svg). Runtime behavior is specified here for Phase 4; the SVG is a static design specimen, not working interaction code.
