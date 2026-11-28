@@ -205,3 +205,31 @@ Reusable local components created in the Figma file include icon artwork, garmen
 3. Supply approved product imagery (including separate front/fabric/stitching high-resolution files) for the next visual pass.
 4. Continue the remaining customer/admin screens and states from Section 4.
 5. Complete visual QA and update the acceptance checklist before Phase 4 begins.
+
+
+## 12. Additional visual tranche — commerce and admin workflow screens
+
+The next screen inventory is now defined in [Commerce, Cart, Checkout, Invoice, Account, Notifications and Admin Visual Workflow Blueprint](COMMERCE_AND_ADMIN_VISUAL_WORKFLOW_BLUEPRINT.md).
+
+Importable vector design boards have been added to `docs/phase-3/design-assets/`:
+- [Product card hover preview](design-assets/PRODUCT_CARD_HOVER_PREVIEW.svg) — same-SKU default/front and hover/alternate image with action controls and Select Options CTA.
+- [Customer commerce screens](design-assets/COMMERCE_CUSTOMER_WORKFLOWS.svg) — catalog, cart, checkout, QR pending-verification result, account/invoice access and notification preferences.
+- [Admin operations screens](design-assets/ADMIN_OPERATIONS_WORKFLOWS.svg) — overview queues, product editor/gallery mapping, order/payment review, Journal/campaign operations, inventory alerts, invoice/audit/integrations.
+- [Customer/admin workflow map](design-assets/CUSTOMER_ADMIN_WORKFLOW_MAP.svg) — COD and QR branches, payment truth, actual receipt check and customer status updates.
+
+**Figma import status:** These boards are SVG source assets committed to this Phase 3 branch. They are not yet native frames inside the Naffeez Figma file because the Figma Starter-plan MCP edit quota was reached. Import the SVG boards into the existing Figma file, organize them on the workflow page and complete visual QA when editing capacity is available.
+
+## 13. Additional visual acceptance criteria
+
+- [ ] Same-SKU product card switches from primary to a distinct alternate image on hover.
+- [ ] Wishlist, Compare and Quick View controls appear in the hover state.
+- [ ] Select Options appears without moving product title/price.
+- [ ] Keyboard focus exposes the same actions; mobile does not depend on hover.
+- [ ] Catalog filters use only current published product attributes.
+- [ ] Cart/checkout totals are recalculated server-side and delivery charges use confirmed configuration.
+- [ ] COD remains due until actual collection is recorded.
+- [ ] QR payment remains pending until an authorized operator checks actual account receipt.
+- [ ] Invoice is generated from immutable order snapshot and protected for customer/admin access.
+- [ ] Transactional inbox is separate from optional topic-based marketing consent.
+- [ ] Admin role checks, private proof/invoice access and audit reasons are visibly represented.
+- [ ] SVGs are imported to the native Figma source, visually checked and owner-reviewed.
