@@ -49,6 +49,14 @@ This directory is the source of truth for product requirements, UX, visual desig
 9. [Design Handoff and Acceptance Checklist](phase-3/DESIGN_HANDOFF_AND_ACCEPTANCE.md)
 10. [Motion, Hover, Scroll and Product Image Inspection](phase-3/MOTION_HOVER_SCROLL_AND_PRODUCT_ZOOM_SPEC.md)
 11. [Figma Visual Design Handoff](phase-3/FIGMA_VISUAL_DESIGN_HANDOFF.md)
+12. [Commerce and Admin Visual Workflow Blueprint](phase-3/COMMERCE_AND_ADMIN_VISUAL_WORKFLOW_BLUEPRINT.md)
+
+### Phase 3 importable vector design boards
+- [Product Card Hover Preview](phase-3/design-assets/PRODUCT_CARD_HOVER_PREVIEW.svg)
+- [Customer Commerce Screens](phase-3/design-assets/COMMERCE_CUSTOMER_WORKFLOWS.svg)
+- [Admin Operations Screens](phase-3/design-assets/ADMIN_OPERATIONS_WORKFLOWS.svg)
+- [Customer and Admin Workflow Map](phase-3/design-assets/CUSTOMER_ADMIN_WORKFLOW_MAP.svg)
+11. [Figma Visual Design Handoff](phase-3/FIGMA_VISUAL_DESIGN_HANDOFF.md)
 
 ## Phase 4–6 execution plans
 
