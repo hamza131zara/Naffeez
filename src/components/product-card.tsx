@@ -67,7 +67,7 @@ export function ProductCard({ product }: Props) {
             <button type="button" className="icon-action" onClick={() => setQuickView(true)} aria-label={"Quick view " + product.title}>⌕</button>
           </div>
           <Link className="product-card__select" href={"/products/" + product.slug}>Select options <span aria-hidden="true">→</span></Link>
-          {product.variants.length > 0 && product.variants.every((variant) => !variant.isActive || variant.availableQuantity === 0) && (
+          {product.variants.length > 0 && product.variants.every((variant) => !variant.isActive || variant.isInStock === false) && (
             <span className="stock-badge">Sold out</span>
           )}
         </div>
