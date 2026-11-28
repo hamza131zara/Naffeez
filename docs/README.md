@@ -50,12 +50,21 @@ This directory is the source of truth for product requirements, UX, visual desig
 10. [Motion, Hover, Scroll and Product Image Inspection](phase-3/MOTION_HOVER_SCROLL_AND_PRODUCT_ZOOM_SPEC.md)
 11. [Figma Visual Design Handoff](phase-3/FIGMA_VISUAL_DESIGN_HANDOFF.md)
 12. [Commerce and Admin Visual Workflow Blueprint](phase-3/COMMERCE_AND_ADMIN_VISUAL_WORKFLOW_BLUEPRINT.md)
+13. [Hero Video Campaign and 360° Spin Builder](phase-3/HERO_VIDEO_AND_360_SPIN_BUILDER_SPEC.md)
+11. [Figma Visual Design Handoff](phase-3/FIGMA_VISUAL_DESIGN_HANDOFF.md)
+12. [Commerce and Admin Visual Workflow Blueprint](phase-3/COMMERCE_AND_ADMIN_VISUAL_WORKFLOW_BLUEPRINT.md)
 
 ### Phase 3 importable vector design boards
 - [Product Card Hover Preview](phase-3/design-assets/PRODUCT_CARD_HOVER_PREVIEW.svg)
 - [Customer Commerce Screens](phase-3/design-assets/COMMERCE_CUSTOMER_WORKFLOWS.svg)
 - [Admin Operations Screens](phase-3/design-assets/ADMIN_OPERATIONS_WORKFLOWS.svg)
 - [Customer and Admin Workflow Map](phase-3/design-assets/CUSTOMER_ADMIN_WORKFLOW_MAP.svg)
+- [Customer Discovery and Journal](phase-3/design-assets/CUSTOMER_DISCOVERY_AND_JOURNAL.svg)
+- [Order Confirmation and Invoice](phase-3/design-assets/ORDER_CONFIRMATION_AND_INVOICE.svg)
+- [Journal, Offers and Support](phase-3/design-assets/JOURNAL_OFFERS_SUPPORT_PAGES.svg)
+- [Admin Hero Campaign and 360° Spin Builder](phase-3/design-assets/ADMIN_HERO_CAMPAIGN_AND_SPIN_BUILDER.svg)
+- [Inventory and Sold-out States](phase-3/design-assets/INVENTORY_STOCK_STATES.svg)
+- [Responsive and State Coverage](phase-3/design-assets/RESPONSIVE_AND_STATE_COVERAGE.svg)
 11. [Figma Visual Design Handoff](phase-3/FIGMA_VISUAL_DESIGN_HANDOFF.md)
 
 ## Phase 4–6 execution plans
