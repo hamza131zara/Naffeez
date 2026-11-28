@@ -7,7 +7,7 @@ export function StoreFooter() {
         <div className="footer-brand">
           <Link className="wordmark wordmark--footer" href="/">NAFFEEZ</Link>
           <p>Discover your style. Explore every detail. Shop with confidence.</p>
-          <a href="https://wa.me/923716492220" target="_blank" rel="noreferrer">WhatsApp support ↗</a>
+          <Link href="/contact">Customer support ↗</Link>
         </div>
         <div className="footer-column">
           <h2>Shop</h2>
