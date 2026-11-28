@@ -1,8 +1,8 @@
 # Naffeez — Visual Design System and Theme Specification
 
 **Document ID:** NAF-P3-DESIGN-001  
-**Version:** 1.0  
-**Status:** Phase 3 design proposal for owner review  
+**Version:** 1.1  
+**Status:** Light/Dark visual directions accepted by owner; full screen-level contrast, responsive and accessibility QA pending  
 **Date:** 2026-11-28  
 **Depends on:** Accepted Phase 1 v1.0, Phase 1 addendum v1.1, approved Phase 2 architecture
 
@@ -243,3 +243,10 @@ When native Figma editing is available, duplicate/rebuild the screen inventory i
 - theme switching without page reload, state reset or wrong-theme flash.
 
 Owner review and visual QA remain pending.
+
+
+## 16. Owner approval record
+
+On 2026-11-28, the owner accepted both Light and Dark visual directions and approved the two proposed scroll-animation styles described in [Motion Pattern Evaluation](MOTION_PATTERN_EVALUATION.md): restrained section text reveal and circular image-mask reveal.
+
+This does not mark the full Light/Dark screen inventory, contrast/accessibility checks or responsive layout review complete. Those remain Phase 3 QA tasks. System mode remains the documented preference behavior that follows the device setting.
